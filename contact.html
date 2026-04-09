@@ -1,96 +1,184 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Olideen Technologies</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <title>Contact — Olideen Technologies</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <!-- GSAP -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <!-- Header/Navbar -->
-  <header class="navbar">
+  <div class="cursor-dot"></div>
+  <div class="cursor-ring"></div>
+  <canvas id="bg-canvas"></canvas>
+
+  <header class="navbar" id="navbar">
     <div class="nav-logo">
       <a href="index.html">
-        <img src="olideen-logo.png" alt="Olideen Logo" class="logo-icon">
+        <img src="olideen-logo.png" alt="Olideen Technologies" class="logo-icon">
       </a>
     </div>
     <nav>
       <ul class="nav-links">
         <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About Us</a></li>
         <li><a href="services.html">Services</a></li>
-        <li><a href="portfolio.html">Portfolio</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>      
+        <li><a href="whyus.html">Why Us</a></li>
+        <li><a href="contact.html" class="active">Contact</a></li>
+      </ul>
     </nav>
+    <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
   </header>
 
+  <div class="contact-page">
+    <!-- Left: Info -->
+    <div class="contact-info reveal">
+      <p class="section-label">Get In Touch</p>
+      <h1>Let's Build Something <span class="gradient-text">Amazing</span></h1>
+      <p>Have a project in mind, a question, or just want to explore what's possible? Reach out — we'd love to hear from you. We respond within 24 hours.</p>
 
-  <!-- Contact Section -->
-  <section class="contact-section">
-    <div class="contact-left">
-      <h1>Get in Touch</h1>
-      <p>Have a project in mind? We'd love to hear about it. Fill out the form and we'll get back to you within 24 hours.</p>
-      <div class="contact-details">
-        <p><strong>Email:</strong> hello@olideen.com</p>
-        <p><strong>Phone:</strong> +27 73 307 5218</p>
-        <p><strong>Location:</strong> Small Town, South Africa</p>
+      <div class="contact-detail-item">
+        <i class="fas fa-envelope"></i>
+        <span><a href="mailto:olideentech@gmail.com">olideentech@gmail.com</a></span>
+      </div>
+      <div class="contact-detail-item">
+        <i class="fas fa-phone"></i>
+        <span>+27 73 307 5218</span>
+      </div>
+      <div class="contact-detail-item">
+        <i class="fab fa-whatsapp"></i>
+        <span><a href="https://wa.me/27733075218" target="_blank">Chat on WhatsApp</a></span>
+      </div>
+      <div class="contact-detail-item">
+        <i class="fas fa-map-marker-alt"></i>
+        <span>Estcourt, KwaZulu-Natal, South Africa</span>
+      </div>
+
+      <div style="margin-top:3rem;">
+        <p class="section-label" style="margin-bottom:1rem;">Response Time</p>
+        <div class="stat-card" style="text-align:left; display:flex; align-items:center; gap:1rem; padding:1.25rem 1.5rem;">
+          <i class="fas fa-clock" style="font-size:1.4rem;"></i>
+          <div>
+            <strong style="font-family:var(--font-h); font-size:1rem;">Within 24 hours</strong>
+            <p style="font-size:0.82rem; color:var(--gray);">Usually much faster via WhatsApp</p>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="contact-right">
-      <form id="contactForm">
-        <input type="text" id="name" placeholder="Your Name" required>
-        <span class="error-message" id="nameError"></span>
 
-        <input type="email" id="email" placeholder="Email Address" required>
-        <span class="error-message" id="emailError"></span>
+    <!-- Right: Form -->
+    <div class="contact-form-wrap reveal">
+      <h2>Send Us a Message</h2>
+      <p>Fill in the form below and we'll get back to you as soon as possible.</p>
 
-        <textarea id="message" placeholder="Tell Us About Your Project" required></textarea>
-        <span class="error-message" id="messageError"></span>
+      <!--
+        FORMSPREE SETUP INSTRUCTIONS:
+        1. Go to https://formspree.io and sign up with olideentech@gmail.com
+        2. Create a new form
+        3. Replace "YOUR_FORM_ID" in the action URL below with your actual Formspree form ID
+        Example: action="https://formspree.io/f/xpwzknab"
+        Once set up, every submission will be emailed directly to olideentech@gmail.com
+      -->
+      <form id="contactForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
 
-        <button type="submit" class="cta-btn">Submit</button>
-        <p class="success-message" id="successMessage"></p>
+        <!-- Hidden fields for Formspree -->
+        <input type="hidden" name="_subject" value="New enquiry from Olideen Technologies website">
+        <input type="text" name="_gotcha" style="display:none">
+
+        <div class="form-group">
+          <label for="name">Your Name</label>
+          <input type="text" id="name" name="name" placeholder="e.g. John Dlamini" required>
+          <span class="error-msg" id="nameError"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" name="email" placeholder="you@example.com" required>
+          <span class="error-msg" id="emailError"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="phone">Phone / WhatsApp (optional)</label>
+          <input type="tel" id="phone" name="phone" placeholder="+27 73 000 0000">
+        </div>
+
+        <div class="form-group">
+          <label for="service">Service You're Interested In</label>
+          <select id="service" name="service">
+            <option value="">Select a service…</option>
+            <option>Custom Website</option>
+            <option>Web Application</option>
+            <option>Software Solution</option>
+            <option>Mobile App</option>
+            <option>Graphic Design</option>
+            <option>Google Business Setup</option>
+            <option>Social Media Setup</option>
+            <option>CV / Document Design</option>
+            <option>Maintenance & Support</option>
+            <option>Not Sure — Need Advice</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="message">Tell Us About Your Project</label>
+          <textarea id="message" name="message" rows="5" placeholder="Describe your business, what you need, and any specific requirements…" required></textarea>
+          <span class="error-msg" id="messageError"></span>
+        </div>
+
+        <button type="submit" class="btn-primary" style="width:100%; justify-content:center;">
+          Send Message <i class="fas fa-paper-plane"></i>
+        </button>
+
+        <div id="successBanner" class="success-banner"></div>
       </form>
     </div>
-  </section>
+  </div>
 
-
-  <!-- Footer -->
   <footer class="footer">
     <div class="footer-container">
-      <section class="footer-column">
-        <h2>Navigation</h2>
+      <div class="footer-brand">
+        <img src="olideen-logo.png" alt="Olideen Technologies" style="height:60px; margin-bottom:1rem;">
+        <p>Premium web & software solutions from the heart of KwaZulu-Natal.</p>
+      </div>
+      <div class="footer-column">
+        <h4>Navigation</h4>
         <ul>
           <li><a href="index.html">Home</a></li>
-          <li><a href="about.html">About Us</a></li>
           <li><a href="services.html">Services</a></li>
-          <li><a href="portfolio.html">Portfolio</a></li>
+          <li><a href="whyus.html">Why Us</a></li>
           <li><a href="contact.html">Contact</a></li>
         </ul>
-      </section>
-      <section class="footer-column">
-        <h2>Contact Details</h2>
-        <p><strong>Phone:</strong> +27 73 307 5218</p>
-        <p><strong>Email:</strong> info@olideentech.com</p>
-      </section>
-      <section class="footer-column">
-        <h2>Stay Connected</h2>
+      </div>
+      <div class="footer-column">
+        <h4>Contact</h4>
+        <p><i class="fas fa-phone"></i> +27 73 307 5218</p>
+        <p><i class="fas fa-envelope"></i> olideentech@gmail.com</p>
+        <p><i class="fas fa-map-marker-alt"></i> KwaZulu-Natal, SA</p>
+      </div>
+      <div class="footer-column">
+        <h4>Connect</h4>
         <div class="social-links">
-          <a href="#">Facebook</a>
-          <a href="#">Instagram</a>
-          <a href="#">LinkedIn</a>
+          <a href="#"><i class="fab fa-facebook"></i> Facebook</a>
+          <a href="#"><i class="fab fa-instagram"></i> Instagram</a>
+          <a href="#"><i class="fab fa-linkedin"></i> LinkedIn</a>
+          <a href="https://wa.me/27733075218"><i class="fab fa-whatsapp"></i> WhatsApp</a>
         </div>
-      </section>
+      </div>
     </div>
     <div class="footer-bottom">
-      <p>&copy; 2026 Olideen Technologies. All rights reserved.</p>
+      <p>&copy; 2026 Olideen Technologies. All rights reserved. Built with passion in South Africa.</p>
     </div>
   </footer>
+
+  <a href="https://wa.me/27733075218" class="whatsapp-float" target="_blank" rel="noopener noreferrer">
+    <i class="fab fa-whatsapp"></i><span>Chat With Us</span>
+  </a>
+
+  <script src="three-bg.js"></script>
+  <script src="script.js"></script>
 </body>
+</html>

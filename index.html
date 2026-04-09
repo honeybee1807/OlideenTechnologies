@@ -3,158 +3,238 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Olideen Technologies</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <title>Olideen Technologies – Premium Web & Software Solutions</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <!-- GSAP -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <div class="cursor-dot"></div>
+  <div class="cursor-ring"></div>
+  <canvas id="bg-canvas"></canvas>
 
-  <!-- Header/Navbar -->
-  <header class="navbar">
+  <header class="navbar" id="navbar">
     <div class="nav-logo">
       <a href="index.html">
-        <img src="olideentech site logo.png" alt="Olideen Logo" class="logo-icon">
+        <img src="olideen-logo.png" alt="Olideen Technologies" class="logo-icon">
       </a>
     </div>
     <nav>
       <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html" class="active">Home</a></li>
         <li><a href="services.html">Services</a></li>
         <li><a href="whyus.html">Why Us</a></li>
         <li><a href="contact.html">Contact</a></li>
-      </ul>      
+      </ul>
     </nav>
+    <div class="hamburger" id="hamburger">
+      <span></span><span></span><span></span>
+    </div>
   </header>
 
-  <!-- Hero Section -->
-  <section class="hero">
+  <section class="hero" id="home">
     <div class="hero-content">
-      <h1>Premium Web & Software Solutions</h1>
-      <p>Helping small-town businesses thrive in the digital world.</p>
-      <button class="cta-btn">Get Started</button>
+      <div class="hero-badge">🇿🇦 KwaZulu-Natal, South Africa</div>
+      <h1 class="hero-title">
+        <span class="line">We Build</span>
+        <span class="line gradient-text">Digital Futures.</span>
+      </h1>
+      <p class="hero-sub">Premium web & software solutions that transform small-town businesses into digital powerhouses.</p>
+      <div class="hero-actions">
+        <a href="contact.html" class="btn-primary">Start Your Project <i class="fas fa-arrow-right"></i></a>
+        <a href="services.html" class="btn-ghost">Explore Services</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hstat"><span>100%</span><p>Satisfaction</p></div>
+        <div class="hstat-divider"></div>
+        <div class="hstat"><span>24/7</span><p>Support</p></div>
+        <div class="hstat-divider"></div>
+        <div class="hstat"><span>Local</span><p>SA Business</p></div>
+      </div>
     </div>
-    <div class="hero-visual">
-      <!-- Space for animated gradient background or 3D logo -->
+    <div class="scroll-hint">
+      <span>Scroll</span>
+      <div class="scroll-line"></div>
     </div>
   </section>
 
-  WhatsApp Chat
-  <a href="https://wa.me/27733075218" class="whatsapp-float" target="_blank">
-    💬 Chat With Assistant 
-  </a>
+  <div class="ticker-wrap">
+    <div class="ticker">
+      <span>Custom Websites</span><span class="dot">✦</span>
+      <span>Web Applications</span><span class="dot">✦</span>
+      <span>Software Solutions</span><span class="dot">✦</span>
+      <span>Graphic Design</span><span class="dot">✦</span>
+      <span>Digital Consulting</span><span class="dot">✦</span>
+      <span>Google Business Setup</span><span class="dot">✦</span>
+      <span>Mobile Apps</span><span class="dot">✦</span>
+      <span>Social Media</span><span class="dot">✦</span>
+      <span>Custom Websites</span><span class="dot">✦</span>
+      <span>Web Applications</span><span class="dot">✦</span>
+      <span>Software Solutions</span><span class="dot">✦</span>
+      <span>Graphic Design</span><span class="dot">✦</span>
+      <span>Digital Consulting</span><span class="dot">✦</span>
+      <span>Google Business Setup</span><span class="dot">✦</span>
+      <span>Mobile Apps</span><span class="dot">✦</span>
+      <span>Social Media</span><span class="dot">✦</span>
+    </div>
+  </div>
 
-  <!-- Services Preview -->
-  <section class="services">
-    <h2>Our Services</h2>
+  <section class="services-section reveal" id="services">
+    <div class="section-header">
+      <p class="section-label">What We Do</p>
+      <h2>Services That <span class="gradient-text">Drive Growth</span></h2>
+      <p class="section-sub">Every business deserves a powerful digital presence — regardless of where you're located.</p>
+    </div>
     <div class="service-grid">
-      <div class="service-card">
-        <i class="fas fa-globe service-icon"></i>
+      <div class="service-card reveal-card">
+        <div class="card-glow"></div>
+        <i class="fas fa-globe"></i>
         <h3>Custom Websites</h3>
-        <p>Responsive, fast, and SEO‑optimized websites that elevate your brand.</p>
+        <p>Responsive, fast, and SEO-optimized websites that elevate your brand.</p>
+        <div class="card-tag">Most Popular</div>
       </div>
-      <div class="service-card">
-        <i class="fas fa-code service-icon"></i>
+      <div class="service-card reveal-card">
+        <div class="card-glow"></div>
+        <i class="fas fa-code"></i>
         <h3>Web Applications</h3>
-        <p>Interactive tools and platforms tailored specifically to your business needs.</p>
+        <p>Interactive platforms tailored to your exact business workflows.</p>
       </div>
-      <div class="service-card">
-        <i class="fas fa-cogs service-icon"></i>
+      <div class="service-card reveal-card">
+        <div class="card-glow"></div>
+        <i class="fas fa-cogs"></i>
         <h3>Software Solutions</h3>
         <p>Automation, integrations, and custom tools to streamline operations.</p>
       </div>
-      <div class="service-card">
-        <i class="fas fa-mobile-alt service-icon"></i>
+      <div class="service-card reveal-card">
+        <div class="card-glow"></div>
+        <i class="fas fa-paint-brush"></i>
+        <h3>Graphic Design</h3>
+        <p>Logos, flyers, social media graphics, and brand identity design.</p>
+      </div>
+      <div class="service-card reveal-card">
+        <div class="card-glow"></div>
+        <i class="fas fa-mobile-alt"></i>
         <h3>Mobile Apps</h3>
-        <p>Native and cross‑platform applications for iOS and Android.</p>
+        <p>Cross-platform mobile applications for iOS and Android.</p>
       </div>
-      <div class="service-card">
-        <i class="fas fa-tools service-icon"></i>
-        <h3>Maintenance & Support</h3>
-        <p>Ongoing updates, optimization, and technical support.</p>
+      <div class="service-card reveal-card">
+        <div class="card-glow"></div>
+        <i class="fas fa-store"></i>
+        <h3>Google Business Setup</h3>
+        <p>Get found on Google Maps and Search with a fully optimized profile.</p>
       </div>
-      <div class="service-card">
-        <i class="fas fa-lightbulb service-icon"></i>
-        <h3>Consulting</h3>
-        <p>Expert guidance on digital strategy and technology decisions.</p>
+    </div>
+    <div class="services-cta">
+      <a href="services.html" class="btn-outline">View All Services <i class="fas fa-arrow-right"></i></a>
+    </div>
+  </section>
+
+  <section class="whyus-section reveal" id="whyus">
+    <div class="whyus-inner">
+      <div class="whyus-left">
+        <p class="section-label">Why Olideen</p>
+        <h2>Why Choose <span class="gradient-text">Olideen Technologies?</span></h2>
+        <p class="section-sub">We bring big-city expertise to your doorstep — with the personal touch that large agencies can't offer.</p>
+        <ul class="advantages">
+          <li><i class="fas fa-check-circle"></i><span>Small-town advantage — we understand local business needs</span></li>
+          <li><i class="fas fa-check-circle"></i><span>Personalized attention — direct communication, no middlemen</span></li>
+          <li><i class="fas fa-check-circle"></i><span>Affordable premium quality — great results at honest prices</span></li>
+          <li><i class="fas fa-check-circle"></i><span>Fast turnaround — we respect your deadlines</span></li>
+          <li><i class="fas fa-check-circle"></i><span>Ongoing support long after delivery</span></li>
+          <li><i class="fas fa-check-circle"></i><span>100% South African — we know this market</span></li>
+          <li><i class="fas fa-check-circle"></i><span>Always reachable via WhatsApp</span></li>
+        </ul>
+        <a href="whyus.html" class="btn-primary" style="margin-top:2rem; display:inline-flex;">Learn More <i class="fas fa-arrow-right"></i></a>
+      </div>
+      <div class="whyus-right">
+        <div class="stat-card"><i class="fas fa-smile"></i><h3>100%</h3><p>Client Satisfaction</p></div>
+        <div class="stat-card"><i class="fas fa-headset"></i><h3>24/7</h3><p>Support Available</p></div>
+        <div class="stat-card"><i class="fas fa-map-marker-alt"></i><h3>Local</h3><p>KwaZulu-Natal, SA</p></div>
       </div>
     </div>
   </section>
 
-  <!-- Why Us Section -->
-  <section class="whyus">
-    <h2>Why Choose Olideen?</h2>
-    <div class="whyus-grid">
-      <ul class="advantages">
-        <li><i class="fas fa-check-circle"></i> Small-town advantage – understands local business needs</li>
-        <li><i class="fas fa-check-circle"></i> Personalized attention – not a faceless agency</li>
-        <li><i class="fas fa-check-circle"></i> Affordable premium quality</li>
-        <li><i class="fas fa-check-circle"></i> Fast turnaround times</li>
-        <li><i class="fas fa-check-circle"></i> Ongoing support and maintenance</li>
-      </ul>
-      <div class="stats">
-        <div class="stat"><i class="fas fa-smile"></i><h3>100%</h3><p>Client Satisfaction Rate</p></div>
-        <div class="stat"><i class="fas fa-project-diagram"></i><h3>50+</h3><p>Projects Completed</p></div>
-        <div class="stat"><i class="fas fa-headset"></i><h3>24/7</h3><p>Support Available</p></div>
+  <section class="testimonials-section reveal" id="testimonials">
+    <div class="section-header">
+      <p class="section-label">Testimonials</p>
+      <h2>What <span class="gradient-text">Clients Say</span></h2>
+    </div>
+    <div class="testimonials-track">
+      <div class="testimonial-card active">
+        <div class="quote-icon">"</div>
+        <p>Olideen Technologies transformed our business presence online completely!</p>
+        <div class="client-info"><strong>— Local Client, KZN</strong></div>
+      </div>
+      <div class="testimonial-card">
+        <div class="quote-icon">"</div>
+        <p>Professional, modern, and incredibly reliable. Exactly what our business needed.</p>
+        <div class="client-info"><strong>— Small Business Owner</strong></div>
+      </div>
+      <div class="testimonial-card">
+        <div class="quote-icon">"</div>
+        <p>Highly recommend Olideen Technologies. Fast, affordable and genuinely cares.</p>
+        <div class="client-info"><strong>— Estcourt Client</strong></div>
       </div>
     </div>
-  </section>
-
-  <!-- Testimonials -->
-  <section class="testimonials">
-    <h2>What Clients Say</h2>
-    <div class="carousel">
-      <div class="testimonial">"Olideen transformed our business presence online!"</div>
-      <div class="testimonial">"Professional, modern, and reliable service."</div>
-      <div class="testimonial">"Highly recommend Olideen Technologies."</div>
+    <div class="testimonial-dots">
+      <span class="tdot active" data-i="0"></span>
+      <span class="tdot" data-i="1"></span>
+      <span class="tdot" data-i="2"></span>
     </div>
   </section>
 
-  <!-- Call-to-Action Section -->
-<section class="cta-section">
-  <div class="cta-content">
-    <h2>Ready to Transform Your Business?</h2>
-    <p>Let's discuss your project and create something amazing together.</p>
-    <button class="cta-btn">
-      Schedule a Consultation <i class="fas fa-arrow-right"></i>
-    </button>
-  </div>
-</section>
+  <section class="cta-section reveal">
+    <div class="cta-inner">
+      <h2>Ready to <span class="gradient-text">Transform</span> Your Business?</h2>
+      <p>Let's build something extraordinary together.</p>
+      <a href="contact.html" class="btn-primary btn-large">Schedule a Consultation <i class="fas fa-arrow-right"></i></a>
+    </div>
+  </section>
 
-
-  <!-- Footer -->
   <footer class="footer">
     <div class="footer-container">
-      <section class="footer-column">
-        <h2>Navigation</h2>
+      <div class="footer-brand">
+        <img src="olideen-logo.png" alt="Olideen Technologies" style="height:60px; margin-bottom:1rem;">
+        <p>Premium web & software solutions from the heart of KwaZulu-Natal.</p>
+      </div>
+      <div class="footer-column">
+        <h4>Navigation</h4>
         <ul>
           <li><a href="index.html">Home</a></li>
           <li><a href="services.html">Services</a></li>
+          <li><a href="whyus.html">Why Us</a></li>
           <li><a href="contact.html">Contact</a></li>
         </ul>
-      </section>
-      <section class="footer-column">
-        <h2>Contact Details</h2>
-        <p><strong>Phone:</strong> +27 73 307 5218</p>
-        <p><strong>Email:</strong> info@olideentech.com</p>
-      </section>
-      <section class="footer-column">
-        <h2>Stay Connected</h2>
+      </div>
+      <div class="footer-column">
+        <h4>Contact</h4>
+        <p><i class="fas fa-phone"></i> +27 73 307 5218</p>
+        <p><i class="fas fa-envelope"></i> olideentech@gmail.com</p>
+        <p><i class="fas fa-map-marker-alt"></i> KwaZulu-Natal, SA</p>
+      </div>
+      <div class="footer-column">
+        <h4>Connect</h4>
         <div class="social-links">
-          <a href="#">Facebook</a>
-          <a href="#">Instagram</a>
-          <a href="#">LinkedIn</a>
+          <a href="#"><i class="fab fa-facebook"></i> Facebook</a>
+          <a href="#"><i class="fab fa-instagram"></i> Instagram</a>
+          <a href="#"><i class="fab fa-linkedin"></i> LinkedIn</a>
+          <a href="https://wa.me/27733075218"><i class="fab fa-whatsapp"></i> WhatsApp</a>
         </div>
-      </section>
+      </div>
     </div>
     <div class="footer-bottom">
-      <p>&copy; 2026 Olideen Technologies. All rights reserved.</p>
+      <p>&copy; 2026 Olideen Technologies. All rights reserved. Built with passion in South Africa.</p>
     </div>
   </footer>
 
+  <a href="https://wa.me/27733075218" class="whatsapp-float" target="_blank" rel="noopener noreferrer">
+    <i class="fab fa-whatsapp"></i><span>Chat With Us</span>
+  </a>
+
+  <script src="three-bg.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
