@@ -13,7 +13,7 @@
   --white:   #FFFFFF;
   --gray:    #94A3B8;
   --light:   #CBD5E1;
-  --font-h:  'Syne', sans-serif;
+  --font-h:  'Plus Jakarta Sans', sans-serif;
   --font-b:  'DM Sans', sans-serif;
   --glow:    0 0 30px rgba(0,217,255,0.25);
   --glow-lg: 0 0 60px rgba(0,217,255,0.2);
@@ -895,4 +895,435 @@ body {
   body { cursor: auto; }
 
   .cta-inner { padding: 3rem 1.5rem; }
+}
+
+/* ==========================================================
+   NEW SECTIONS — Portfolio, Credentials, Explain, Roadmap
+   Added to support Reddit Research & Competitor Analysis Q
+   ========================================================== */
+
+/* ── Portfolio Section ── */
+.portfolio-section {
+  position: relative;
+  z-index: 1;
+  padding: 7rem 3rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.portfolio-card {
+  position: relative;
+  background: rgba(10,22,40,0.7);
+  border: 1px solid rgba(0,217,255,0.12);
+  border-radius: var(--radius);
+  padding: 2.25rem;
+  backdrop-filter: blur(12px);
+  transition: all 0.4s ease;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.portfolio-card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.portfolio-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(0,217,255,0.3);
+  box-shadow: var(--glow);
+}
+
+.portfolio-icon {
+  width: 52px;
+  height: 52px;
+  background: rgba(0,217,255,0.08);
+  border: 1px solid rgba(0,217,255,0.2);
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.25rem;
+}
+
+.portfolio-icon i { font-size: 1.3rem; color: var(--cyan); }
+
+.portfolio-tag {
+  display: inline-block;
+  padding: 0.2rem 0.75rem;
+  background: rgba(0,217,255,0.08);
+  border: 1px solid rgba(0,217,255,0.25);
+  border-radius: 50px;
+  font-size: 0.7rem;
+  font-family: var(--font-h);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--cyan);
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.portfolio-tag.coming {
+  background: rgba(124,58,237,0.1);
+  border-color: rgba(124,58,237,0.3);
+  color: #a78bfa;
+}
+
+.portfolio-card h3 {
+  font-family: var(--font-h);
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+}
+
+.portfolio-card p {
+  color: var(--gray);
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+.portfolio-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1.25rem;
+}
+
+.portfolio-tech span {
+  padding: 0.25rem 0.75rem;
+  background: rgba(56,189,248,0.07);
+  border: 1px solid rgba(56,189,248,0.15);
+  border-radius: 50px;
+  font-size: 0.75rem;
+  font-family: var(--font-h);
+  font-weight: 600;
+  color: var(--blue);
+}
+
+.pipeline-card {
+  border-style: dashed;
+  border-color: rgba(124,58,237,0.2);
+}
+
+.pipeline-card:hover {
+  border-color: rgba(124,58,237,0.4);
+  box-shadow: 0 0 30px rgba(124,58,237,0.15);
+}
+
+/* ── Credentials Section ── */
+.credentials-section {
+  position: relative;
+  z-index: 1;
+  padding: 7rem 3rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.credentials-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+}
+
+.credential-card {
+  position: relative;
+  background: rgba(10,22,40,0.7);
+  border: 1px solid rgba(0,217,255,0.12);
+  border-radius: var(--radius);
+  padding: 2rem;
+  backdrop-filter: blur(12px);
+  transition: all 0.4s ease;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.credential-card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.credential-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(0,217,255,0.3);
+  box-shadow: var(--glow);
+}
+
+.credential-card > i {
+  font-size: 1.8rem;
+  color: var(--cyan);
+  margin-bottom: 1.25rem;
+  display: block;
+}
+
+.credential-card h3 {
+  font-family: var(--font-h);
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 0.6rem;
+}
+
+.credential-card p {
+  color: var(--gray);
+  font-size: 0.9rem;
+  line-height: 1.7;
+  margin-bottom: 1.25rem;
+}
+
+.cred-badge {
+  display: inline-block;
+  padding: 0.25rem 0.85rem;
+  background: linear-gradient(135deg, rgba(0,217,255,0.12), rgba(56,189,248,0.08));
+  border: 1px solid rgba(0,217,255,0.25);
+  border-radius: 50px;
+  font-family: var(--font-h);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--cyan);
+  text-transform: uppercase;
+}
+
+/* ── Plain Language / Explain Section ── */
+.explain-section {
+  position: relative;
+  z-index: 1;
+  padding: 5rem 3rem 7rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.explain-inner {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 5rem;
+  align-items: center;
+}
+
+.explain-text h2 {
+  font-family: var(--font-h);
+  font-size: clamp(1.8rem, 3vw, 2.5rem);
+  font-weight: 800;
+  margin-bottom: 1rem;
+}
+
+.explain-text > p {
+  color: var(--gray);
+  font-size: 1rem;
+  line-height: 1.7;
+  margin-bottom: 2rem;
+}
+
+.explain-examples {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.explain-item {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  padding: 1.25rem;
+  background: rgba(10,22,40,0.6);
+  border: 1px solid rgba(0,217,255,0.1);
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  transition: border-color 0.3s;
+}
+
+.explain-item:hover { border-color: rgba(0,217,255,0.25); }
+
+.explain-icon {
+  width: 38px;
+  height: 38px;
+  min-width: 38px;
+  background: rgba(0,217,255,0.08);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--cyan);
+  font-size: 1rem;
+}
+
+.explain-item strong {
+  font-family: var(--font-h);
+  font-size: 0.95rem;
+  font-weight: 700;
+  display: block;
+  margin-bottom: 0.4rem;
+}
+
+.explain-item p {
+  color: var(--gray);
+  font-size: 0.85rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.explain-item em { color: var(--light); font-style: italic; }
+
+.response-card {
+  background: rgba(10,22,40,0.8);
+  border: 1px solid rgba(0,217,255,0.2);
+  border-radius: 20px;
+  padding: 2.5rem 2rem;
+  backdrop-filter: blur(15px);
+  text-align: center;
+  box-shadow: var(--glow);
+}
+
+.rc-icon {
+  width: 64px;
+  height: 64px;
+  background: rgba(37,211,102,0.12);
+  border: 1px solid rgba(37,211,102,0.3);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.25rem;
+}
+
+.rc-icon i { font-size: 1.8rem; color: #25D366; }
+
+.response-card h4 {
+  font-family: var(--font-h);
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+}
+
+.response-card p {
+  color: var(--gray);
+  font-size: 0.92rem;
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+}
+
+.response-card strong { color: var(--white); }
+
+.rc-time {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: rgba(0,217,255,0.07);
+  border: 1px solid rgba(0,217,255,0.2);
+  border-radius: 50px;
+  font-size: 0.8rem;
+  font-family: var(--font-h);
+  font-weight: 600;
+  color: var(--cyan);
+}
+
+/* ── Roadmap Section ── */
+.roadmap-section {
+  position: relative;
+  z-index: 1;
+  padding: 5rem 3rem 7rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.roadmap-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.roadmap-item {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  padding: 1.75rem 2rem;
+  background: rgba(10,22,40,0.6);
+  border: 1px solid rgba(0,217,255,0.1);
+  border-radius: 14px;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+  opacity: 0;
+  transform: translateX(-20px);
+}
+
+.roadmap-item.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.roadmap-item:hover {
+  border-color: rgba(0,217,255,0.25);
+  transform: translateX(6px);
+}
+
+.roadmap-num {
+  font-family: var(--font-h);
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: rgba(0,217,255,0.15);
+  min-width: 60px;
+  line-height: 1;
+}
+
+.roadmap-content { flex: 1; }
+
+.roadmap-content h3 {
+  font-family: var(--font-h);
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin-bottom: 0.4rem;
+}
+
+.roadmap-content p {
+  color: var(--gray);
+  font-size: 0.9rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.roadmap-status {
+  padding: 0.3rem 0.9rem;
+  border-radius: 50px;
+  font-family: var(--font-h);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.roadmap-status.future {
+  background: rgba(124,58,237,0.1);
+  border: 1px solid rgba(124,58,237,0.25);
+  color: #a78bfa;
+}
+
+.roadmap-status.active {
+  background: rgba(0,217,255,0.1);
+  border: 1px solid rgba(0,217,255,0.3);
+  color: var(--cyan);
+}
+
+/* ── Responsive additions for new sections ── */
+@media (max-width: 1024px) {
+  .explain-inner { grid-template-columns: 1fr; gap: 3rem; }
+}
+
+@media (max-width: 768px) {
+  .portfolio-section,
+  .credentials-section,
+  .explain-section,
+  .roadmap-section { padding: 4rem 1.5rem; }
+
+  .roadmap-item { flex-direction: column; gap: 0.75rem; text-align: center; }
+  .roadmap-item:hover { transform: translateY(-4px); }
+  .roadmap-num { font-size: 1.8rem; min-width: auto; }
 }
