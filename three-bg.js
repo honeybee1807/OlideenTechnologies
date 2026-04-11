@@ -1,6 +1,6 @@
 // ===========================
-// Olideen Technologies — Three.js Background
-// Animated particle network with glowing nodes
+// Olideen Technologies — Floating Code Fragments Background
+// TWEAKED: 80 fragments, bigger text, more visible, faster drift
 // ===========================
 
 (function () {
@@ -11,165 +11,194 @@
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
   renderer.setSize(window.innerWidth, window.innerHeight);
 
-  const scene = new THREE.Scene();
-  const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
+  const scene  = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(65, window.innerWidth / window.innerHeight, 0.1, 500);
   camera.position.z = 80;
 
-  // Colour palette matching the site
-  const CYAN = new THREE.Color(0x00D9FF);
-  const BLUE = new THREE.Color(0x38BDF8);
-  const PURPLE = new THREE.Color(0x7C3AED);
+  // ── Code fragments pool — expanded with more Olideen-specific code ──
+  const FRAGMENTS = [
+    // HTML
+    '<div class="hero">',
+    '</section>',
+    '<nav>',
+    'href="#contact"',
+    '<footer>',
+    '<canvas id="bg">',
+    '<img src="logo.png">',
+    'class="btn-primary"',
+    'rel="stylesheet"',
+    // CSS
+    'display: flex;',
+    'border-radius: 8px;',
+    'z-index: 1000;',
+    'opacity: 0.9;',
+    'transition: all 0.3s',
+    'grid-template-columns',
+    'backdrop-filter: blur',
+    'var(--cyan)',
+    'var(--navy)',
+    '@keyframes fadeIn',
+    'position: fixed;',
+    // JavaScript
+    'const api = fetch()',
+    'async function()',
+    'return response;',
+    'addEventListener()',
+    'querySelector()',
+    'JSON.stringify()',
+    'console.log(data)',
+    '.then(res => res)',
+    'export default App',
+    'import { useState }',
+    'localStorage.get()',
+    'window.scrollY',
+    // Three.js specific
+    'new THREE.Scene()',
+    'renderer.render()',
+    'requestAnimationFrame',
+    'new THREE.Mesh()',
+    // General dev
+    'npm install',
+    'git commit -m',
+    'localhost:3000',
+    'SELECT * FROM db',
+    '01001101 01100101',
+    '0xFF00D9FF',
+    'SSH-2.0-OpenSSH',
+    'HTTP/2 200 OK',
+    '{ padding: 0 }',
+    '[ ...spread ]',
+    '===',
+    '=>',
+    '//',
+    '/* Olideen */',
+    'olideentech.com',
+  ];
 
-  // ── Particles ──────────────────────────────────────────
-  const PARTICLE_COUNT = 180;
-  const positions = [];
-  const velocities = [];
-  const colors = [];
+  // ── Colour palette ───────────────────────────────────────
+  const COLOURS = [
+    '#00D9FF', // cyan
+    '#00D9FF',
+    '#38BDF8', // blue
+    '#38BDF8',
+    '#7C3AED', // purple
+    '#FFFFFF', // white
+    '#4ADE80', // green — strings
+    '#64748B', // dim grey — comments
+  ];
 
-  const particleGeometry = new THREE.BufferGeometry();
-  const posArray = new Float32Array(PARTICLE_COUNT * 3);
-  const colArray = new Float32Array(PARTICLE_COUNT * 3);
-
-  for (let i = 0; i < PARTICLE_COUNT; i++) {
-    const x = (Math.random() - 0.5) * 200;
-    const y = (Math.random() - 0.5) * 200;
-    const z = (Math.random() - 0.5) * 60;
-    positions.push(new THREE.Vector3(x, y, z));
-    velocities.push(new THREE.Vector3(
-      (Math.random() - 0.5) * 0.04,
-      (Math.random() - 0.5) * 0.04,
-      0
-    ));
-
-    posArray[i * 3]     = x;
-    posArray[i * 3 + 1] = y;
-    posArray[i * 3 + 2] = z;
-
-    // Mix cyan and blue randomly
-    const t = Math.random();
-    const c = t < 0.5 ? CYAN : (t < 0.8 ? BLUE : PURPLE);
-    colArray[i * 3]     = c.r;
-    colArray[i * 3 + 1] = c.g;
-    colArray[i * 3 + 2] = c.b;
+  // ── Create canvas texture for each fragment ──────────────
+  function makeFragmentTexture(text, colour, fontSize) {
+    const off = document.createElement('canvas');
+    const pad = 14;
+    const ctx = off.getContext('2d');
+    ctx.font   = `bold ${fontSize}px "Courier New", monospace`;
+    const w    = ctx.measureText(text).width + pad * 2;
+    const h    = fontSize + pad * 2;
+    off.width  = w;
+    off.height = h;
+    ctx.font        = `bold ${fontSize}px "Courier New", monospace`;
+    ctx.fillStyle   = colour;
+    ctx.shadowColor = colour;
+    ctx.shadowBlur  = 10;
+    ctx.fillText(text, pad, fontSize + pad * 0.6);
+    const tex = new THREE.CanvasTexture(off);
+    return { tex, aspect: w / h };
   }
 
-  particleGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
-  particleGeometry.setAttribute('color', new THREE.BufferAttribute(colArray, 3));
+  // ── Spawn fragments ──────────────────────────────────────
+  const FRAG_COUNT = 80;   // ← increased from 55
+  const SPREAD_X   = 110;
+  const SPREAD_Y   = 85;
+  const SPREAD_Z   = 65;
+  const fragments  = [];
 
-  const particleMaterial = new THREE.PointsMaterial({
-    size: 0.7,
-    vertexColors: true,
-    transparent: true,
-    opacity: 0.85,
-    sizeAttenuation: true,
+  for (let i = 0; i < FRAG_COUNT; i++) {
+    const text   = FRAGMENTS[Math.floor(Math.random() * FRAGMENTS.length)];
+    const colour = COLOURS[Math.floor(Math.random() * COLOURS.length)];
+    const size   = 16 + Math.floor(Math.random() * 14); // ← bigger: 16–30px (was 12–22)
+    const { tex, aspect } = makeFragmentTexture(text, colour, size);
+
+    const h   = 5 + Math.random() * 5;  // slightly taller planes
+    const w   = h * aspect;
+    const geo = new THREE.PlaneGeometry(w, h);
+    const baseOpacity = 0.20;Math.random() * 0.12;// ← more visible (was 0.12–0.45)
+    const mat = new THREE.MeshBasicMaterial({
+      map: tex,
+      transparent: true,
+      opacity: baseOpacity,
+      depthWrite: false,
+    });
+
+    const mesh = new THREE.Mesh(geo, mat);
+    mesh.position.set(
+      (Math.random() - 0.5) * SPREAD_X,
+      (Math.random() - 0.5) * SPREAD_Y,
+      (Math.random() - 0.5) * SPREAD_Z
+    );
+    mesh.rotation.z = (Math.random() - 0.5) * 0.35;
+
+    scene.add(mesh);
+
+    fragments.push({
+      mesh,
+      vx: (Math.random() - 0.5) * 0.032, // ← faster (was 0.018)
+      vy: (Math.random() - 0.5) * 0.022, // ← faster (was 0.012)
+      vz: (Math.random() - 0.5) * 0.014, // ← faster (was 0.008)
+      vRot: (Math.random() - 0.5) * 0.003,
+      baseOpacity,
+      pulseSpeed:  0.004 + Math.random() * 0.009,
+      pulseOffset: Math.random() * Math.PI * 2,
+      mat,
+    });
+  }
+
+  // ── Mouse parallax ───────────────────────────────────────
+  let targetX = 0, targetY = 0;
+  document.addEventListener('mousemove', e => {
+    targetX = (e.clientX / window.innerWidth  - 0.5) * 14;
+    targetY = (e.clientY / window.innerHeight - 0.5) * -7;
   });
 
-  const particleMesh = new THREE.Points(particleGeometry, particleMaterial);
-  scene.add(particleMesh);
-
-  // ── Connection Lines ────────────────────────────────────
-  const LINE_DISTANCE = 28;
-  const MAX_LINES = 300;
-
-  const linePositions = new Float32Array(MAX_LINES * 6);
-  const lineColors    = new Float32Array(MAX_LINES * 6);
-
-  const lineGeometry = new THREE.BufferGeometry();
-  lineGeometry.setAttribute('position', new THREE.BufferAttribute(linePositions, 3));
-  lineGeometry.setAttribute('color',    new THREE.BufferAttribute(lineColors,    3));
-
-  const lineMaterial = new THREE.LineSegments(
-    lineGeometry,
-    new THREE.LineBasicMaterial({ vertexColors: true, transparent: true, opacity: 0.25 })
-  );
-  scene.add(lineMaterial);
-
-  // ── Mouse parallax ─────────────────────────────────────
-  let mouseX = 0, mouseY = 0;
-  document.addEventListener('mousemove', (e) => {
-    mouseX = (e.clientX / window.innerWidth  - 0.5) * 0.4;
-    mouseY = (e.clientY / window.innerHeight - 0.5) * 0.4;
-  });
-
-  // ── Resize ─────────────────────────────────────────────
+  // ── Resize ───────────────────────────────────────────────
   window.addEventListener('resize', () => {
     camera.aspect = window.innerWidth / window.innerHeight;
     camera.updateProjectionMatrix();
     renderer.setSize(window.innerWidth, window.innerHeight);
   });
 
-  // ── Animation Loop ─────────────────────────────────────
-  let frameId;
-  const clock = new THREE.Clock();
+  // ── Animation loop ───────────────────────────────────────
+  let t = 0;
 
   function animate() {
-    frameId = requestAnimationFrame(animate);
-    const t = clock.getElapsedTime();
+    requestAnimationFrame(animate);
+    t += 0.016;
 
-    // Move particles
-    const pos = particleGeometry.attributes.position.array;
-    for (let i = 0; i < PARTICLE_COUNT; i++) {
-      positions[i].add(velocities[i]);
+    for (const f of fragments) {
+      const m = f.mesh;
+
+      m.position.x += f.vx;
+      m.position.y += f.vy;
+      m.position.z += f.vz;
+      m.rotation.z += f.vRot;
 
       // Wrap around bounds
-      if (positions[i].x >  100) positions[i].x = -100;
-      if (positions[i].x < -100) positions[i].x =  100;
-      if (positions[i].y >  100) positions[i].y = -100;
-      if (positions[i].y < -100) positions[i].y =  100;
+      if (m.position.x >  SPREAD_X / 2) m.position.x = -SPREAD_X / 2;
+      if (m.position.x < -SPREAD_X / 2) m.position.x =  SPREAD_X / 2;
+      if (m.position.y >  SPREAD_Y / 2) m.position.y = -SPREAD_Y / 2;
+      if (m.position.y < -SPREAD_Y / 2) m.position.y =  SPREAD_Y / 2;
+      if (m.position.z >  SPREAD_Z / 2) m.position.z = -SPREAD_Z / 2;
+      if (m.position.z < -SPREAD_Z / 2) m.position.z =  SPREAD_Z / 2;
 
-      pos[i * 3]     = positions[i].x;
-      pos[i * 3 + 1] = positions[i].y;
-      pos[i * 3 + 2] = positions[i].z;
-    }
-    particleGeometry.attributes.position.needsUpdate = true;
-
-    // Draw connection lines
-    let lineIdx = 0;
-    const lp = lineGeometry.attributes.position.array;
-    const lc = lineGeometry.attributes.color.array;
-
-    for (let i = 0; i < PARTICLE_COUNT && lineIdx < MAX_LINES; i++) {
-      for (let j = i + 1; j < PARTICLE_COUNT && lineIdx < MAX_LINES; j++) {
-        const dx = positions[i].x - positions[j].x;
-        const dy = positions[i].y - positions[j].y;
-        const dist = Math.sqrt(dx * dx + dy * dy);
-        if (dist < LINE_DISTANCE) {
-          const alpha = 1 - dist / LINE_DISTANCE;
-
-          lp[lineIdx * 6]     = positions[i].x;
-          lp[lineIdx * 6 + 1] = positions[i].y;
-          lp[lineIdx * 6 + 2] = positions[i].z;
-          lp[lineIdx * 6 + 3] = positions[j].x;
-          lp[lineIdx * 6 + 4] = positions[j].y;
-          lp[lineIdx * 6 + 5] = positions[j].z;
-
-          lc[lineIdx * 6]     = CYAN.r * alpha;
-          lc[lineIdx * 6 + 1] = CYAN.g * alpha;
-          lc[lineIdx * 6 + 2] = CYAN.b * alpha;
-          lc[lineIdx * 6 + 3] = BLUE.r * alpha;
-          lc[lineIdx * 6 + 4] = BLUE.g * alpha;
-          lc[lineIdx * 6 + 5] = BLUE.b * alpha;
-
-          lineIdx++;
-        }
-      }
+      // Breathing pulse
+      const pulse = Math.sin(t * f.pulseSpeed * 60 + f.pulseOffset) * 0.18;
+      f.mat.opacity = Math.max(0.08, Math.min(0.75, f.baseOpacity + pulse));
     }
 
-    // Zero out unused lines
-    for (let k = lineIdx; k < MAX_LINES; k++) {
-      for (let m = 0; m < 6; m++) lp[k * 6 + m] = 0;
-    }
-    lineGeometry.attributes.position.needsUpdate = true;
-    lineGeometry.attributes.color.needsUpdate = true;
-    lineGeometry.setDrawRange(0, lineIdx * 2);
-
-    // Subtle camera parallax
-    camera.position.x += (mouseX * 10 - camera.position.x) * 0.03;
-    camera.position.y += (-mouseY * 10 - camera.position.y) * 0.03;
-    camera.lookAt(scene.position);
-
-    // Slowly rotate the whole scene
-    scene.rotation.z = Math.sin(t * 0.05) * 0.03;
+    // Smooth camera parallax
+    camera.position.x += (targetX - camera.position.x) * 0.035;
+    camera.position.y += (targetY - camera.position.y) * 0.035;
+    camera.lookAt(0, 0, 0);
 
     renderer.render(scene, camera);
   }
