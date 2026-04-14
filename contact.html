@@ -4,11 +4,67 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contact — Olideen Technologies</title>
+  <meta name="description" content="Get in touch with Olideen Technologies. Call, email, or WhatsApp us from Estcourt, KwaZulu-Natal. We reply within 24 hours — usually much faster.">
+  <link rel="canonical" href="https://olideentech.com/contact.html">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="olideen-logo.png">
+  <link rel="apple-touch-icon" href="olideen-logo.png">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://olideentech.com/contact.html">
+  <meta property="og:title" content="Contact — Olideen Technologies">
+  <meta property="og:description" content="Contact Olideen Technologies via email, phone, or WhatsApp. Based in Estcourt, KZN. We respond within 24 hours.">
+  <meta property="og:image" content="https://olideentech.com/olideen-logo.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="en_ZA">
+  <meta property="og:site_name" content="Olideen Technologies">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Contact — Olideen Technologies">
+  <meta name="twitter:description" content="Contact Olideen Technologies via email, phone, or WhatsApp. Based in Estcourt, KZN.">
+  <meta name="twitter:image" content="https://olideentech.com/olideen-logo.png">
+
+  <!-- Local Business JSON-LD Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Olideen Technologies",
+    "url": "https://olideentech.com",
+    "logo": "https://olideentech.com/olideen-logo.png",
+    "description": "Premium web and software solutions from Estcourt, KwaZulu-Natal.",
+    "telephone": "+27733075218",
+    "email": "olideentech@gmail.com",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Estcourt",
+      "addressLocality": "Estcourt",
+      "addressRegion": "KwaZulu-Natal",
+      "postalCode": "3310",
+      "addressCountry": "ZA"
+    },
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+27733075218",
+      "contactType": "customer service",
+      "availableLanguage": ["English"]
+    }
+  }
+  </script>
+
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+  <!-- EmailJS SDK -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -75,29 +131,17 @@
       <h2>Send Us a Message</h2>
       <p>Fill in the form below and we'll get back to you as soon as possible.</p>
 
-      <!--
-        FORMSPREE SETUP INSTRUCTIONS:
-        1. Go to https://formspree.io and sign up with olideentech@gmail.com
-        2. Create a new form
-        3. Replace "YOUR_FORM_ID" in the action URL below with your actual Formspree form ID
-        Example: action="https://formspree.io/f/xpwzknab"
-        Once set up, every submission will be emailed directly to olideentech@gmail.com
-      -->
-      <form id="contactForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-
-        <!-- Hidden fields for Formspree -->
-        <input type="hidden" name="_subject" value="New enquiry from Olideen Technologies website">
-        <input type="text" name="_gotcha" style="display:none">
+      <form id="contactForm" novalidate>
 
         <div class="form-group">
           <label for="name">Your Name</label>
-          <input type="text" id="name" name="name" placeholder="e.g. John Dlamini" required>
+          <input type="text" id="name" name="from_name" placeholder="e.g. John Dlamini" required>
           <span class="error-msg" id="nameError"></span>
         </div>
 
         <div class="form-group">
           <label for="email">Email Address</label>
-          <input type="email" id="email" name="email" placeholder="you@example.com" required>
+          <input type="email" id="email" name="from_email" placeholder="you@example.com" required>
           <span class="error-msg" id="emailError"></span>
         </div>
 
@@ -129,7 +173,7 @@
           <span class="error-msg" id="messageError"></span>
         </div>
 
-        <button type="submit" class="btn-primary" style="width:100%; justify-content:center;">
+        <button type="submit" class="btn-primary" id="submitBtn" style="width:100%; justify-content:center;">
           Send Message <i class="fas fa-paper-plane"></i>
         </button>
 
@@ -180,5 +224,84 @@
 
   <script src="three-bg.js"></script>
   <script src="script.js"></script>
+
+  <script>
+    // ============================================================
+    // EMAILJS CONFIG — replace these 3 values with yours
+    // ============================================================
+    const EMAILJS_PUBLIC_KEY  = 'PaTEVVbF32oky6nYa';
+    const EMAILJS_SERVICE_ID  = 'service_qsokdum';
+    const EMAILJS_TEMPLATE_ID = 'template_h8760ve';
+    // ============================================================
+
+    emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
+
+    const form       = document.getElementById('contactForm');
+    const submitBtn  = document.getElementById('submitBtn');
+    const banner     = document.getElementById('successBanner');
+
+    // Simple client-side validation
+    function validate() {
+      let valid = true;
+
+      const name = document.getElementById('name');
+      const nameErr = document.getElementById('nameError');
+      if (!name.value.trim()) {
+        nameErr.textContent = 'Please enter your name.';
+        valid = false;
+      } else {
+        nameErr.textContent = '';
+      }
+
+      const email = document.getElementById('email');
+      const emailErr = document.getElementById('emailError');
+      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailPattern.test(email.value.trim())) {
+        emailErr.textContent = 'Please enter a valid email address.';
+        valid = false;
+      } else {
+        emailErr.textContent = '';
+      }
+
+      const message = document.getElementById('message');
+      const msgErr = document.getElementById('messageError');
+      if (!message.value.trim()) {
+        msgErr.textContent = 'Please tell us about your project.';
+        valid = false;
+      } else {
+        msgErr.textContent = '';
+      }
+
+      return valid;
+    }
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      if (!validate()) return;
+
+      // Loading state
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = 'Sending… <i class="fas fa-spinner fa-spin"></i>';
+      banner.textContent = '';
+      banner.className = 'success-banner';
+
+      emailjs.sendForm(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, form)
+        .then(function () {
+          banner.textContent = '✅ Message sent! We\'ll be in touch within 24 hours.';
+          banner.classList.add('visible');
+          form.reset();
+        })
+        .catch(function (error) {
+          console.error('EmailJS error:', error);
+          banner.textContent = '❌ Something went wrong. Please try WhatsApp or email us directly.';
+          banner.classList.add('visible', 'error');
+        })
+        .finally(function () {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = 'Send Message <i class="fas fa-paper-plane"></i>';
+        });
+    });
+  </script>
+
 </body>
 </html>
