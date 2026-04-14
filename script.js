@@ -192,3 +192,51 @@ if (form) {
 
 // ── GSAP Navbar entrance ─────────────────────────────────
 gsap.from('.navbar', { y: -80, opacity: 0, duration: 1, ease: 'power3.out' });
+// ── Portfolio Live Preview — lazy-load iframes on first hover ──
+document.querySelectorAll('.portfolio-card.pf-live').forEach(card => {
+  let loaded = false;
+
+  card.addEventListener('mouseenter', () => {
+    if (loaded) return;
+    loaded = true;
+
+    const iframe = card.querySelector('.pf-iframe');
+    if (!iframe) return;
+
+    // Swap data-src → src to kick off the load
+    iframe.src = iframe.dataset.src;
+
+    iframe.addEventListener('load', () => {
+      iframe.classList.add('loaded');
+    }, { once: true });
+
+    // Fallback: mark loaded after 4s in case iframe is blocked
+    setTimeout(() => iframe.classList.add('loaded'), 4000);
+  });
+});
+// ── Animated Stats Counter ────────────────────────────────
+const statNums = document.querySelectorAll('.sstat-num');
+if (statNums.length) {
+  const countObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const el = entry.target;
+      if (el.dataset.symbol) return; // ∞ — no animation needed
+      const target = parseInt(el.dataset.target, 10);
+      const suffix = el.dataset.suffix || '';
+      const duration = 1600;
+      const start = performance.now();
+      function tick(now) {
+        const elapsed = now - start;
+        const progress = Math.min(elapsed / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3); // easeOutCubic
+        el.textContent = Math.round(eased * target) + suffix;
+        if (progress < 1) requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+      countObserver.unobserve(el);
+    });
+  }, { threshold: 0.5 });
+
+  statNums.forEach(el => countObserver.observe(el));
+}
