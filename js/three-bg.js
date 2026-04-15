@@ -122,7 +122,7 @@
     const h   = 5 + Math.random() * 5;  // slightly taller planes
     const w   = h * aspect;
     const geo = new THREE.PlaneGeometry(w, h);
-    const baseOpacity = 0.20;Math.random() * 0.12;// ← more visible (was 0.12–0.45)
+    const baseOpacity = 0.07 + Math.random() * 0.05; // subtle — was 0.20
     const mat = new THREE.MeshBasicMaterial({
       map: tex,
       transparent: true,
@@ -191,8 +191,8 @@
       if (m.position.z < -SPREAD_Z / 2) m.position.z =  SPREAD_Z / 2;
 
       // Breathing pulse
-      const pulse = Math.sin(t * f.pulseSpeed * 60 + f.pulseOffset) * 0.18;
-      f.mat.opacity = Math.max(0.08, Math.min(0.75, f.baseOpacity + pulse));
+      const pulse = Math.sin(t * f.pulseSpeed * 60 + f.pulseOffset) * 0.06;
+      f.mat.opacity = Math.max(0.03, Math.min(0.22, f.baseOpacity + pulse));
     }
 
     // Smooth camera parallax
