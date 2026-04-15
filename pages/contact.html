@@ -73,21 +73,25 @@
   <div class="cursor-ring"></div>
   <canvas id="bg-canvas"></canvas>
 
+  <!-- Navigation Bar -->
   <header class="navbar" id="navbar">
     <div class="nav-logo">
-      <a href="../index.html">
-        <img src="../assets/images/olideen-logo.png" alt="Olideen Technologies" class="logo-icon">
+      <a href="contact.html">
+        <img src="assets/images/olideen-logo.png" alt="Olideen Technologies" class="logo-icon">
       </a>
     </div>
     <nav>
       <ul class="nav-links">
-        <li><a href="../index.html">Home</a></li>
-        <li><a href="services.html">Services</a></li>
-        <li><a href="whyus.html">Why Us</a></li>
-        <li><a href="contact.html" class="active">Contact</a></li>
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="pages/whyus.html">Why Us</a></li>
+        <li><a href="pages/services.html">Services</a></li>
+        <li><a href="pages/portfolio.html">Portfolio</a></li>        
+        <li><a href="pages/contact.html">Contact</a></li>
       </ul>
     </nav>
-    <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+    <div class="hamburger" id="hamburger">
+      <span></span><span></span><span></span>
+    </div>
   </header>
 
   <!-- Atmospheric background glows -->
@@ -205,52 +209,7 @@
     </div><!-- end contact-form-wrap -->
   </div><!-- end contact-page -->
 
-  <footer class="footer">
-    <div class="footer-top">
-      <div class="footer-brand">
-        <img src="../assets/images/olideen-logo.png" alt="Olideen Technologies" class="footer-logo">
-        <p>Premium web &amp; software solutions<br>from the heart of KwaZulu-Natal.</p>
-      </div>
-      <div class="footer-cols">
-        <div class="footer-column">
-          <h4>Navigation</h4>
-          <ul>
-            <li><a href="../index.html">Home</a></li>
-            <li><a href="services.html">Services</a></li>
-            <li><a href="whyus.html">Why Us</a></li>
-            <li><a href="contact.html">Contact</a></li>
-          </ul>
-        </div>
-        <div class="footer-column">
-          <h4>Contact</h4>
-          <p><i class="fas fa-phone"></i> +27 73 307 5218</p>
-          <p><i class="fas fa-envelope"></i> olideentech@gmail.com</p>
-          <p><i class="fas fa-map-marker-alt"></i> KwaZulu-Natal, SA</p>
-        </div>
-        <div class="footer-column">
-          <h4>Connect</h4>
-          <div class="social-links">
-            <a href="#"><i class="fab fa-facebook"></i> Facebook</a>
-            <a href="#"><i class="fab fa-instagram"></i> Instagram</a>
-            <a href="#"><i class="fab fa-linkedin"></i> LinkedIn</a>
-            <a href="https://wa.me/27733075218"><i class="fab fa-whatsapp"></i> WhatsApp</a>
-          </div>
-        </div>
-        <div class="footer-column">
-          <h4>Legal</h4>
-          <ul>
-            <li><a href="privacy.html">Privacy Policy</a></li>
-            <li><a href="terms.html">Terms &amp; Conditions</a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p>&copy; 2026 Olideen Technologies. All rights reserved. Built with passion in South Africa.
-      &nbsp;|&nbsp; <a href="privacy.html" style="color:var(--gray);">Privacy</a>
-      &nbsp;|&nbsp; <a href="terms.html" style="color:var(--gray);">Terms</a></p>
-    </div>
-  </footer>
+  
 
   <a href="https://wa.me/27733075218" class="whatsapp-float" target="_blank" rel="noopener noreferrer">
     <i class="fab fa-whatsapp"></i><span>Chat With Us</span>
@@ -336,6 +295,61 @@
         });
     });
   </script>
+
+  <!-- FOOTER -->
+    <footer class="footer">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <img src="assets/images/olideen-logo.png" alt="Olideen Technologies" class="footer-logo">
+        <p>Premium web &amp; software solutions from the heart of KwaZulu-Natal.</p>
+      </div>
+      <div class="footer-cols">
+        <div class="footer-column">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="whyus.html">Why Us</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h4>Contact</h4>
+          <p><i class="fas fa-phone"></i> +27 73 307 5218</p>
+          <p><i class="fas fa-envelope"></i> olideentech@gmail.com</p>
+          <p><i class="fas fa-map-marker-alt"></i> KwaZulu-Natal, SA</p>
+        </div>
+        <div class="footer-column">
+          <h4>Connect</h4>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-instagram"></i> Instagram</a>
+            <a href="https://wa.me/27733075218"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+          </div>
+        </div>
+        <div class="footer-column">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+            <li><a href="terms.html">Terms &amp; Conditions</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Olideen Technologies. All rights reserved.
+      &nbsp;|&nbsp; <a href="privacy.html" style="color:var(--gray);">Privacy</a>
+      &nbsp;|&nbsp; <a href="terms.html" style="color:var(--gray);">Terms</a></p>
+    </div>
+  </footer>
+
+  <a href="https://wa.me/27733075218" class="whatsapp-float" target="_blank" rel="noopener noreferrer">
+    <i class="fab fa-whatsapp"></i><span>Chat With Us</span>
+  </a>
+
+  <script src="js/three-bg.js"></script>
+  <script src="js/script.js"></script>
+</body>
+</html>
 
 </body>
 </html>

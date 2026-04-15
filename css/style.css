@@ -1931,12 +1931,22 @@ body {
 }
 
 .footer-logo {
-  height: auto;
-  max-height: 44px;
-  width: auto;
+  max-width: 120px;   /* desktop size */
+  height: auto;       /* keeps aspect ratio */
   object-fit: contain;
 }
 
+@media (max-width: 768px) {
+  .footer-logo {
+    max-width: 90px;  /* smaller on tablets */
+  }
+}
+
+@media (max-width: 480px) {
+  .footer-logo {
+    max-width: 70px;  /* smallest on phones */
+  }
+}
 
 .footer-brand p {
   max-width: 220px;
@@ -2108,6 +2118,8 @@ body {
 .fb2 i { color: #00D9FF; }
 .fb3 { bottom: -10px; left: -30px; border: 1px solid rgba(167,139,250,0.4); color: #a78bfa; animation-delay: 2.6s; }
 .fb3 i { color: #a78bfa; }
+.fb4 { top: 30px; left: -30px; border: 1px solid rgba(167,139,250,0.4); color: #a5e6c1; animation-delay: 2.6s; }
+.fb4 i { color: #a5e6c1; }
 @keyframes badge-float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-8px); } }
 .founder-content { display: flex; flex-direction: column; }
 .founder-content h2 { font-family: var(--font-h); font-size: clamp(2rem,4vw,3.2rem); font-weight: 800; line-height: 1.1; margin-bottom: 0.5rem; }
