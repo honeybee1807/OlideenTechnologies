@@ -561,22 +561,6 @@
   <script src="js/three-bg.js"></script>
   <script src="js/script.js"></script>
 
-  <!-- Lazy-load iframes on hover (your logic) -->
-  <script>
-    document.querySelectorAll('.portfolio-card.pf-live').forEach(card => {
-      let loaded = false;
-      card.addEventListener('mouseenter', () => {
-        if (loaded) return;
-        loaded = true;
-        const iframe = card.querySelector('.pf-iframe');
-        if (!iframe) return;
-        iframe.src = iframe.dataset.src;
-        iframe.addEventListener('load', () => {
-          iframe.classList.add('loaded');
-        }, { once: true });
-        setTimeout(() => iframe.classList.add('loaded'), 4000);
-      });
-    });
-  </script>
+
 </body>
 </html>
