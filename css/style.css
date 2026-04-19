@@ -2234,3 +2234,784 @@ body {
   .footer-cols { flex-wrap: wrap; gap: 1.25rem; justify-content: flex-start; }
   .footer-column { min-width: 120px; }
 }
+
+/* ===========================
+   Olideen — Merged Additions
+   New sections from Claude Design merge
+   Add to the END of css/style.css
+   =========================== */
+
+/* ── Hero signals strip ── */
+.hero-signals {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+.hero-signal {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.35rem 0.9rem;
+  background: rgba(0,217,255,0.06);
+  border: 1px solid rgba(0,217,255,0.18);
+  border-radius: 50px;
+  font-family: var(--font-h);
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--light);
+  letter-spacing: 0.02em;
+}
+
+.hero-signal i {
+  color: var(--cyan);
+  font-size: 0.7rem;
+}
+
+.dot.pulse {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #4ADE80;
+  animation: pulse-green 2s ease-out infinite;
+}
+
+@keyframes pulse-green {
+  0%   { box-shadow: 0 0 0 0 rgba(74,222,128,0.5); }
+  70%  { box-shadow: 0 0 0 8px rgba(74,222,128,0); }
+  100% { box-shadow: 0 0 0 0 rgba(74,222,128,0); }
+}
+
+/* ── How it works section ── */
+.how-section {
+  position: relative;
+  z-index: 1;
+  padding: 7rem 3rem;
+  background: linear-gradient(180deg, transparent, rgba(0,217,255,0.03), transparent);
+}
+
+.how-grid {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+
+.how-step {
+  position: relative;
+  padding: 2rem 1.5rem;
+  background: rgba(10,22,40,0.6);
+  border: 1px solid rgba(0,217,255,0.1);
+  border-radius: var(--radius);
+  backdrop-filter: blur(12px);
+  transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+  overflow: hidden;
+}
+
+.how-step:hover {
+  border-color: rgba(0,217,255,0.3);
+  transform: translateY(-6px);
+  box-shadow: var(--glow);
+}
+
+.how-num {
+  font-family: 'Syne', sans-serif;
+  font-size: 3rem;
+  font-weight: 800;
+  color: rgba(0,217,255,0.12);
+  line-height: 1;
+  margin-bottom: 1rem;
+}
+
+.how-step h3 {
+  font-family: var(--font-h);
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 0.6rem;
+  color: var(--white);
+}
+
+.how-step p {
+  color: var(--gray);
+  font-size: 0.88rem;
+  line-height: 1.65;
+  margin: 0;
+}
+
+/* ── Runway strip (portfolio "on the runway") ── */
+.runway-strip {
+  margin-top: 3rem;
+}
+
+.runway-inner {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  padding: 2rem 2.5rem;
+  background: rgba(10,22,40,0.7);
+  border: 1px solid rgba(124,58,237,0.25);
+  border-radius: var(--radius);
+  backdrop-filter: blur(12px);
+}
+
+.runway-ico {
+  font-size: 2rem;
+  color: var(--purple);
+  flex-shrink: 0;
+}
+
+.runway-inner h3 {
+  font-family: var(--font-h);
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 0.4rem;
+}
+
+.runway-inner p {
+  color: var(--gray);
+  font-size: 0.88rem;
+  line-height: 1.6;
+  max-width: 48ch;
+  margin: 0;
+}
+
+.runway-inner .btn-primary {
+  flex-shrink: 0;
+  margin-left: auto;
+}
+
+/* ── CTA section updated actions ── */
+.cta-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.cta-actions .btn-ghost {
+  color: var(--white);
+}
+
+/* ── Responsive: how section ── */
+@media (max-width: 1024px) {
+  .how-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .how-section { padding: 5rem 1.5rem; }
+  .how-grid { grid-template-columns: 1fr; gap: 1rem; }
+  .runway-inner {
+    flex-direction: column;
+    text-align: center;
+    gap: 1.25rem;
+  }
+  .runway-inner .btn-primary { margin-left: 0; }
+  .hero-signals { gap: 0.5rem; }
+}
+
+/* ===========================
+   Olideen — portfolio.html styles
+   Add to the END of css/style.css
+   =========================== */
+
+/* ─────────────────────────────────────────────
+   PORTFOLIO PAGE HERO
+───────────────────────────────────────────── */
+.pf-hero {
+  position: relative;
+  padding: 148px 24px 88px;
+  text-align: center;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.pf-hero-glow {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background:
+    radial-gradient(ellipse 900px 600px at 50% -10%, rgba(124,58,237,0.22), transparent 65%),
+    radial-gradient(ellipse 500px 300px at 80% 60%,  rgba(0,217,255,0.07),  transparent 60%);
+}
+
+.pf-hero-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.pf-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  margin-bottom: 18px;
+}
+
+.pf-eyebrow::before {
+  content: '';
+  display: block;
+  width: 24px;
+  height: 1px;
+  background: var(--cyan);
+  opacity: 0.6;
+}
+
+.pf-hero h1 {
+  font-family: var(--font-h);
+  font-size: clamp(36px, 7vw, 70px);
+  font-weight: 800;
+  line-height: 1.06;
+  color: var(--white);
+  margin: 0 0 22px;
+}
+
+.pf-grad-text {
+  background: linear-gradient(135deg, var(--cyan), var(--blue), var(--purple));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.pf-hero-sub {
+  font-size: 18px;
+  color: var(--gray);
+  line-height: 1.72;
+  max-width: 56ch;
+  margin: 0 auto 36px;
+}
+
+/* ── status pill badges under hero heading ── */
+.pf-pills {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.pf-pill {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  padding: 7px 14px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  color: var(--gray);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.pf-pill .pip {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.pf-pill.live {
+  border-color: rgba(40,200,100,0.28);
+  color: #5ddb8a;
+}
+.pf-pill.live .pip {
+  background: #5ddb8a;
+  animation: pf-pulse-green 2s infinite;
+}
+
+.pf-pill.build {
+  border-color: rgba(0,217,255,0.28);
+  color: var(--cyan);
+}
+.pf-pill.build .pip { background: var(--cyan); }
+
+.pf-pill.type {
+  border-color: rgba(124,58,237,0.28);
+  color: #c4a9ff;
+}
+
+@keyframes pf-pulse-green {
+  0%,100% { box-shadow: 0 0 4px rgba(93,219,138,0.5); }
+  50%      { box-shadow: 0 0 10px rgba(93,219,138,0.9); }
+}
+
+/* ─────────────────────────────────────────────
+   LAYOUT HELPERS
+───────────────────────────────────────────── */
+.pf-wrap {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 28px;
+}
+
+.pf-sec { padding: 56px 0; }
+
+/* ─────────────────────────────────────────────
+   SECTION HEADING
+───────────────────────────────────────────── */
+.pf-sec-head { margin-bottom: 40px; }
+
+.pf-sec-head h2 {
+  font-family: var(--font-h);
+  font-size: clamp(26px, 3.5vw, 38px);
+  font-weight: 800;
+  color: var(--white);
+  margin: 8px 0 12px;
+}
+
+.pf-sec-head p {
+  font-size: 16px;
+  color: var(--gray);
+  max-width: 60ch;
+  line-height: 1.65;
+}
+
+/* ─────────────────────────────────────────────
+   PROJECT TAGS  (pill labels on cards)
+───────────────────────────────────────────── */
+.pf-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  padding: 5px 12px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  color: var(--gray);
+}
+
+.pf-tag.live {
+  background: rgba(40,200,100,0.1);
+  border-color: rgba(40,200,100,0.28);
+  color: #5ddb8a;
+}
+
+/* ─────────────────────────────────────────────
+   PORTFOLIO-PAGE BUTTONS
+   (prefixed pf-btn- to avoid clashing with
+    your existing .btn-primary / .btn-ghost)
+───────────────────────────────────────────── */
+.pf-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 13px 24px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, var(--cyan), var(--blue));
+  color: var(--navy);
+  font-family: var(--font-h);
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.2s, transform 0.2s, box-shadow 0.2s;
+}
+.pf-btn-primary:hover {
+  opacity: 0.88;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 40px rgba(0,217,255,0.35);
+}
+
+.pf-btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 22px;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--gray);
+  border: 1px solid rgba(255,255,255,0.14);
+  font-family: var(--font-h);
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s, transform 0.2s;
+}
+.pf-btn-ghost:hover {
+  border-color: rgba(124,58,237,0.45);
+  color: var(--white);
+  transform: translateY(-1px);
+}
+
+/* ─────────────────────────────────────────────
+   FEATURED TILT CARDS
+───────────────────────────────────────────── */
+.pf-feat {
+  display: grid;
+  grid-template-columns: 1fr 1.25fr;
+  min-height: 520px;
+  border-radius: 24px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.08);
+  background: rgba(255,255,255,0.03);
+  backdrop-filter: blur(16px);
+  margin-bottom: 24px;
+  position: relative;
+  z-index: 1;
+}
+
+.pf-feat.rev { grid-template-columns: 1.25fr 1fr; }
+
+/* text body */
+.pf-feat-body {
+  padding: 54px 48px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 18px;
+  border-right: 1px solid rgba(255,255,255,0.08);
+}
+.pf-feat.rev .pf-feat-body {
+  border-right: 0;
+  border-left: 1px solid rgba(255,255,255,0.08);
+}
+
+.pf-feat-meta {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.pf-feat h2 {
+  font-family: var(--font-h);
+  font-size: clamp(26px, 2.8vw, 40px);
+  font-weight: 800;
+  color: var(--white);
+  margin: 4px 0 0;
+  line-height: 1.1;
+}
+
+.pf-feat-desc {
+  font-size: 16px;
+  color: var(--gray);
+  line-height: 1.68;
+  max-width: 48ch;
+}
+
+.pf-feat-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin: 4px 0;
+}
+
+.pf-feat-stat .n {
+  font-family: var(--font-h);
+  font-size: 26px;
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--cyan), var(--blue));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.pf-feat-stat .l {
+  font-size: 11px;
+  color: var(--gray);
+  opacity: 0.7;
+  margin-top: 2px;
+}
+
+.pf-feat-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 4px;
+}
+
+/* "Read the story" expand / collapse */
+.pf-story-toggle .arr {
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+.pf-story-toggle.open .arr { transform: rotate(90deg); }
+
+.pf-story-panel {
+  display: none;
+  margin-top: 10px;
+  padding: 18px 20px;
+  background: rgba(255,255,255,0.04);
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.08);
+  font-size: 14px;
+  color: var(--gray);
+  line-height: 1.72;
+}
+.pf-story-panel.open {
+  display: block;
+  animation: pf-slide 0.28s ease;
+}
+@keyframes pf-slide {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* visual / mock browser panel */
+.pf-feat-visual {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(420px 300px at 70% 20%, rgba(0,217,255,0.12), transparent 65%),
+    linear-gradient(160deg, #0f1a30 0%, #0a1124 100%);
+}
+
+.pf-feat.rev .pf-feat-visual {
+  background:
+    radial-gradient(420px 300px at 30% 80%, rgba(124,58,237,0.18), transparent 65%),
+    linear-gradient(160deg, #0f1a30 0%, #0a1124 100%);
+}
+
+/* tilted mock browser window */
+.pf-mock {
+  position: absolute;
+  inset: 44px 0 -44px 64px;
+  border-radius: 14px;
+  overflow: hidden;
+  background: var(--navy2);
+  box-shadow:
+    0 48px 120px -32px rgba(0,0,0,0.85),
+    0 0 0 1px rgba(255,255,255,0.14);
+  transform: perspective(2000px) rotateX(4deg) rotateY(-14deg) rotateZ(1deg);
+  transform-origin: top left;
+  transition: transform 0.65s cubic-bezier(0.18, 0.72, 0.18, 1);
+}
+.pf-feat:hover .pf-mock {
+  transform: perspective(2000px) rotateX(1deg) rotateY(-6deg) rotateZ(0);
+}
+
+.pf-mock.rev {
+  inset: 44px 64px -44px 0;
+  transform: perspective(2000px) rotateX(4deg) rotateY(14deg) rotateZ(-1deg);
+  transform-origin: top right;
+}
+.pf-feat.rev:hover .pf-mock.rev {
+  transform: perspective(2000px) rotateX(1deg) rotateY(6deg) rotateZ(0);
+}
+
+/* mock browser internals */
+.pf-mc {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.pf-chrome {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 11px 16px;
+  background: rgba(6,13,26,0.92);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  flex-shrink: 0;
+}
+
+.pf-chrome .dots { display: flex; gap: 6px; }
+.pf-chrome .dots span {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+.pf-chrome .dots span:nth-child(1) { background: #ff5f57; }
+.pf-chrome .dots span:nth-child(2) { background: #febc2e; }
+.pf-chrome .dots span:nth-child(3) { background: #28c840; }
+
+.pf-url-bar {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--gray);
+  background: rgba(255,255,255,0.04);
+  padding: 5px 12px;
+  border-radius: 6px;
+  flex: 1;
+  opacity: 0.7;
+}
+
+.pf-screen {
+  flex: 1;
+  padding: 26px;
+  overflow: hidden;
+}
+
+/* ─────────────────────────────────────────────
+   IN-BUILD PIPELINE TEASERS
+───────────────────────────────────────────── */
+.pf-teasers {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.pf-teaser {
+  background: rgba(255,255,255,0.03);
+  border: 1px dashed rgba(255,255,255,0.14);
+  border-radius: var(--radius);
+  padding: 28px 26px;
+  min-height: 230px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  backdrop-filter: blur(12px);
+  transition: border-color 0.25s ease, border-style 0.25s ease, box-shadow 0.25s ease;
+}
+
+.pf-teaser:hover {
+  border-style: solid;
+  border-color: rgba(124,58,237,0.35);
+  box-shadow: 0 12px 40px -10px rgba(124,58,237,0.15);
+}
+
+.pf-teaser .t-stage {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.pf-teaser .pip {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--cyan);
+  flex-shrink: 0;
+}
+
+.pf-teaser h4 {
+  font-family: var(--font-h);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--white);
+  margin: 0;
+}
+
+.pf-teaser p {
+  font-size: 14px;
+  color: var(--gray);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.pf-progress {
+  margin-top: auto;
+  height: 4px;
+  background: rgba(255,255,255,0.06);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.pf-progress > span {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, var(--cyan), var(--blue));
+  border-radius: 2px;
+}
+
+/* ─────────────────────────────────────────────
+   CTA BANNER
+───────────────────────────────────────────── */
+.pf-cta {
+  border-radius: 24px;
+  background: linear-gradient(135deg,
+    rgba(124,58,237,0.2) 0%,
+    rgba(0,217,255,0.08) 100%);
+  border: 1px solid rgba(124,58,237,0.3);
+  padding: 68px 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 40px;
+  flex-wrap: wrap;
+  backdrop-filter: blur(14px);
+  position: relative;
+  z-index: 1;
+}
+
+.pf-cta h2 {
+  font-family: var(--font-h);
+  font-size: clamp(26px, 3.5vw, 38px);
+  font-weight: 800;
+  color: var(--white);
+  margin: 8px 0 14px;
+}
+
+.pf-cta p {
+  font-size: 16px;
+  color: var(--gray);
+  max-width: 52ch;
+  line-height: 1.65;
+  margin: 0;
+}
+
+.pf-cta-btns {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  flex-shrink: 0;
+}
+
+/* ─────────────────────────────────────────────
+   RESPONSIVE
+───────────────────────────────────────────── */
+@media (max-width: 960px) {
+  .pf-feat,
+  .pf-feat.rev {
+    grid-template-columns: 1fr !important;
+    min-height: auto;
+  }
+
+  .pf-feat-body {
+    padding: 36px 28px;
+    border-right: 0 !important;
+    border-left: 0 !important;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .pf-feat-visual { min-height: 300px; }
+
+  .pf-mock {
+    inset: 28px 0 -28px 28px !important;
+    transform-origin: top left !important;
+    transform: perspective(2000px) rotateX(3deg) rotateY(-10deg) rotateZ(1deg) !important;
+  }
+
+  .pf-teasers { grid-template-columns: 1fr 1fr; }
+
+  .pf-cta {
+    padding: 44px 32px;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 768px) {
+  .pf-hero { padding: 120px 20px 72px; }
+  .pf-feat-body { padding: 28px 20px; }
+  .pf-feat-stats { grid-template-columns: 1fr 1fr; }
+  .pf-teasers { grid-template-columns: 1fr; }
+  .pf-wrap { padding: 0 20px; }
+  .pf-sec { padding: 40px 0; }
+  .pf-cta { padding: 36px 24px; }
+}

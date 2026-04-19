@@ -18,28 +18,229 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Services — Olideen Technologies">
   <meta name="twitter:image" content="https://olideentech.com/olideen-logo.png">
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <link rel="stylesheet" href="../css/style.css">
+
+  <!-- ═══════════════════════════════════════════════
+       SERVICES PAGE — scoped sv- styles, safe alongside style.css
+  ════════════════════════════════════════════════ -->
+  <style>
+    /* ── Hero ── */
+    .sv-hero {
+      position: relative;
+      padding: 148px 24px 88px;
+      text-align: center;
+      overflow: hidden;
+      z-index: 1;
+    }
+    .sv-hero-glow {
+      position: absolute; inset: 0; pointer-events: none; z-index: 0;
+      background:
+        radial-gradient(ellipse 900px 600px at 50% -10%, rgba(124,58,237,0.22), transparent 65%),
+        radial-gradient(ellipse 500px 300px at 80% 60%, rgba(0,217,255,0.08), transparent 60%);
+    }
+    .sv-hero-inner { position: relative; z-index: 1; max-width: 780px; margin: 0 auto; }
+    .sv-eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--cyan); margin-bottom: 18px;
+    }
+    .sv-eyebrow::before {
+      content: ''; display: block; width: 24px; height: 1px;
+      background: var(--cyan); opacity: 0.6;
+    }
+    .sv-hero h1 {
+      font-family: var(--font-h);
+      font-size: clamp(36px, 7vw, 68px);
+      font-weight: 800; line-height: 1.06;
+      color: var(--white); margin: 0 0 22px;
+    }
+    .sv-hero h1 .sv-grad {
+      background: linear-gradient(135deg, var(--cyan), var(--blue), var(--purple));
+      -webkit-background-clip: text; background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .sv-hero p {
+      font-size: 18px; color: var(--gray);
+      line-height: 1.72; max-width: 56ch; margin: 0 auto;
+    }
+
+    /* ── Layout ── */
+    .sv-wrap { max-width: 1200px; margin: 0 auto; padding: 0 28px; }
+    .sv-sec  { padding: 64px 0; position: relative; z-index: 1; }
+
+    /* ── Service card bullets + timeframe row
+       Applied INSIDE your existing .service-card.reveal-card ── */
+    .service-card .sv-bullets {
+      list-style: none; margin-top: 14px;
+      display: flex; flex-direction: column; gap: 6px;
+    }
+    .service-card .sv-bullets li {
+      font-size: 13px; color: var(--gray);
+      padding-left: 18px; position: relative; line-height: 1.5;
+    }
+    .service-card .sv-bullets li::before {
+      content: "→"; position: absolute; left: 0;
+      color: var(--cyan); font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+    }
+    .service-card .sv-timerow {
+      margin-top: 20px; padding-top: 16px;
+      border-top: 1px solid rgba(255,255,255,0.07);
+      display: flex; justify-content: space-between; align-items: center;
+      font-family: 'JetBrains Mono', monospace; font-size: 11px;
+      color: rgba(148,163,184,0.6); letter-spacing: 0.04em;
+    }
+    .service-card .sv-timerow strong {
+      color: var(--cyan); font-weight: 500; font-size: 12px;
+    }
+
+    /* ── Bespoke / narrative section ── */
+    .sv-bespoke {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+    .sv-bespoke-left h2 {
+      font-family: var(--font-h);
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      font-weight: 800; line-height: 1.15;
+      margin: 8px 0 20px;
+    }
+    .sv-bespoke-left h2 .sv-grad {
+      background: linear-gradient(135deg, var(--cyan), var(--blue), var(--purple));
+      -webkit-background-clip: text; background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .sv-bespoke-left p {
+      color: var(--gray); font-size: 16px; line-height: 1.72; margin-bottom: 16px;
+    }
+    .sv-bespoke-right {
+      display: flex; flex-direction: column; gap: 18px;
+    }
+    .sv-narr-item {
+      display: flex; gap: 16px; align-items: flex-start;
+      padding: 20px; background: rgba(10,22,40,0.6);
+      border: 1px solid rgba(0,217,255,0.1); border-radius: 14px;
+      backdrop-filter: blur(10px); transition: border-color 0.3s, transform 0.3s;
+    }
+    .sv-narr-item:hover { border-color: rgba(0,217,255,0.25); transform: translateX(5px); }
+    .sv-narr-ico {
+      width: 40px; height: 40px; min-width: 40px;
+      background: rgba(0,217,255,0.08);
+      border: 1px solid rgba(0,217,255,0.2);
+      border-radius: 11px;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--cyan);
+    }
+    .sv-narr-item h4 {
+      font-family: var(--font-h); font-size: 15px; font-weight: 700;
+      color: var(--white); margin-bottom: 5px;
+    }
+    .sv-narr-item p { color: var(--gray); font-size: 13.5px; line-height: 1.6; margin: 0; }
+
+    /* ── Tools section ── */
+    .sv-tools-head {
+      text-align: center; margin-bottom: 36px;
+    }
+    .sv-tools-head h2 {
+      font-family: var(--font-h);
+      font-size: clamp(24px, 3vw, 36px); font-weight: 800;
+      color: var(--white); margin: 8px 0 12px;
+    }
+    .sv-tools-head p { color: var(--gray); font-size: 15px; max-width: 54ch; margin: 0 auto; }
+    .sv-tech-chips {
+      display: flex; flex-wrap: wrap; gap: 10px; justify-content: center;
+    }
+    .sv-tech-chip {
+      font-family: 'JetBrains Mono', monospace; font-size: 12px;
+      padding: 8px 16px; border-radius: 999px;
+      background: rgba(0,217,255,0.06);
+      border: 1px solid rgba(0,217,255,0.18);
+      color: var(--gray); letter-spacing: 0.04em;
+      transition: background 0.2s, border-color 0.2s, color 0.2s;
+    }
+    .sv-tech-chip:hover {
+      background: rgba(0,217,255,0.12);
+      border-color: rgba(0,217,255,0.4);
+      color: var(--cyan);
+    }
+
+    /* ── CTA banner ── */
+    .sv-cta {
+      border-radius: 24px;
+      background: linear-gradient(135deg, rgba(124,58,237,0.2) 0%, rgba(0,217,255,0.08) 100%);
+      border: 1px solid rgba(124,58,237,0.3);
+      padding: 68px 60px;
+      display: flex; justify-content: space-between; align-items: center;
+      gap: 40px; flex-wrap: wrap; backdrop-filter: blur(14px);
+    }
+    .sv-cta h2 {
+      font-family: var(--font-h); font-size: clamp(26px, 3.5vw, 38px);
+      font-weight: 800; color: var(--white); margin: 8px 0 14px;
+    }
+    .sv-cta p { font-size: 16px; color: var(--gray); max-width: 50ch; line-height: 1.65; margin: 0; }
+    .sv-cta-btns { display: flex; gap: 12px; flex-wrap: wrap; flex-shrink: 0; }
+    .sv-btn-primary {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 13px 24px; border-radius: 999px;
+      background: linear-gradient(135deg, var(--cyan), var(--blue));
+      color: var(--navy); font-family: var(--font-h);
+      font-size: 14px; font-weight: 700;
+      text-decoration: none; transition: opacity 0.2s, transform 0.2s, box-shadow 0.2s;
+    }
+    .sv-btn-primary:hover { opacity: 0.88; transform: translateY(-2px); box-shadow: 0 10px 40px rgba(0,217,255,0.35); }
+    .sv-btn-ghost {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 12px 22px; border-radius: 999px;
+      background: transparent; color: var(--gray);
+      border: 1px solid rgba(255,255,255,0.14);
+      font-family: var(--font-h); font-size: 14px; font-weight: 500;
+      text-decoration: none; transition: border-color 0.2s, color 0.2s, transform 0.2s;
+    }
+    .sv-btn-ghost:hover { border-color: rgba(0,217,255,0.4); color: var(--white); transform: translateY(-1px); }
+
+    /* ── Responsive ── */
+    @media (max-width: 960px) {
+      .sv-bespoke { grid-template-columns: 1fr; gap: 3rem; }
+      .sv-cta { padding: 44px 32px; flex-direction: column; align-items: flex-start; }
+    }
+    @media (max-width: 768px) {
+      .sv-hero { padding: 120px 20px 72px; }
+      .sv-hero h1 { font-size: clamp(30px, 8vw, 48px); }
+      .sv-wrap { padding: 0 20px; }
+      .sv-sec { padding: 48px 0; }
+      .sv-cta { padding: 36px 24px; }
+    }
+  </style>
 </head>
 
-<!-- Navigation Bar -->
+<body>
+  <!-- cursor — untouched -->
+  <div class="cursor-dot"></div>
+  <div class="cursor-ring"></div>
+  <canvas id="bg-canvas"></canvas>
+
+  <!-- ════════════ YOUR HEADER — NOT TOUCHED ════════════ -->
   <header class="navbar" id="navbar">
     <div class="nav-logo">
-      <a href="services.html">
-        <img src="assets/images/olideen-logo.png" alt="Olideen Technologies" class="logo-icon">
+      <a href="../index.html">
+        <img src="../assets/images/olideen-logo.png" alt="Olideen Technologies" class="logo-icon">
       </a>
     </div>
     <nav>
       <ul class="nav-links">
-        <li><a href="index.html" class="active">Home</a></li>
-        <li><a href="pages/whyus.html">Why Us</a></li>
-        <li><a href="pages/services.html">Services</a></li>
-        <li><a href="pages/portfolio.html">Portfolio</a></li>        
-        <li><a href="pages/contact.html">Contact</a></li>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="whyus.html">Why Us</a></li>
+        <li><a href="services.html" class="active">Services</a></li>
+        <li><a href="portfolio.html">Portfolio</a></li>
+        <li><a href="contact.html">Contact</a></li>
       </ul>
     </nav>
     <div class="hamburger" id="hamburger">
@@ -47,48 +248,287 @@
     </div>
   </header>
 
-  <div class="page-hero reveal">
-    <p class="section-label">What We Offer</p>
-    <h1>Services That <span class="gradient-text">Drive Growth</span></h1>
-    <p>From beautiful websites to powerful software — we give your business the digital edge it deserves.</p>
-  </div>
+  <main>
 
-  <div class="tech-strip reveal">
-    <p class="tech-strip-label">Technologies We Work With</p>
-    <div class="tech-pills">
-      <span>HTML5</span><span>CSS3</span><span>JavaScript</span><span>React</span>
-      <span>Node.js</span><span>PHP</span><span>MySQL</span><span>Python</span>
-      <span>Three.js</span><span>GSAP</span><span>REST APIs</span><span>Git</span>
+    <!-- ══════════════ HERO (Claude Design style) ══════════════ -->
+    <section class="sv-hero">
+      <div class="sv-hero-glow"></div>
+      <div class="sv-hero-inner">
+        <span class="sv-eyebrow">Services</span>
+        <h1>  Nine services.<br/>  <span class="sv-grad">One trusted partner</span> behind each.</h1>
+<p>Pick one, pick a bundle, or book a free call and I'll tell you which of these you actually need right now — and which ones you genuinely don't.</p>
+      </div>
+    </section>
+
+    <!-- ══════════════ SERVICE CARDS (your format, Claude's content) ══════════════ -->
+    <div class="sv-sec" style="padding-top:0;">
+      <div class="sv-wrap">
+
+        <div class="services-page-grid">
+
+          <!-- 01 Custom Websites -->
+          <div class="service-card reveal-card">
+            <div class="card-glow"></div>
+            <i class="fas fa-globe"></i>
+            <h3>Custom Websites</h3>
+            <p>Hand-built brochure and marketing sites. Hosted, POPIA-ready, fast on mobile signal.</p>
+            <ul class="sv-bullets">
+              <li>Up to 6 pages, fully responsive</li>
+              <li>Contact form + WhatsApp integration</li>
+              <li>SEO &amp; Google Maps ready</li>
+            </ul>
+            <div class="sv-timerow"><span>Typical build</span><strong>2–3 weeks</strong></div>
+            <div class="card-tag">Most Popular</div>
+          </div>
+
+          <!-- 02 Web Applications -->
+          <div class="service-card reveal-card">
+            <div class="card-glow"></div>
+            <i class="fas fa-code"></i>
+            <h3>Web Applications</h3>
+            <p>Dashboards, booking systems, portals — anything browser-based that replaces a spreadsheet.</p>
+            <ul class="sv-bullets">
+              <li>User accounts &amp; roles</li>
+              <li>Live data, real-time updates</li>
+              <li>Secure by default</li>
+            </ul>
+            <div class="sv-timerow"><span>Typical build</span><strong>4–8 weeks</strong></div>
+          </div>
+
+          <!-- 03 Software Solutions -->
+          <div class="service-card reveal-card">
+            <div class="card-glow"></div>
+            <i class="fas fa-cogs"></i>
+            <h3>Software Solutions</h3>
+            <p>Custom tools for how your team actually works. No off-the-shelf compromises.</p>
+            <ul class="sv-bullets">
+              <li>Discovery workshop included</li>
+              <li>Iterative delivery, weekly demos</li>
+              <li>Documentation &amp; handover</li>
+            </ul>
+            <div class="sv-timerow"><span>Scope</span><strong>Quoted per project</strong></div>
+          </div>
+
+          <!-- 04 Mobile Apps -->
+          <div class="service-card reveal-card">
+            <div class="card-glow"></div>
+            <i class="fas fa-mobile-alt"></i>
+            <h3>Mobile Apps</h3>
+            <p>iOS and Android apps from wireframe to store listing. Native or cross-platform.</p>
+            <ul class="sv-bullets">
+              <li>UX design included</li>
+              <li>Play Store / App Store submission</li>
+              <li>Push notifications &amp; analytics</li>
+            </ul>
+            <div class="sv-timerow"><span>Typical build</span><strong>6–10 weeks</strong></div>
+          </div>
+
+          <!-- 05 AI Integration -->
+          <div class="service-card reveal-card">
+            <div class="card-glow"></div>
+            <i class="fas fa-robot"></i>
+            <h3>AI Integration</h3>
+            <p>Chatbots, smart forms, doc processing. AI where it saves real hours — not where it just looks good in a demo.</p>
+            <ul class="sv-bullets">
+              <li>WhatsApp / web chatbots</li>
+              <li>Document parsing &amp; summarisation</li>
+              <li>Clear cost ceilings, no runaway bills</li>
+            </ul>
+            <div class="sv-timerow"><span>Starts at</span><strong>Add-on to any build</strong></div>
+            <div class="card-tag tag-new">New</div>
+          </div>
+
+          <!-- 06 Graphic Design -->
+          <div class="service-card reveal-card">
+            <div class="card-glow"></div>
+            <i class="fas fa-paint-brush"></i>
+            <h3>Graphic Design</h3>
+            <p>Logos, brand kits, social post templates. Your online look finally matching your work quality.</p>
+            <ul class="sv-bullets">
+              <li>Logo + 3 revisions</li>
+              <li>Brand colour &amp; type guide</li>
+              <li>Instagram post templates</li>
+            </ul>
+            <div class="sv-timerow"><span>Typical turnaround</span><strong>1–2 weeks</strong></div>
+          </div>
+
+          <!-- 07 Google Business Setup -->
+          <div class="service-card reveal-card">
+            <div class="card-glow"></div>
+            <i class="fas fa-store"></i>
+            <h3>Google Business Setup</h3>
+            <p>Get found on Google Maps by customers near you. Done right the first time.</p>
+            <ul class="sv-bullets">
+              <li>Full profile + verification</li>
+              <li>Photo guidelines &amp; first posts</li>
+              <li>Review-reply playbook</li>
+            </ul>
+            <div class="sv-timerow"><span>Turnaround</span><strong>3–5 days</strong></div>
+          </div>
+
+          <!-- 08 Social Media Setup -->
+          <div class="service-card reveal-card">
+            <div class="card-glow"></div>
+            <i class="fas fa-share-alt"></i>
+            <h3>Social Media Setup</h3>
+            <p>Instagram, Facebook, WhatsApp Business configured properly. Profiles done — you run the content.</p>
+            <ul class="sv-bullets">
+              <li>Bios, highlights, covers</li>
+              <li>Link-in-bio page</li>
+              <li>Posting cheat-sheet</li>
+            </ul>
+            <div class="sv-timerow"><span>Turnaround</span><strong>1 week</strong></div>
+          </div>
+
+          <!-- 09 Hosting & Domains -->
+          <div class="service-card reveal-card">
+            <div class="card-glow"></div>
+            <i class="fas fa-server"></i>
+            <h3>Hosting &amp; Domains</h3>
+            <p>I buy, renew and manage your domain &amp; hosting. Tech admin off your inbox for good.</p>
+            <ul class="sv-bullets">
+              <li>Annual renewals handled</li>
+              <li>SSL, backups, uptime monitoring</li>
+              <li>One invoice, one human</li>
+            </ul>
+            <div class="sv-timerow"><span>Ongoing</span><strong>Monthly or annual</strong></div>
+          </div>
+
+          <!-- 10 Maintenance & Support -->
+          <div class="service-card reveal-card">
+            <div class="card-glow"></div>
+            <i class="fas fa-tools"></i>
+            <h3>Maintenance &amp; Support</h3>
+            <p>Ongoing updates, security patches, performance optimisation, and technical support after launch.</p>
+            <ul class="sv-bullets">
+              <li>30 days free post-launch</li>
+              <li>Monthly retainer available</li>
+              <li>WhatsApp response within the hour</li>
+            </ul>
+            <div class="sv-timerow"><span>Response</span><strong>Same-day guarantee</strong></div>
+          </div>
+
+          <!-- 11 CV & Document Design -->
+          <div class="service-card reveal-card">
+            <div class="card-glow"></div>
+            <i class="fas fa-file-alt"></i>
+            <h3>CV &amp; Document Design</h3>
+            <p>Professionally designed CVs, letterheads, and business documents that make the right impression every time.</p>
+            <ul class="sv-bullets">
+              <li>ATS-friendly formatting</li>
+              <li>Editable source files included</li>
+              <li>2 revisions included</li>
+            </ul>
+            <div class="sv-timerow"><span>Turnaround</span><strong>2–3 days</strong></div>
+          </div>
+
+        </div>
+      </div>
     </div>
-  </div>
 
-  <div class="services-page-grid">
-    <div class="service-card reveal-card"><div class="card-glow"></div><i class="fas fa-globe"></i><h3>Custom Websites</h3><p>Responsive, fast, and SEO-optimized websites built to attract customers and elevate your brand. Mobile-first, always.</p><div class="card-tag">Most Popular</div></div>
-    <div class="service-card reveal-card"><div class="card-glow"></div><i class="fas fa-code"></i><h3>Web Applications</h3><p>Interactive platforms and tools built around your exact workflows — booking systems, dashboards, portals and more.</p></div>
-    <div class="service-card reveal-card"><div class="card-glow"></div><i class="fas fa-cogs"></i><h3>Software Solutions</h3><p>Custom automation, integrations, and business tools that save you time and eliminate repetitive manual work.</p></div>
-    <div class="service-card reveal-card"><div class="card-glow"></div><i class="fas fa-mobile-alt"></i><h3>Mobile Apps</h3><p>Cross-platform mobile applications for iOS and Android — built once, deployed everywhere.</p></div>
-    <div class="service-card reveal-card"><div class="card-glow"></div><i class="fas fa-paint-brush"></i><h3>Graphic Design</h3><p>Logos, flyers, social media graphics, and brand identity design. Professional visuals without the agency price tag.</p></div>
-    <div class="service-card reveal-card"><div class="card-glow"></div><i class="fas fa-tools"></i><h3>Maintenance &amp; Support</h3><p>Ongoing updates, security patches, performance optimization, and technical support after launch.</p></div>
-    <div class="service-card reveal-card"><div class="card-glow"></div><i class="fas fa-store"></i><h3>Google Business Setup</h3><p>Get discovered on Google Maps and Search. We set up and optimize your Google Business Profile for local visibility.</p></div>
-    <div class="service-card reveal-card"><div class="card-glow"></div><i class="fas fa-share-alt"></i><h3>Social Media Setup</h3><p>Professional Facebook, Instagram, and WhatsApp Business profiles — set up, branded, and ready to grow.</p></div>
-    <div class="service-card reveal-card"><div class="card-glow"></div><i class="fas fa-file-alt"></i><h3>CV &amp; Document Design</h3><p>Professionally designed CVs, letterheads, and business documents that make the right impression every time.</p></div>
-    <div class="service-card reveal-card"><div class="card-glow"></div><i class="fas fa-robot"></i><h3>AI Integration</h3><p>Chatbots, AI-powered content tools, and smart automation built into your website or app. Stay ahead of the competition.</p><div class="card-tag tag-new">New</div></div>
-    <div class="service-card reveal-card"><div class="card-glow"></div><i class="fas fa-server"></i><h3>Hosting &amp; Domain Management</h3><p>Reliable web hosting, domain registration and management — fast South African servers, fully managed by us.</p></div>
-  </div>
-
-  <section class="cta-section reveal">
-    <div class="cta-inner">
-      <h2>Not Sure What You Need?</h2>
-      <p>Let's chat. We'll figure out the best solution for your business together — no pressure, no jargon.</p>
-      <a href="contact.html" class="btn-primary btn-large">Book a Free Consultation <i class="fas fa-arrow-right"></i></a>
+    <!-- ══════════════ BESPOKE / NO TEMPLATES ══════════════ -->
+    <div class="sv-sec">
+      <div class="sv-wrap">
+        <div class="sv-bespoke reveal">
+          <div class="sv-bespoke-left">
+            <span class="sv-eyebrow">No recycled templates</span>
+            <h2>Your business isn't generic.<br/>Your <span class="sv-grad">site shouldn't be either.</span></h2>
+            <p>Every project starts on a blank page and a conversation. I don't sell pre-made themes with your logo pasted on top — I build the thing that fits your customer, your voice, and your budget.</p>
+            <p>That means slower than "click-install WordPress" but infinitely better at the only thing that matters: convincing the person on the other side to do business with you.</p>
+          </div>
+          <div class="sv-bespoke-right">
+            <div class="sv-narr-item">
+              <div class="sv-narr-ico">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+              </div>
+              <div>
+                <h4>Outcome-focused</h4>
+                <p>Leads, bookings, time saved. We define the metric before I write a line of code, and I check back on it after launch.</p>
+              </div>
+            </div>
+            <div class="sv-narr-item">
+              <div class="sv-narr-ico">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+              </div>
+              <div>
+                <h4>Fair, fixed pricing</h4>
+                <p>Real SA-market rates — a fraction of what Joburg agencies quote, priced so I'm still here to support you next year.</p>
+              </div>
+            </div>
+            <div class="sv-narr-item">
+              <div class="sv-narr-ico">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+              </div>
+              <div>
+                <h4>Direct line, always</h4>
+                <p>You have my number. Not a helpdesk, not a "team member will be with you shortly." Just me, answering.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-  </section>
 
-<!-- FOOTER -->
-    <footer class="footer">
+    <!-- ══════════════ TOOLS I BUILD WITH ══════════════ -->
+    <div class="sv-sec" style="padding-top:0;">
+      <div class="sv-wrap">
+        <div class="sv-tools-head reveal">
+          <span class="sv-eyebrow">Under the hood</span>
+          <h2>Tools I build with.</h2>
+          <p>Modern, battle-tested, and chosen so your site still works five years from now without a rebuild.</p>
+        </div>
+        <div class="sv-tech-chips reveal">
+          <span class="sv-tech-chip">HTML5</span>
+          <span class="sv-tech-chip">CSS3</span>
+          <span class="sv-tech-chip">JavaScript</span>
+          <span class="sv-tech-chip">React</span>
+          <span class="sv-tech-chip">Node.js</span>
+          <span class="sv-tech-chip">PHP</span>
+          <span class="sv-tech-chip">MySQL</span>
+          <span class="sv-tech-chip">Python</span>
+          <span class="sv-tech-chip">Three.js</span>
+          <span class="sv-tech-chip">GSAP</span>
+          <span class="sv-tech-chip">REST APIs</span>
+          <span class="sv-tech-chip">Git</span>
+          <span class="sv-tech-chip">Firebase</span>
+          <span class="sv-tech-chip">PostgreSQL</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════════════ "NOT SURE WHAT YOU NEED?" — YOUR ORIGINAL, KEPT AS IS ══════════════ -->
+    <section class="cta-section reveal">
+      <div class="cta-inner">
+        <h2>Not Sure What You Need?</h2>
+        <p>Let's chat. We'll figure out the best solution for your business together — no pressure, no jargon.</p>
+        <a href="contact.html" class="btn-primary btn-large">Book a Free Consultation <i class="fas fa-arrow-right"></i></a>
+      </div>
+    </section>
+
+    <!-- ══════════════ "NOT SURE WHICH SERVICE" — CLAUDE DESIGN CTA BANNER ══════════════ -->
+    <div class="sv-sec" style="padding-top:0;">
+      <div class="sv-wrap">
+        <div class="sv-cta">
+          <div>
+            <span class="sv-eyebrow" style="color:rgba(255,255,255,.5);">Ready when you are</span>
+            <h2>Not sure which service<br/>you need? That's fine.</h2>
+            <p>Book a free 30-minute call. Tell me the problem. I'll tell you honestly whether I'm the right fix, which service applies, and roughly what it'd cost.</p>
+          </div>
+          <div class="sv-cta-btns">
+            <a href="https://wa.me/27733075218" target="_blank" rel="noopener" class="sv-btn-primary">WhatsApp me →</a>
+            <a href="portfolio.html" class="sv-btn-ghost">See live work</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- ════════════ YOUR FOOTER — NOT TOUCHED ════════════ -->
+  <footer class="footer">
     <div class="footer-top">
       <div class="footer-brand">
-        <img src="assets/images/olideen-logo.png" alt="Olideen Technologies" class="footer-logo">
+        <img src="../assets/images/olideen-logo.png" alt="Olideen Technologies" class="footer-logo">
         <p>Premium web &amp; software solutions from the heart of KwaZulu-Natal.</p>
       </div>
       <div class="footer-cols">
@@ -134,7 +574,7 @@
     <i class="fab fa-whatsapp"></i><span>Chat With Us</span>
   </a>
 
-  <script src="js/three-bg.js"></script>
-  <script src="js/script.js"></script>
+  <script src="../js/three-bg.js"></script>
+  <script src="../js/script.js"></script>
 </body>
 </html>

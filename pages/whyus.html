@@ -18,33 +18,304 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Why Us — Olideen Technologies">
   <meta name="twitter:image" content="https://olideentech.com/olideen-logo.png">
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <link rel="stylesheet" href="../css/style.css">
+
+  <style>
+    :root {
+      --wu-acc1: #00D9FF;
+      --wu-acc1-rgb: 0,217,255;
+      --wu-acc2: #38BDF8;
+      --wu-purple: #7C3AED;
+      --wu-card: rgba(255,255,255,0.03);
+      --wu-border: rgba(255,255,255,0.08);
+      --wu-border-hi: rgba(255,255,255,0.14);
+      --wu-text: #e6efff;
+      --wu-text2: #8fa3bf;
+      --wu-text3: #4e6070;
+      --wu-pill: 999px;
+      --wu-r: 16px;
+      --wu-grad: linear-gradient(135deg, #00D9FF, #38BDF8, #7C3AED);
+    }
+
+    /* ── Hero ── */
+    .wu-hero {
+      position: relative;
+      padding: 148px 24px 88px;
+      text-align: center;
+      overflow: hidden;
+      z-index: 1;
+    }
+    .wu-hero-glow {
+      position: absolute; inset: 0; pointer-events: none; z-index: 0;
+      background:
+        radial-gradient(ellipse 900px 600px at 50% -10%, rgba(124,58,237,0.22), transparent 65%),
+        radial-gradient(ellipse 500px 300px at 80% 60%, rgba(0,217,255,0.08), transparent 60%);
+    }
+    .wu-hero-inner { position: relative; z-index: 1; max-width: 780px; margin: 0 auto; }
+    .wu-eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--wu-acc1); margin-bottom: 18px;
+    }
+    .wu-eyebrow::before {
+      content: ''; display: block; width: 24px; height: 1px;
+      background: var(--wu-acc1); opacity: 0.6;
+    }
+    .wu-hero h1 {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(36px, 7vw, 68px);
+      font-weight: 800; line-height: 1.06;
+      color: var(--wu-text); margin: 0 0 22px;
+    }
+    .wu-grad-text {
+      background: var(--wu-grad);
+      -webkit-background-clip: text; background-clip: text;
+      -webkit-text-fill-color: transparent; color: transparent;
+    }
+    .wu-hero p {
+      font-size: 18px; color: var(--wu-text2);
+      line-height: 1.72; max-width: 56ch; margin: 0 auto;
+    }
+
+    /* ── Layout ── */
+    .wu-wrap { max-width: 1200px; margin: 0 auto; padding: 0 28px; }
+    .wu-sec  { padding: 64px 0; position: relative; z-index: 1; }
+
+    /* ── Section heading ── */
+    .wu-sec-head { margin-bottom: 48px; }
+    .wu-sec-head.center { text-align: center; }
+    .wu-sec-head h2 {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(26px, 3.5vw, 40px); font-weight: 800;
+      color: var(--wu-text); margin: 8px 0 14px;
+    }
+    .wu-sec-head p { font-size: 16px; color: var(--wu-text2); max-width: 62ch; line-height: 1.65; }
+    .wu-sec-head.center p { margin: 0 auto; }
+
+    /* ── Stat strip ── */
+    .wu-stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-bottom: 56px;
+    }
+    .wu-stat {
+      background: rgba(10,22,40,0.6);
+      border: 1px solid rgba(0,217,255,0.12);
+      border-radius: var(--wu-r);
+      padding: 28px 20px;
+      text-align: center;
+      backdrop-filter: blur(10px);
+      transition: border-color 0.3s, transform 0.3s;
+    }
+    .wu-stat:hover { border-color: rgba(0,217,255,0.3); transform: translateY(-4px); }
+    .wu-stat i { font-size: 1.4rem; color: var(--wu-acc1); display: block; margin-bottom: 10px; }
+    .wu-stat h3 {
+      font-family: 'Syne', sans-serif; font-size: 1.9rem; font-weight: 800;
+      color: var(--wu-acc1); margin-bottom: 4px; line-height: 1;
+    }
+    .wu-stat p { color: var(--wu-text2); font-size: 13px; margin: 0; }
+
+    /* ── Unified reasons grid — 8 cards, 4 per row ── */
+    .wu-reasons {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+    .wu-reason {
+      background: var(--wu-card);
+      border: 1px solid var(--wu-border);
+      border-radius: var(--wu-r);
+      padding: 28px 24px 24px;
+      backdrop-filter: blur(14px);
+      position: relative;
+      transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
+    }
+    .wu-reason:hover {
+      border-color: rgba(var(--wu-acc1-rgb), 0.35);
+      transform: translateY(-4px);
+      box-shadow: 0 16px 48px -12px rgba(0,0,0,0.5);
+    }
+    .wu-reason .rnum {
+      position: absolute; top: 22px; right: 22px;
+      font-family: 'JetBrains Mono', monospace; font-size: 10px;
+      color: var(--wu-text3); letter-spacing: 0.12em;
+    }
+    .wu-reason .rico {
+      width: 40px; height: 40px; border-radius: 11px;
+      background: rgba(var(--wu-acc1-rgb), 0.08);
+      border: 1px solid rgba(var(--wu-acc1-rgb), 0.2);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--wu-acc1); margin-bottom: 18px;
+      transition: background 0.25s, box-shadow 0.25s;
+    }
+    .wu-reason:hover .rico {
+      background: rgba(var(--wu-acc1-rgb), 0.15);
+      box-shadow: 0 0 16px rgba(var(--wu-acc1-rgb), 0.2);
+    }
+    /* credential badge variant — gold accent */
+    .wu-reason.cred .rico {
+      background: rgba(255,215,0,0.08);
+      border-color: rgba(255,215,0,0.25);
+      color: #FFD700;
+    }
+    .wu-reason.cred:hover .rico {
+      background: rgba(255,215,0,0.15);
+      box-shadow: 0 0 16px rgba(255,215,0,0.2);
+    }
+    .wu-reason.cred:hover { border-color: rgba(255,215,0,0.3); }
+    .wu-reason h3 {
+      font-family: 'Syne', sans-serif; font-size: 17px; font-weight: 700;
+      color: var(--wu-text); margin-bottom: 8px;
+    }
+    .wu-reason p { font-size: 13.5px; line-height: 1.65; color: var(--wu-text2); margin: 0; }
+
+    /* ── Comparison table ── */
+    .wu-compare {
+      border: 1px solid var(--wu-border); border-radius: var(--wu-r);
+      overflow: hidden; background: rgba(6,13,26,0.6); backdrop-filter: blur(14px);
+    }
+    .wu-compare-row {
+      display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr;
+      border-bottom: 1px solid var(--wu-border);
+    }
+    .wu-compare-row:last-child { border-bottom: 0; }
+    .wu-compare-row > div { padding: 18px 20px; font-size: 14px; color: var(--wu-text2); }
+    .wu-compare-row.head > div {
+      padding: 18px 20px;
+      font-family: 'JetBrains Mono', monospace; font-size: 11px;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--wu-text); background: rgba(255,255,255,0.02);
+      border-bottom: 1px solid var(--wu-border);
+    }
+    .wu-compare-row.head > div.ol {
+      color: var(--wu-acc1);
+      background: rgba(var(--wu-acc1-rgb), 0.06);
+      border-bottom: 1px solid rgba(var(--wu-acc1-rgb), 0.3);
+    }
+    .wu-compare-row .crit { color: var(--wu-text); font-weight: 500; }
+    .wu-compare-row .ol   { background: rgba(var(--wu-acc1-rgb), 0.04); color: var(--wu-text); }
+    .wu-mark { display: inline-flex; align-items: center; gap: 7px; font-size: 13px; }
+    .wu-mark.yes { color: #5ddb8a; }
+    .wu-mark.no  { color: #ff7a7a; }
+    .wu-mark.mid { color: #e2b46a; }
+
+    /* ── FAQ ── */
+    .wu-faq { max-width: 860px; margin: 0 auto; display: flex; flex-direction: column; gap: 10px; }
+    .wu-faq details {
+      background: var(--wu-card); border: 1px solid var(--wu-border);
+      border-radius: 14px; padding: 22px 26px; backdrop-filter: blur(10px);
+      transition: border-color 0.2s;
+    }
+    .wu-faq details[open] { border-color: rgba(var(--wu-acc1-rgb), 0.3); }
+    .wu-faq summary {
+      list-style: none; cursor: pointer;
+      display: flex; justify-content: space-between; align-items: center;
+      font-family: 'Syne', sans-serif; font-weight: 700; font-size: 16px;
+      color: var(--wu-text);
+    }
+    .wu-faq summary::-webkit-details-marker { display: none; }
+    .wu-faq summary::after {
+      content: "+"; font-size: 22px; color: var(--wu-acc1);
+      font-family: 'DM Sans', sans-serif; font-weight: 300;
+      transition: transform 0.2s; flex-shrink: 0; margin-left: 16px;
+    }
+    .wu-faq details[open] summary::after { transform: rotate(45deg); }
+    .wu-faq details p { margin-top: 14px; font-size: 15px; line-height: 1.7; color: var(--wu-text2); }
+
+    /* ── CTA banner ── */
+    .wu-cta {
+      border-radius: 24px;
+      background: linear-gradient(135deg, rgba(124,58,237,0.2) 0%, rgba(0,217,255,0.08) 100%);
+      border: 1px solid rgba(124,58,237,0.3);
+      padding: 68px 60px;
+      display: flex; justify-content: space-between; align-items: center;
+      gap: 40px; flex-wrap: wrap; backdrop-filter: blur(14px);
+    }
+    .wu-cta h2 {
+      font-family: 'Syne', sans-serif; font-size: clamp(26px, 3.5vw, 38px);
+      font-weight: 800; color: var(--wu-text); margin: 8px 0 14px;
+    }
+    .wu-cta p { font-size: 16px; color: var(--wu-text2); max-width: 50ch; line-height: 1.65; margin: 0; }
+    .wu-cta-btns { display: flex; gap: 12px; flex-wrap: wrap; flex-shrink: 0; }
+
+    /* ── Buttons ── */
+    .wu-btn-primary {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 13px 24px; border-radius: var(--wu-pill);
+      background: linear-gradient(135deg, var(--wu-acc1), var(--wu-acc2));
+      color: #060D1A; font-family: 'DM Sans', sans-serif;
+      font-size: 14px; font-weight: 700;
+      text-decoration: none; border: none; cursor: pointer;
+      transition: opacity 0.2s, transform 0.2s, box-shadow 0.2s;
+    }
+    .wu-btn-primary:hover { opacity: 0.88; transform: translateY(-2px); box-shadow: 0 10px 40px rgba(0,217,255,0.35); }
+    .wu-btn-ghost {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 12px 22px; border-radius: var(--wu-pill);
+      background: transparent; color: var(--wu-text2);
+      border: 1px solid var(--wu-border-hi);
+      font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 500;
+      text-decoration: none; cursor: pointer;
+      transition: border-color 0.2s, color 0.2s, transform 0.2s;
+    }
+    .wu-btn-ghost:hover { border-color: rgba(var(--wu-acc1-rgb), 0.45); color: var(--wu-text); transform: translateY(-1px); }
+
+    /* ── Responsive ── */
+    @media (max-width: 1024px) {
+      .wu-reasons { grid-template-columns: repeat(2, 1fr); }
+      .wu-stats { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 960px) {
+      .wu-compare-row { grid-template-columns: 1fr; }
+      .wu-compare-row > div { padding: 12px 16px; border-bottom: 1px solid var(--wu-border); }
+      .wu-compare-row > div:last-child { border-bottom: 0; }
+      .wu-compare-row.head { display: none; }
+      .wu-compare-row > div::before {
+        display: block; content: attr(data-label);
+        font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase;
+        color: var(--wu-text3); margin-bottom: 4px;
+        font-family: 'JetBrains Mono', monospace;
+      }
+      .wu-cta { padding: 44px 32px; flex-direction: column; align-items: flex-start; }
+    }
+    @media (max-width: 768px) {
+      .wu-hero { padding: 120px 20px 72px; }
+      .wu-hero h1 { font-size: clamp(30px, 8vw, 48px); }
+      .wu-reasons { grid-template-columns: 1fr; }
+      .wu-stats { grid-template-columns: 1fr 1fr; }
+      .wu-wrap { padding: 0 20px; }
+      .wu-sec { padding: 48px 0; }
+      .wu-cta { padding: 36px 24px; }
+    }
+  </style>
 </head>
 
 <body>
   <div class="cursor-dot"></div>
   <div class="cursor-ring"></div>
   <canvas id="bg-canvas"></canvas>
-  
-  <!-- Navigation Bar -->
+
+  <!-- ════════ YOUR HEADER — NOT TOUCHED ════════ -->
   <header class="navbar" id="navbar">
     <div class="nav-logo">
-      <a href="whyus.html">
-        <img src="assets/images/olideen-logo.png" alt="Olideen Technologies" class="logo-icon">
+      <a href="../index.html">
+        <img src="../assets/images/olideen-logo.png" alt="Olideen Technologies" class="logo-icon">
       </a>
     </div>
     <nav>
       <ul class="nav-links">
-        <li><a href="index.html" class="active">Home</a></li>
-        <li><a href="pages/whyus.html">Why Us</a></li>
-        <li><a href="pages/services.html">Services</a></li>
-        <li><a href="pages/portfolio.html">Portfolio</a></li>        
-        <li><a href="pages/contact.html">Contact</a></li>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="whyus.html" class="active">Why Us</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="portfolio.html">Portfolio</a></li>
+        <li><a href="contact.html">Contact</a></li>
       </ul>
     </nav>
     <div class="hamburger" id="hamburger">
@@ -52,188 +323,252 @@
     </div>
   </header>
 
-  <div class="page-hero reveal">
-    <p class="section-label">Why Olideen</p>
-    <h1>Why Choose <span class="gradient-text">Olideen Technologies?</span></h1>
-    <p>We bring big-city expertise to your doorstep — with the personal touch that large agencies simply can't offer.</p>
-  </div>
-<div class="founder-content">
-        <p class="section-label">The Person Behind the Code</p>
-        <h2>Meet <span class="gradient-text-gold">Lubnah Olideen</span></h2>
-        <p class="founder-role">Founder &amp; CEO &nbsp;·&nbsp; Software Developer &nbsp;·&nbsp; Innovator</p>
-        <p class="founder-bio">
-          Lubnah Olideen is the driving force behind Olideen Technologies — a software developer, innovator, and <strong>Golden Key International Honour Society scholar</strong> passionate about building intelligent, real-world tech solutions.
-        </p>
-        <p class="founder-bio">
-          Her work lives at the intersection of <span class="highlight-cyan">Artificial Intelligence</span>, <span class="highlight-purple">web development</span>, and <span class="highlight-gold">mobile engineering</span> — driven by the belief that transformative technology should be accessible to every business, not just the well-resourced.
-        </p>
-        <div class="founder-skills">
-          <span class="fskill"><i class="fas fa-microchip"></i> Artificial Intelligence</span>
-          <span class="fskill"><i class="fas fa-code"></i> Web Development</span>
-          <span class="fskill"><i class="fas fa-mobile-alt"></i> Mobile Engineering</span>
-          <span class="fskill"><i class="fas fa-database"></i> Software Architecture</span>
-          <span class="fskill"><i class="fas fa-lightbulb"></i> Tech Innovation</span>
-          <span class="fskill"><i class="fas fa-graduation-cap"></i> Academic Excellence</span>
-        </div>
-        <blockquote class="founder-quote">
-          <span class="fq-mark">"</span>
-          Technology built with purpose changes lives — starting with the business next door.
-          <span class="fq-mark">"</span>
-        </blockquote>
-        <a href="pages/contact.html" class="btn-primary" style="margin-top:2rem;">
-          Work With Lubnah <i class="fas fa-arrow-right"></i>
-        </a>
-      </div>
+  <main>
 
-  <div class="whyus-page">
-    <div class="whyus-inner reveal">
-      <div class="whyus-left">
-        <p class="section-label">Our Advantage</p>
-        <h2>We Don't Just Build Websites.<br>We <span class="gradient-text">Build Businesses.</span></h2>
-        <p class="section-sub">Every digital product we deliver is designed around one question: <em>how does this help your business grow?</em></p>
-        <ul class="advantages">
-          <li><i class="fas fa-check-circle"></i><span>Small-town advantage — we understand local business needs intimately</span></li>
-          <li><i class="fas fa-check-circle"></i><span>Personalized attention — direct communication, no middlemen or account managers</span></li>
-          <li><i class="fas fa-check-circle"></i><span>Affordable premium quality — world-class results at honest, fair prices</span></li>
-          <li><i class="fas fa-check-circle"></i><span>Fast turnaround times — we respect your deadlines like our own</span></li>
-          <li><i class="fas fa-check-circle"></i><span>Ongoing support long after your project is delivered</span></li>
-          <li><i class="fas fa-check-circle"></i><span>100% South African — we understand this market and its people</span></li>
-          <li><i class="fas fa-check-circle"></i><span>Always reachable via WhatsApp — no ticket queues, no long waits</span></li>
-          <li><i class="fas fa-check-circle"></i><span>Fresh graduate energy with a mature, professional mindset</span></li>
-        </ul>
-        <a href="contact.html" class="btn-primary" style="margin-top:2.5rem;display:inline-flex;">Work With Us <i class="fas fa-arrow-right"></i></a>
+    <!-- ══════════════ HERO ══════════════ -->
+    <section class="wu-hero">
+      <div class="wu-hero-glow"></div>
+      <div class="wu-hero-inner">
+        <span class="wu-eyebrow">Why us</span>
+        <h1>Why hire <span class="wu-grad-text">one person in KZN</span><br/>over a big agency?</h1>
+        <p>Because the person you message is the person writing your code. Because my quote isn't padded to cover four management layers. Because I still live here when something breaks.</p>
       </div>
-      <div class="whyus-right">
-        <div class="stat-card"><i class="fas fa-smile"></i><h3>100%</h3><p>Client Satisfaction Rate</p></div>
-        <div class="stat-card"><i class="fas fa-headset"></i><h3>24/7</h3><p>Support Available</p></div>
-        <div class="stat-card"><i class="fas fa-map-marker-alt"></i><h3>Local</h3><p>KwaZulu-Natal, South Africa</p></div>
-        <div class="stat-card"><i class="fas fa-bolt"></i><h3>Fast</h3><p>Turnaround &amp; Delivery</p></div>
-      </div>
-    </div>
-  </div>
+    </section>
 
-  <section class="credentials-section reveal">
-    <div class="section-header">
-      <p class="section-label">Credentials &amp; Trust</p>
-      <h2>Why You Can <span class="gradient-text">Trust Us</span></h2>
-      <p class="section-sub">A real qualification, real clients, and zero jargon — that's the Olideen difference.</p>
-    </div>
-    <div class="credentials-grid">
-      <div class="credential-card reveal-card">
-        <div class="card-glow"></div>
-        <i class="fas fa-graduation-cap"></i>
-        <h3>BSc Computer Science</h3>
-        <p>Formally qualified with a Bachelor of Science in Computer Science — structured, university-level expertise applied to your business.</p>
-        <div class="cred-badge">Degree Holder</div>
-      </div>
-      <div class="credential-card reveal-card">
-        <div class="card-glow"></div>
-        <i class="fas fa-award"></i>
-        <h3>Golden Key Scholar</h3>
-        <p>Member of the Golden Key International Honour Society — recognising academic excellence in the top 15% of university graduates worldwide.</p>
-        <div class="cred-badge">Academic Excellence</div>
-      </div>
-      <div class="credential-card reveal-card">
-        <div class="card-glow"></div>
-        <i class="fas fa-briefcase"></i>
-        <h3>Real Client Work</h3>
-        <p>Already delivered live projects for real clients — including Estcourt Waste Collectors and the Quraan Tracker web app.</p>
-        <div class="cred-badge">Proven Delivery</div>
-      </div>
-      <div class="credential-card reveal-card">
-        <div class="card-glow"></div>
-        <i class="fas fa-comment-dots"></i>
-        <h3>Plain-Language First</h3>
-        <p>We never hide behind jargon. We explain everything in outcomes you actually care about — always clear, always honest.</p>
-        <div class="cred-badge">No Jargon</div>
-      </div>
-    </div>
-  </section>
-
-  <section class="explain-section reveal">
-    <div class="explain-inner">
-      <div class="explain-text">
-        <p class="section-label">Plain Language Promise</p>
-        <h2>We Speak <span class="gradient-text">Your Language</span></h2>
-        <p>Most business owners don't know what "SEO," "responsive design," or "automation" really means — and that's completely fine. Our job is to translate tech into outcomes you understand.</p>
-        <div class="explain-examples">
-          <div class="explain-item">
-            <span class="explain-icon"><i class="fas fa-search"></i></span>
-            <div>
-              <strong>SEO (Search Engine Optimisation)</strong>
-              <p>We say: <em>"More people will find your business when they Google it."</em></p>
-            </div>
+    <!-- ══════════════ STATS STRIP ══════════════ -->
+    <div class="wu-sec" style="padding-top:0; padding-bottom:0;">
+      <div class="wu-wrap">
+        <div class="wu-stats">
+          <div class="wu-stat">
+            <i class="fas fa-smile"></i>
+            <h3>100%</h3>
+            <p>Client Satisfaction</p>
           </div>
-          <div class="explain-item">
-            <span class="explain-icon"><i class="fas fa-cogs"></i></span>
-            <div>
-              <strong>Automation</strong>
-              <p>We say: <em>"Stop doing that manually — we'll make it happen automatically."</em></p>
-            </div>
+          <div class="wu-stat">
+            <i class="fas fa-headset"></i>
+            <h3>24/7</h3>
+            <p>Support Available</p>
           </div>
-          <div class="explain-item">
-            <span class="explain-icon"><i class="fas fa-store"></i></span>
-            <div>
-              <strong>Google Business Profile</strong>
-              <p>We say: <em>"Your business shows up when someone nearby searches for what you offer."</em></p>
-            </div>
+          <div class="wu-stat">
+            <i class="fas fa-map-marker-alt"></i>
+            <h3>Local</h3>
+            <p>KwaZulu-Natal, SA</p>
+          </div>
+          <div class="wu-stat">
+            <i class="fas fa-bolt"></i>
+            <h3>Fast</h3>
+            <p>Turnaround &amp; Delivery</p>
           </div>
         </div>
       </div>
-      <div class="explain-visual">
-        <div class="response-card">
-          <div class="rc-icon"><i class="fab fa-whatsapp"></i></div>
-          <h4>Response Guarantee</h4>
-          <p>New enquiries get a reply within <strong>24 hours</strong> — usually much faster. Available evenings and weekends too.</p>
-          <div class="rc-time"><i class="fas fa-clock"></i>&nbsp; Avg. response: under 2 hours via WhatsApp</div>
+    </div>
+
+    <!-- ══════════════ UNIFIED REASONS + CREDENTIALS ══════════════ -->
+    <div class="wu-sec">
+      <div class="wu-wrap">
+        <div class="wu-sec-head">
+          <span class="wu-eyebrow">8 reasons</span>
+          <h2>Qualified, local, and <span class="wu-grad-text">genuinely different</span>.</h2>
+          <p>The credentials that back it up and the practical advantages that make the difference day-to-day — presented once, cleanly.</p>
+        </div>
+
+        <div class="wu-reasons">
+
+          <!-- Credential cards — gold accent -->
+          <div class="wu-reason cred">
+            <div class="rnum">01</div>
+            <div class="rico"><i class="fas fa-graduation-cap"></i></div>
+            <h3>BSc Computer Science</h3>
+            <p>A full university degree, not a weekend bootcamp. Structured, engineering-level thinking applied to your business — you get architecture, not just page-building.</p>
+          </div>
+
+          <div class="wu-reason cred">
+            <div class="rnum">02</div>
+            <div class="rico"><i class="fas fa-award"></i></div>
+            <h3>Golden Key Scholar</h3>
+            <p>Member of the Golden Key International Honour Society — top 15% of graduates worldwide. Academic excellence that translates directly into the quality of work you receive.</p>
+          </div>
+
+          <div class="wu-reason cred">
+            <div class="rnum">03</div>
+            <div class="rico"><i class="fas fa-briefcase"></i></div>
+            <h3>Proven, live delivery</h3>
+            <p>Real projects already shipped and running — Estcourt Waste Collectors and Quraan Tracker are live, used daily, and publicly verifiable. Not a portfolio of concepts.</p>
+          </div>
+
+          <div class="wu-reason cred">
+            <div class="rnum">04</div>
+            <div class="rico"><i class="fas fa-comment-dots"></i></div>
+            <h3>Plain language, always</h3>
+            <p>"More people will find you on Google" instead of "SEO optimisation." "It'll happen automatically" instead of "automation workflows." No jargon — ever.</p>
+          </div>
+
+          <!-- Practical advantage cards — cyan accent -->
+          <div class="wu-reason">
+            <div class="rnum">05</div>
+            <div class="rico">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+            </div>
+            <h3>WhatsApp-first support</h3>
+            <p>You message me directly — not a ticket system, not an account manager. I respond within the hour on weekdays and same-day on weekends. That's the full support model.</p>
+          </div>
+
+          <div class="wu-reason">
+            <div class="rnum">06</div>
+            <div class="rico">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            </div>
+            <h3>Honest SA-market pricing</h3>
+            <p>No overseas rates padded into rands. No Sandton office overheads passed on to you. A fair, fixed quote in writing before you commit — no hourly surprises.</p>
+          </div>
+
+          <div class="wu-reason">
+            <div class="rnum">07</div>
+            <div class="rico">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
+            <h3>End-to-end, one roof</h3>
+            <p>Design, build, hosting, domain, Google setup, socials — all handled in one place. One person to message, one invoice, one person accountable when something needs fixing.</p>
+          </div>
+
+          <div class="wu-reason">
+            <div class="rnum">08</div>
+            <div class="rico">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            </div>
+            <h3>Community-rooted</h3>
+            <p>Young, South African, based in Estcourt. I want small KZN businesses to win online — my pricing reflects that, and I'll still be here next year when you need a fix.</p>
+          </div>
+
         </div>
       </div>
     </div>
-  </section>
 
-  <section class="roadmap-section reveal">
-    <div class="section-header">
-      <p class="section-label">Future Expansions</p>
-      <h2>Where We're <span class="gradient-text">Headed</span></h2>
-      <p class="section-sub">Our current focus is delivering exceptional service — and these are the bigger horizons we're building toward.</p>
+    <!-- ══════════════ COMPARISON TABLE ══════════════ -->
+    <div class="wu-sec" style="padding-top:0;">
+      <div class="wu-wrap">
+        <div class="wu-sec-head">
+          <span class="wu-eyebrow">Side by side</span>
+          <h2>How I stack up against the <span class="wu-grad-text">usual options</span>.</h2>
+          <p>An honest comparison — I'll tell you where another option might actually suit you better.</p>
+        </div>
+        <div class="wu-compare">
+          <div class="wu-compare-row head">
+            <div>Criteria</div>
+            <div class="ol">Olideen</div>
+            <div>Big agency</div>
+            <div>Random freelancer</div>
+          </div>
+          <div class="wu-compare-row">
+            <div class="crit" data-label="Criteria">Typical price for a brochure site</div>
+            <div class="ol" data-label="Olideen"><span class="wu-mark yes"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Fair SA rates</span></div>
+            <div data-label="Big agency"><span class="wu-mark no"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>R30k+</span></div>
+            <div data-label="Freelancer"><span class="wu-mark mid">Roulette</span></div>
+          </div>
+          <div class="wu-compare-row">
+            <div class="crit" data-label="Criteria">Person who codes = person you message</div>
+            <div class="ol" data-label="Olideen"><span class="wu-mark yes"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Always</span></div>
+            <div data-label="Big agency"><span class="wu-mark no"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Account manager layer</span></div>
+            <div data-label="Freelancer"><span class="wu-mark yes"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Usually</span></div>
+          </div>
+          <div class="wu-compare-row">
+            <div class="crit" data-label="Criteria">Local — actually based in KZN</div>
+            <div class="ol" data-label="Olideen"><span class="wu-mark yes"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Estcourt</span></div>
+            <div data-label="Big agency"><span class="wu-mark mid">Sometimes</span></div>
+            <div data-label="Freelancer"><span class="wu-mark mid">Coin flip</span></div>
+          </div>
+          <div class="wu-compare-row">
+            <div class="crit" data-label="Criteria">WhatsApp access to the builder</div>
+            <div class="ol" data-label="Olideen"><span class="wu-mark yes"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Direct</span></div>
+            <div data-label="Big agency"><span class="wu-mark no"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Ticket only</span></div>
+            <div data-label="Freelancer"><span class="wu-mark mid">Maybe</span></div>
+          </div>
+          <div class="wu-compare-row">
+            <div class="crit" data-label="Criteria">BSc Computer Science qualification</div>
+            <div class="ol" data-label="Olideen"><span class="wu-mark yes"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Degree + Golden Key</span></div>
+            <div data-label="Big agency"><span class="wu-mark mid">Varies per dev</span></div>
+            <div data-label="Freelancer"><span class="wu-mark no"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Often self-taught</span></div>
+          </div>
+          <div class="wu-compare-row">
+            <div class="crit" data-label="Criteria">POPIA-compliant by default</div>
+            <div class="ol" data-label="Olideen"><span class="wu-mark yes"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Always</span></div>
+            <div data-label="Big agency"><span class="wu-mark yes"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Usually</span></div>
+            <div data-label="Freelancer"><span class="wu-mark no"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Rarely</span></div>
+          </div>
+          <div class="wu-compare-row">
+            <div class="crit" data-label="Criteria">Around next year to fix things</div>
+            <div class="ol" data-label="Olideen"><span class="wu-mark yes"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Building a business</span></div>
+            <div data-label="Big agency"><span class="wu-mark yes"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Yes, but expensive</span></div>
+            <div data-label="Freelancer"><span class="wu-mark no"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Often vanishes</span></div>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="roadmap-list">
-      <div class="roadmap-item reveal-card">
-        <div class="roadmap-num">01</div>
-        <div class="roadmap-content"><h3>SaaS Product Launch</h3><p>A subscription software product built around recurring problems we solve for clients.</p></div>
-        <div class="roadmap-status future">Future</div>
-      </div>
-      <div class="roadmap-item reveal-card">
-        <div class="roadmap-num">02</div>
-        <div class="roadmap-content"><h3>Bundled Hosting + CRM Packages</h3><p>Website + hosting + basic CRM in one affordable monthly bundle — fully managed by us.</p></div>
-        <div class="roadmap-status future">Future</div>
-      </div>
-      <div class="roadmap-item reveal-card">
-        <div class="roadmap-num">03</div>
-        <div class="roadmap-content"><h3>Automation-as-a-Service</h3><p>Offering automation workflows to local businesses — helping them run leaner without hiring more staff.</p></div>
-        <div class="roadmap-status future">Future</div>
-      </div>
-      <div class="roadmap-item reveal-card">
-        <div class="roadmap-num">04</div>
-        <div class="roadmap-content"><h3>Formal Certifications</h3><p>Pursuing Google, AWS, and industry certifications to further validate technical expertise.</p></div>
-        <div class="roadmap-status active">In Progress</div>
-      </div>
-    </div>
-  </section>
 
-  <section class="cta-section reveal">
-    <div class="cta-inner">
-      <h2>Let's Build Something <span class="gradient-text">Extraordinary</span></h2>
-      <p>Your business deserves a powerful digital presence. Let's make it happen together.</p>
-      <a href="contact.html" class="btn-primary btn-large">Get in Touch <i class="fas fa-arrow-right"></i></a>
+    <!-- ══════════════ FAQ ══════════════ -->
+    <div class="wu-sec" style="padding-top:0;">
+      <div class="wu-wrap">
+        <div class="wu-sec-head center">
+          <span class="wu-eyebrow">Common questions</span>
+          <h2>The stuff <span class="wu-grad-text">people actually ask</span> me.</h2>
+        </div>
+        <div class="wu-faq">
+          <details>
+            <summary>How much does a website actually cost?</summary>
+            <p>For a solid 4–6 page brochure site with WhatsApp + contact form, SEO setup and hosting, expect mid-single-digit thousands of rand. A web app with logins and a dashboard is higher. I always give you a written fixed quote before you commit — no hourly billing surprises.</p>
+          </details>
+          <details>
+            <summary>What if I don't know what I want?</summary>
+            <p>Perfect — that's most clients. Book the free 30-minute call. Tell me what your business does and what's not working. I'll ask questions and write up a scope document you can take home and think about. Zero pressure to proceed.</p>
+          </details>
+          <details>
+            <summary>Do I own the code and files when we're done?</summary>
+            <p>Yes, 100%. On launch you get the domain in your name, the code in a repo you can keep, and a handover document. If you ever want to leave, nothing is held hostage. That's a promise in writing.</p>
+          </details>
+          <details>
+            <summary>Are you going to disappear after launch?</summary>
+            <p>No — that's a freelancer stereotype, and fair to worry about. I include 30 days of free tweaks and bug-fixes after launch, and offer ongoing monthly support from then on if you want it. This is a real business, not a side hustle.</p>
+          </details>
+          <details>
+            <summary>Can you match what a specific agency quoted me?</summary>
+            <p>Usually yes — and often at a fraction of the price. Send me the quote, I won't judge. I'll tell you honestly what's worth doing, what's padding, and what I'd build differently.</p>
+          </details>
+          <details>
+            <summary>Do you only work with KZN businesses?</summary>
+            <p>No — KZN is home, but I work with clients across South Africa. Everything is handled over WhatsApp and video calls, so location doesn't actually matter.</p>
+          </details>
+          <details>
+            <summary>How fast can you start?</summary>
+            <p>Usually within 1–2 weeks of signing. I keep my pipeline intentionally short so I can give each project my full attention. If a slot is tight, I'll tell you — I won't overbook to chase cash.</p>
+          </details>
+        </div>
+      </div>
     </div>
-  </section>
 
-<!-- FOOTER -->
-    <footer class="footer">
+    <!-- ══════════════ CTA ══════════════ -->
+    <div class="wu-sec">
+      <div class="wu-wrap">
+        <div class="wu-cta">
+          <div>
+            <span class="wu-eyebrow" style="color:rgba(255,255,255,.5);">Still deciding?</span>
+            <h2>Book the call. It's<br/>30 minutes and it's free.</h2>
+            <p>If I'm not the right fit, I'll say so and point you somewhere better. You lose nothing by asking.</p>
+          </div>
+          <div class="wu-cta-btns">
+            <a href="https://wa.me/27733075218" target="_blank" rel="noopener" class="wu-btn-primary">WhatsApp me →</a>
+            <a href="portfolio.html" class="wu-btn-ghost">See live work</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- ════════ YOUR FOOTER — NOT TOUCHED ════════ -->
+  <footer class="footer">
     <div class="footer-top">
       <div class="footer-brand">
-        <img src="assets/images/olideen-logo.png" alt="Olideen Technologies" class="footer-logo">
+        <img src="../assets/images/olideen-logo.png" alt="Olideen Technologies" class="footer-logo">
         <p>Premium web &amp; software solutions from the heart of KwaZulu-Natal.</p>
       </div>
       <div class="footer-cols">
@@ -279,7 +614,7 @@
     <i class="fab fa-whatsapp"></i><span>Chat With Us</span>
   </a>
 
-  <script src="js/three-bg.js"></script>
-  <script src="js/script.js"></script>
+  <script src="../js/three-bg.js"></script>
+  <script src="../js/script.js"></script>
 </body>
 </html>

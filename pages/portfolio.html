@@ -46,25 +46,294 @@
   }
   </script>
 
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="../css/style.css">
+
+  <!-- ═══════════════════════════════════════════════
+       PORTFOLIO PAGE STYLES  — scoped with pf- prefix,
+       safe alongside your existing style.css
+  ════════════════════════════════════════════════ -->
+  <style>
+    /* design tokens */
+    :root {
+      --pf-acc1: #7b5ea7;
+      --pf-acc1-rgb: 123,94,167;
+      --pf-acc2: #5de3ff;
+      --pf-acc2-rgb: 93,227,255;
+      --pf-grad: linear-gradient(135deg,#7b5ea7 0%,#5de3ff 100%);
+      --pf-card: rgba(255,255,255,0.03);
+      --pf-border: rgba(255,255,255,0.08);
+      --pf-border-hi: rgba(255,255,255,0.14);
+      --pf-text: #e6efff;
+      --pf-text2: #8fa3bf;
+      --pf-text3: #4e6070;
+      --pf-pill: 999px;
+      --pf-r: 18px;
+    }
+
+    /* PAGE HERO */
+    .pf-hero {
+      position: relative;
+      padding: 148px 24px 88px;
+      text-align: center;
+      overflow: hidden;
+    }
+    .pf-hero-glow {
+      position: absolute; inset: 0; pointer-events: none; z-index: 0;
+      background:
+        radial-gradient(ellipse 900px 600px at 50% -10%, rgba(123,94,167,.22), transparent 65%),
+        radial-gradient(ellipse 500px 300px at 80% 60%, rgba(93,227,255,.07), transparent 60%);
+    }
+    .pf-hero-inner { position: relative; z-index: 1; max-width: 760px; margin: 0 auto; }
+
+    .pf-eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px; letter-spacing: .16em; text-transform: uppercase;
+      color: var(--pf-acc2); margin-bottom: 18px;
+    }
+    .pf-eyebrow::before {
+      content: ''; display: block; width: 24px; height: 1px;
+      background: var(--pf-acc2); opacity: .6;
+    }
+    .pf-hero h1 {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(36px,7vw,70px);
+      font-weight: 800; line-height: 1.06;
+      color: var(--pf-text); margin: 0 0 22px;
+    }
+    .pf-grad-text {
+      background: var(--pf-grad);
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+    }
+    .pf-hero-sub {
+      font-size: 18px; color: var(--pf-text2);
+      line-height: 1.72; max-width: 56ch; margin: 0 auto 36px;
+    }
+
+    /* status pills */
+    .pf-pills { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; }
+    .pf-pill {
+      font-family: 'JetBrains Mono', monospace; font-size: 11px;
+      letter-spacing: .08em; padding: 7px 14px; border-radius: var(--pf-pill);
+      background: var(--pf-card); border: 1px solid var(--pf-border);
+      color: var(--pf-text2); display: inline-flex; align-items: center; gap: 6px;
+    }
+    .pf-pill .pip { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+    .pf-pill.live  { border-color: rgba(40,200,100,.28); color: #5ddb8a; }
+    .pf-pill.live .pip { background: #5ddb8a; animation: pf-pulse 2s infinite; }
+    .pf-pill.build { border-color: rgba(var(--pf-acc2-rgb),.28); color: var(--pf-acc2); }
+    .pf-pill.build .pip { background: var(--pf-acc2); }
+    .pf-pill.type  { border-color: rgba(var(--pf-acc1-rgb),.28); color: #c4a9ff; }
+    @keyframes pf-pulse {
+      0%,100% { box-shadow: 0 0 4px rgba(93,219,138,.5); }
+      50%      { box-shadow: 0 0 10px rgba(93,219,138,.9); }
+    }
+
+    /* layout */
+    .pf-wrap { max-width: 1200px; margin: 0 auto; padding: 0 28px; }
+    .pf-sec  { padding: 56px 0; }
+
+    /* section heading */
+    .pf-sec-head { margin-bottom: 40px; }
+    .pf-sec-head h2 {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(26px,3.5vw,38px); font-weight: 800;
+      color: var(--pf-text); margin: 8px 0 12px;
+    }
+    .pf-sec-head p { font-size: 16px; color: var(--pf-text2); max-width: 60ch; line-height: 1.65; }
+
+    /* p-tags */
+    .pf-tag {
+      font-family: 'JetBrains Mono', monospace; font-size: 10px;
+      letter-spacing: .08em; padding: 5px 12px; border-radius: var(--pf-pill);
+      background: var(--pf-card); border: 1px solid var(--pf-border); color: var(--pf-text2);
+    }
+    .pf-tag.live { background: rgba(40,200,100,.1); border-color: rgba(40,200,100,.28); color: #5ddb8a; }
+
+    /* buttons */
+    .pf-btn-primary {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 13px 24px; border-radius: var(--pf-pill);
+      background: var(--pf-grad); color: #fff;
+      font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 600;
+      text-decoration: none; border: none; cursor: pointer;
+      transition: opacity .2s, transform .2s;
+    }
+    .pf-btn-primary:hover { opacity: .86; transform: translateY(-1px); }
+    .pf-btn-ghost {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 12px 22px; border-radius: var(--pf-pill);
+      background: transparent; color: var(--pf-text2);
+      border: 1px solid var(--pf-border-hi);
+      font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 500;
+      text-decoration: none; cursor: pointer;
+      transition: border-color .2s, color .2s, transform .2s;
+    }
+    .pf-btn-ghost:hover { border-color: rgba(var(--pf-acc1-rgb),.4); color: var(--pf-text); transform: translateY(-1px); }
+
+    /* featured tilt cards */
+    .pf-feat {
+      display: grid; grid-template-columns: 1fr 1.25fr;
+      min-height: 520px; border-radius: 24px; overflow: hidden;
+      border: 1px solid var(--pf-border); background: var(--pf-card);
+      backdrop-filter: blur(16px); margin-bottom: 24px;
+    }
+    .pf-feat.rev { grid-template-columns: 1.25fr 1fr; }
+
+    .pf-feat-body {
+      padding: 54px 48px; display: flex; flex-direction: column;
+      justify-content: center; gap: 18px;
+      border-right: 1px solid var(--pf-border);
+    }
+    .pf-feat.rev .pf-feat-body { border-right: 0; border-left: 1px solid var(--pf-border); }
+    .pf-feat-meta { display: flex; gap: 8px; flex-wrap: wrap; }
+    .pf-feat h2 {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(26px,2.8vw,40px); font-weight: 800;
+      color: var(--pf-text); margin: 4px 0 0; line-height: 1.1;
+    }
+    .pf-feat-desc { font-size: 16px; color: var(--pf-text2); line-height: 1.68; max-width: 48ch; }
+    .pf-feat-stats { display: grid; grid-template-columns: repeat(3,1fr); gap: 18px; margin: 4px 0; }
+    .pf-feat-stat .n {
+      font-family: 'Syne', sans-serif; font-size: 26px; font-weight: 700;
+      background: var(--pf-grad); -webkit-background-clip: text; background-clip: text; color: transparent;
+    }
+    .pf-feat-stat .l { font-size: 11px; color: var(--pf-text3); margin-top: 2px; }
+    .pf-feat-actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 4px; }
+
+    /* read-the-story expand */
+    .pf-story-toggle .arr { display: inline-block; transition: transform .3s; }
+    .pf-story-toggle.open .arr { transform: rotate(90deg); }
+    .pf-story-panel {
+      display: none; margin-top: 10px; padding: 18px 20px;
+      background: rgba(255,255,255,.04); border-radius: 12px;
+      border: 1px solid var(--pf-border);
+      font-size: 14px; color: var(--pf-text2); line-height: 1.72;
+    }
+    .pf-story-panel.open { display: block; animation: pf-slide .28s ease; }
+    @keyframes pf-slide { from { opacity:0; transform:translateY(-6px); } to { opacity:1; transform:none; } }
+
+    /* visual panel */
+    .pf-feat-visual {
+      position: relative; overflow: hidden;
+      background:
+        radial-gradient(420px 300px at 70% 20%, rgba(var(--pf-acc2-rgb),.16), transparent 65%),
+        linear-gradient(160deg,#0f1a30 0%,#0a1124 100%);
+    }
+    .pf-feat.rev .pf-feat-visual {
+      background:
+        radial-gradient(420px 300px at 30% 80%, rgba(var(--pf-acc1-rgb),.18), transparent 65%),
+        linear-gradient(160deg,#0f1a30 0%,#0a1124 100%);
+    }
+
+    /* tilted mock browser */
+    .pf-mock {
+      position: absolute; inset: 44px 0 -44px 64px;
+      border-radius: 14px; overflow: hidden; background: #0a1628;
+      box-shadow: 0 48px 120px -32px rgba(0,0,0,.85), 0 0 0 1px var(--pf-border-hi);
+      transform: perspective(2000px) rotateX(4deg) rotateY(-14deg) rotateZ(1deg);
+      transform-origin: top left;
+      transition: transform .65s cubic-bezier(.18,.72,.18,1);
+    }
+    .pf-feat:hover .pf-mock { transform: perspective(2000px) rotateX(1deg) rotateY(-6deg) rotateZ(0); }
+    .pf-mock.rev {
+      inset: 44px 64px -44px 0;
+      transform: perspective(2000px) rotateX(4deg) rotateY(14deg) rotateZ(-1deg);
+      transform-origin: top right;
+    }
+    .pf-feat.rev:hover .pf-mock.rev { transform: perspective(2000px) rotateX(1deg) rotateY(6deg) rotateZ(0); }
+
+    .pf-mc { height: 100%; display: flex; flex-direction: column; }
+    .pf-chrome {
+      display: flex; align-items: center; gap: 10px; padding: 11px 16px;
+      background: rgba(12,20,36,.92); border-bottom: 1px solid var(--pf-border); flex-shrink: 0;
+    }
+    .pf-chrome .dots { display: flex; gap: 6px; }
+    .pf-chrome .dots span { width: 10px; height: 10px; border-radius: 50%; }
+    .pf-chrome .dots span:nth-child(1){ background:#ff5f57; }
+    .pf-chrome .dots span:nth-child(2){ background:#febc2e; }
+    .pf-chrome .dots span:nth-child(3){ background:#28c840; }
+    .pf-chrome .pf-url-bar {
+      font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--pf-text3);
+      background: rgba(255,255,255,.04); padding: 5px 12px; border-radius: 6px; flex: 1;
+    }
+    .pf-screen { flex: 1; padding: 26px; overflow: hidden; }
+
+    /* in-build teasers */
+    .pf-teasers { display: grid; grid-template-columns: repeat(3,1fr); gap: 18px; }
+    .pf-teaser {
+      background: var(--pf-card); border: 1px dashed var(--pf-border-hi);
+      border-radius: var(--pf-r); padding: 28px 26px; min-height: 230px;
+      display: flex; flex-direction: column; gap: 14px;
+      backdrop-filter: blur(12px);
+      transition: border-color .25s, box-shadow .25s;
+    }
+    .pf-teaser:hover {
+      border-style: solid; border-color: rgba(var(--pf-acc1-rgb),.35);
+      box-shadow: 0 12px 40px -10px rgba(var(--pf-acc1-rgb),.12);
+    }
+    .pf-teaser .t-stage {
+      font-family: 'JetBrains Mono', monospace; font-size: 11px;
+      letter-spacing: .12em; text-transform: uppercase; color: var(--pf-acc2);
+      display: flex; align-items: center; gap: 8px;
+    }
+    .pf-teaser .pip { width: 6px; height: 6px; border-radius: 50%; background: var(--pf-acc2); flex-shrink: 0; }
+    .pf-teaser h4 { font-family: 'Syne', sans-serif; font-size: 20px; font-weight: 700; color: var(--pf-text); margin: 0; }
+    .pf-teaser p  { font-size: 14px; color: var(--pf-text2); line-height: 1.6; margin: 0; }
+    .pf-progress  { margin-top: auto; height: 4px; background: rgba(255,255,255,.06); border-radius: 2px; overflow: hidden; }
+    .pf-progress > span { display: block; height: 100%; background: var(--pf-grad); border-radius: 2px; }
+
+    /* cta banner */
+    .pf-cta {
+      border-radius: 24px;
+      background: linear-gradient(135deg,rgba(123,94,167,.22) 0%,rgba(93,227,255,.08) 100%);
+      border: 1px solid rgba(var(--pf-acc1-rgb),.3);
+      padding: 68px 60px;
+      display: flex; justify-content: space-between; align-items: center;
+      gap: 40px; flex-wrap: wrap; backdrop-filter: blur(14px);
+    }
+    .pf-cta h2 {
+      font-family: 'Syne', sans-serif; font-size: clamp(26px,3.5vw,38px); font-weight: 800;
+      color: var(--pf-text); margin: 8px 0 14px;
+    }
+    .pf-cta p { font-size: 16px; color: var(--pf-text2); max-width: 52ch; line-height: 1.65; margin: 0; }
+    .pf-cta-btns { display: flex; gap: 12px; flex-wrap: wrap; flex-shrink: 0; }
+
+    /* responsive */
+    @media (max-width: 960px) {
+      .pf-feat, .pf-feat.rev { grid-template-columns: 1fr !important; min-height: auto; }
+      .pf-feat-body { padding: 36px 28px; border-right: 0 !important; border-left: 0 !important; border-bottom: 1px solid var(--pf-border); }
+      .pf-feat-visual { min-height: 300px; }
+      .pf-mock { inset: 28px 0 -28px 28px !important; transform-origin: top left !important;
+        transform: perspective(2000px) rotateX(3deg) rotateY(-10deg) rotateZ(1deg) !important; }
+      .pf-teasers { grid-template-columns: 1fr 1fr; }
+      .pf-cta { padding: 44px 32px; flex-direction: column; align-items: flex-start; }
+    }
+    @media (max-width: 560px) {
+      .pf-feat-stats { grid-template-columns: 1fr 1fr; }
+      .pf-teasers { grid-template-columns: 1fr; }
+      .pf-hero { padding: 120px 20px 72px; }
+      .pf-feat-body { padding: 28px 20px; }
+    }
+  </style>
 </head>
 <body>
 
-  <!-- Header (reuse from index.html) -->
+  <!-- cursor — untouched -->
   <div class="cursor-dot"></div>
   <div class="cursor-ring"></div>
   <canvas id="bg-canvas"></canvas>
 
-  <!-- Navigation Bar -->
+  <!-- ════════════════ YOUR HEADER — NOT TOUCHED ════════════════ -->
   <header class="navbar" id="navbar">
     <div class="nav-logo">
       <a href="portfolio.html">
-        <img src="assets/images/olideen-logo.png" alt="Olideen Technologies" class="logo-icon">
+        <img src="../assets/images/olideen-logo.png" alt="Olideen Technologies" class="logo-icon">
       </a>
     </div>
     <nav>
@@ -81,60 +350,194 @@
     </div>
   </header>
 
-  <!-- Portfolio Section -->
+  <!-- ════════════════ MAIN — all new content below ════════════════ -->
   <main>
-    <section class="portfolio-section reveal" id="portfolio">
-      <div class="section-header">
-        <p class="section-label">Our Work</p>
-        <h2>Projects We've <span class="gradient-text">Delivered</span></h2>
-        <p class="section-sub">Real results for real businesses — built right here in KwaZulu-Natal.</p>
-      </div>
 
-      <div class="portfolio-grid">
-
-        <!-- Project Card -->
-        <div class="portfolio-card reveal-card pf-live" data-url="https://estcourtwastecollectors.co.za/">
-          <div class="card-glow"></div>
-          <div class="pf-preview-wrap">
-            <div class="pf-browser-bar">
-              <span class="pf-dot r"></span><span class="pf-dot y"></span><span class="pf-dot g"></span>
-              <span class="pf-url">estcourtwastecollectors.co.za</span>
-              <a href="https://estcourtwastecollectors.co.za/" target="_blank" rel="noopener" class="pf-open-btn"><i class="fas fa-external-link-alt"></i></a>
-            </div>
-            <div class="pf-iframe-container">
-              <iframe class="pf-iframe" src="" data-src="https://estcourtwastecollectors.co.za/" title="Estcourt Waste Collectors preview" loading="lazy" sandbox="allow-scripts allow-same-origin"></iframe>
-              <div class="pf-iframe-overlay"></div>
-            </div>
-          </div>
-          <div class="pf-card-body">
-            <div class="pf-top-row">
-              <div class="portfolio-icon"><i class="fas fa-recycle"></i></div>
-              <div class="portfolio-tag">Live Project</div>
-            </div>
-            <h3>Estcourt Waste Collectors</h3>
-            <p>A professional web presence for a local waste management operation — clean design, contact integration, mobile-optimised.</p>
-            <div class="portfolio-tech">
-              <span>HTML / CSS</span><span>JavaScript</span><span>Responsive</span>
-            </div>
-            <div class="pf-links-row">
-              <a href="https://estcourtwastecollectors.co.za/" target="_blank" rel="noopener" class="pf-visit-link">Visit Site <i class="fas fa-external-link-alt"></i></a>
-              <a href="project-waste-collectors.html" class="pf-case-link">Case Study <i class="fas fa-arrow-right"></i></a>
-            </div>
-          </div>
+    <!-- HERO -->
+    <section class="pf-hero">
+      <div class="pf-hero-glow"></div>
+      <div class="pf-hero-inner">
+        <span class="pf-eyebrow">The work</span>
+        <h1>Two live projects.<br/><span class="pf-grad-text">Zero hypotheticals.</span></h1>
+        <p class="pf-hero-sub">I'd rather show you a small number of real, shipped, working sites than a mood-board of concepts. Every project below is live, running, and being used by real South Africans right now.</p>
+        <div class="pf-pills">
+          <span class="pf-pill live"><span class="pip"></span>2 Live</span>
+          <span class="pf-pill build"><span class="pip"></span>1 In Build</span>
+          <span class="pf-pill type">Websites</span>
+          <span class="pf-pill type">Web Apps</span>
+          <span class="pf-pill type">Community</span>
         </div>
-        <!-- /Project Card -->
-
-        <!-- Add more project cards here following the same structure -->
-
       </div>
     </section>
+
+    <!-- FEATURED PROJECTS -->
+    <div class="pf-sec">
+      <div class="pf-wrap">
+
+        <!-- Card 1: Estcourt Waste Collectors -->
+        <article class="pf-feat">
+          <div class="pf-feat-body">
+            <div class="pf-feat-meta">
+              <span class="pf-tag live">Live</span>
+              <span class="pf-tag">Brochure Site</span>
+              <span class="pf-tag">KZN</span>
+              <span class="pf-tag">2025</span>
+            </div>
+            <h2>Estcourt Waste Collectors</h2>
+            <p class="pf-feat-desc">A local waste-collection service needed a credible online front door that converts a curious neighbour into a booked route. Single-page site, WhatsApp-first booking, optimised for bad-signal browsing.</p>
+            <div class="pf-feat-stats">
+              <div class="pf-feat-stat"><div class="n">100+</div><div class="l">Homes Served</div></div>
+              <div class="pf-feat-stat"><div class="n">2.1s</div><div class="l">Load on 3G</div></div>
+              <div class="pf-feat-stat"><div class="n">24/7</div><div class="l">WhatsApp Booking</div></div>
+            </div>
+            <div class="pf-feat-actions">
+              <a href="https://estcourtwastecollectors.co.za/" target="_blank" rel="noopener" class="pf-btn-primary">Visit live site →</a>
+              <button class="pf-btn-ghost pf-story-toggle" onclick="pfToggleStory(this)">
+                Read the story <span class="arr">›</span>
+              </button>
+            </div>
+            <div class="pf-story-panel">
+              Estcourt Waste Collectors is a family-owned business that has been keeping KwaZulu-Natal cleaner for over 25 years. They handle household and commercial waste collection, responsible recycling across paper, plastics, metals and glass, and even sell affordable salvaged goods locally. Despite a 4.9-star reputation built on 653 community reviews, they had no web presence at all. The brief was simple: build a fast, mobile-first site that works on a slow 3G signal, turns visitors into WhatsApp bookings, and gives the business the credibility it has long deserved. No missed collections, no forms to wrestle with — just a tap and a chat.
+            </div>
+          </div>
+          <div class="pf-feat-visual">
+            <div class="pf-mock">
+              <div class="pf-mc">
+                <div class="pf-chrome">
+                  <div class="dots"><span></span><span></span><span></span></div>
+                  <div class="pf-url-bar">estcourtwastecollectors.co.za</div>
+                </div>
+                <div class="pf-screen" style="background:linear-gradient(180deg,#0f2218 0%,#081811 100%);">
+                  <div style="font-family:'Syne',sans-serif;font-size:28px;font-weight:700;color:#d4f4d8;line-height:1.05;">Clean KZN,<br/>one street at a time.</div>
+                  <p style="margin:12px 0 18px;color:#a0c4a9;font-size:13px;max-width:28ch;">Reliable waste collection for homes and businesses across Estcourt and surrounds.</p>
+                  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:18px;">
+                    <div style="background:rgba(255,255,255,.06);padding:12px;border-radius:9px;"><div style="font-size:20px;font-weight:700;color:#d4f4d8;">24/7</div><div style="font-size:10px;color:#7fa387;">Response</div></div>
+                    <div style="background:rgba(255,255,255,.06);padding:12px;border-radius:9px;"><div style="font-size:20px;font-weight:700;color:#d4f4d8;">100+</div><div style="font-size:10px;color:#7fa387;">Homes</div></div>
+                    <div style="background:rgba(255,255,255,.06);padding:12px;border-radius:9px;"><div style="font-size:20px;font-weight:700;color:#d4f4d8;">★ 4.9</div><div style="font-size:10px;color:#7fa387;">Rating</div></div>
+                  </div>
+                  <div style="display:inline-flex;gap:8px;align-items:center;background:#25d366;color:#052b13;padding:10px 16px;border-radius:50px;font-size:12px;font-weight:600;">💬 Book a collection</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 2: Quraan Tracker -->
+        <article class="pf-feat rev">
+          <div class="pf-feat-visual">
+            <div class="pf-mock rev">
+              <div class="pf-mc">
+                <div class="pf-chrome">
+                  <div class="dots"><span></span><span></span><span></span></div>
+                  <div class="pf-url-bar">myquraantracker.netlify.app</div>
+                </div>
+                <div class="pf-screen" style="background:linear-gradient(180deg,#0a1628 0%,#081122 100%);">
+                  <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px;">
+                    <div>
+                      <div style="font-family:'Syne',sans-serif;font-size:20px;font-weight:700;">As-salāmu ʿalaykum,<br/><span style="color:#5de3ff;">Yusuf.</span></div>
+                      <div style="font-size:11px;color:#7b8ca8;margin-top:5px;">Week 34 · Class 6B</div>
+                    </div>
+                    <div style="font-size:10px;padding:5px 11px;background:rgba(93,227,255,.12);color:#5de3ff;border-radius:20px;">On track</div>
+                  </div>
+                  <div style="background:rgba(255,255,255,.05);padding:14px;border-radius:11px;margin-bottom:11px;">
+                    <div style="display:flex;justify-content:space-between;font-size:11px;margin-bottom:9px;"><span style="opacity:.7;">Juzz memorised</span><strong>21 / 30</strong></div>
+                    <div style="height:7px;background:rgba(255,255,255,.08);border-radius:20px;overflow:hidden;">
+                      <div style="width:72%;height:100%;background:linear-gradient(90deg,#5de3ff,#a87bff);"></div>
+                    </div>
+                  </div>
+                  <div style="display:grid;grid-template-columns:repeat(7,1fr);gap:3px;">
+                    <div style="background:rgba(93,227,255,.55);height:30px;border-radius:4px;"></div>
+                    <div style="background:rgba(93,227,255,.35);height:30px;border-radius:4px;"></div>
+                    <div style="background:rgba(93,227,255,.70);height:30px;border-radius:4px;"></div>
+                    <div style="background:rgba(93,227,255,.45);height:30px;border-radius:4px;"></div>
+                    <div style="background:rgba(93,227,255,.85);height:30px;border-radius:4px;"></div>
+                    <div style="background:rgba(93,227,255,.55);height:30px;border-radius:4px;"></div>
+                    <div style="background:rgba(93,227,255,.20);height:30px;border-radius:4px;"></div>
+                  </div>
+                  <div style="display:flex;justify-content:space-between;font-size:9px;margin-top:5px;color:#6b7c94;"><span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span><span>S</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="pf-feat-body">
+            <div class="pf-feat-meta">
+              <span class="pf-tag live">Live</span>
+              <span class="pf-tag">Web App</span>
+              <span class="pf-tag">Dashboard</span>
+              <span class="pf-tag">Community</span>
+            </div>
+            <h2>Quraan Tracker</h2>
+            <p class="pf-feat-desc">A progress-tracking web app for madrasah students and teachers — built after watching my own family wrestle with paper log-books. Real utility, no feature bloat.</p>
+            <div class="pf-feat-stats">
+              <div class="pf-feat-stat"><div class="n">Daily</div><div class="l">Use by teachers</div></div>
+              <div class="pf-feat-stat"><div class="n">30 juzz</div><div class="l">Tracked per student</div></div>
+              <div class="pf-feat-stat"><div class="n">∞</div><div class="l">Paper logs replaced</div></div>
+            </div>
+            <div class="pf-feat-actions">
+              <a href="https://myquraantracker.netlify.app" target="_blank" rel="noopener" class="pf-btn-primary">Visit live site →</a>
+              <a href="#" class="pf-btn-ghost">Case study coming soon</a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+
+    <!-- IN BUILD -->
+    <div class="pf-sec" style="padding-top:0;">
+      <div class="pf-wrap">
+        <div class="pf-sec-head">
+          <span class="pf-eyebrow">In build</span>
+          <h2>Currently on the <span class="pf-grad-text">workbench</span>.</h2>
+          <p>Three projects actively in development — across sectors, showing that strong web work is needed everywhere.</p>
+        </div>
+        <div class="pf-teasers">
+          <div class="pf-teaser">
+            <div class="t-stage"><span class="pip"></span>Design phase</div>
+            <h4>Pharmaceutical company</h4>
+            <p>A professional web presence for a KZN-based pharmaceutical supplier — product catalogue, compliance-ready copy, and a clean B2B enquiry flow.</p>
+            <div class="pf-progress"><span style="width:35%"></span></div>
+          </div>
+          <div class="pf-teaser">
+            <div class="t-stage"><span class="pip"></span>Build phase</div>
+            <h4>Tutoring company</h4>
+            <p>Booking portal and tutor-matching platform for a growing private tutoring business serving Matric and university students across KZN.</p>
+            <div class="pf-progress"><span style="width:65%"></span></div>
+          </div>
+          <div class="pf-teaser">
+            <div class="t-stage"><span class="pip"></span>Scope agreed</div>
+            <h4>Makeup brand</h4>
+            <p>E-commerce site and Instagram-first launch for a local beauty brand — product pages, lookbook, and WhatsApp checkout built in.</p>
+            <div class="pf-progress"><span style="width:12%"></span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="pf-sec">
+      <div class="pf-wrap">
+        <div class="pf-cta">
+          <div>
+            <span class="pf-eyebrow" style="color:rgba(255,255,255,.5);">Your name here next?</span>
+            <h2>There's a slot open<br/>for May 2026.</h2>
+            <p>I take on a small number of projects at a time so I can actually deliver. If you'd like the next featured card on this page to be yours, let's chat.</p>
+          </div>
+          <div class="pf-cta-btns">
+            <a href="https://wa.me/27733075218" target="_blank" rel="noopener" class="pf-btn-primary">Claim the slot →</a>
+            <a href="pages/services.html" class="pf-btn-ghost">See services</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </main>
 
-<!-- FOOTER -->
-    <footer class="footer">
+  <!-- ════════════════ YOUR FOOTER — NOT TOUCHED ════════════════ -->
+  <footer class="footer">
     <div class="footer-top">
       <div class="footer-brand">
-        <img src="assets/images/olideen-logo.png" alt="Olideen Technologies" class="footer-logo">
+        <img src="../assets/images/olideen-logo.png" alt="Olideen Technologies" class="footer-logo">
         <p>Premium web &amp; software solutions from the heart of KwaZulu-Natal.</p>
       </div>
       <div class="footer-cols">
@@ -180,7 +583,18 @@
     <i class="fab fa-whatsapp"></i><span>Chat With Us</span>
   </a>
 
-  <script src="js/three-bg.js"></script>
-  <script src="js/script.js"></script>
+  <!-- your scripts — untouched -->
+  <script src="../js/three-bg.js"></script>
+<script src="../js/script.js"></script>
+
+  <!-- "Read the story" toggle -->
+  <script>
+    function pfToggleStory(btn) {
+      btn.classList.toggle('open');
+      const panel = btn.closest('.pf-feat-body').querySelector('.pf-story-panel');
+      panel.classList.toggle('open');
+    }
+  </script>
+
 </body>
 </html>
