@@ -6,219 +6,56 @@
   <title>Services — Olideen Technologies</title>
   <meta name="description" content="Explore Olideen Technologies' full range of services: custom websites, web apps, software solutions, mobile apps, graphic design, Google Business setup, and more.">
   <link rel="canonical" href="https://olideentech.com/pages/services.html">
-  <link rel="icon" type="image/png" href="../assets/images/transparent-favicon.png">
-  <link rel="apple-touch-icon" href="../assets/images/transparent-favicon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/transparent-favicon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/transparent-favicon.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../assets/images/olideen-logo.png">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://olideentech.com/pages/services.html">
+  <meta property="og:url" content="https://olideentech.com/services.html">
   <meta property="og:title" content="Services — Olideen Technologies">
   <meta property="og:description" content="Custom websites, web apps, software solutions, mobile apps, graphic design and more from Olideen Technologies, KwaZulu-Natal.">
-  <meta property="og:image" content="https://olideentech.com/olideen-logo.png">
+  <meta property="og:image" content="https://olideentech.com/assets/images/olideen-logo.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Olideen Technologies">
   <meta property="og:locale" content="en_ZA">
   <meta property="og:site_name" content="Olideen Technologies">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Services — Olideen Technologies">
-  <meta name="twitter:image" content="https://olideentech.com/olideen-logo.png">
+  <meta name="twitter:description" content="Nine services, one accountable developer. Custom websites, web apps, software solutions, mobile apps and more from Olideen Technologies.">
+  <meta name="twitter:image" content="https://olideentech.com/assets/images/olideen-logo.png">
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-  <link rel="stylesheet" href="../css/style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Web and Software Development Services",
+    "provider": {
+      "@type": "ProfessionalService",
+      "name": "Olideen Technologies",
+      "url": "https://olideentech.com",
+      "telephone": "+27733075218",
+      "email": "olideentech@gmail.com"
+    },
+    "areaServed": { "@type": "Country", "name": "South Africa" },
+    "serviceType": [
+      "Custom Website Development",
+      "Web Application Development",
+      "Software Solutions",
+      "Mobile App Development",
+      "AI Integration",
+      "Graphic Design",
+      "Google Business Setup",
+      "Social Media Setup",
+      "Hosting and Domain Management"
+    ]
+  }
+  </script>
+    <link rel="stylesheet" href="../css/style.css">
 
-  <!-- ═══════════════════════════════════════════════
-       SERVICES PAGE — scoped sv- styles, safe alongside style.css
-  ════════════════════════════════════════════════ -->
-  <style>
-    /* ── Hero ── */
-    .sv-hero {
-      position: relative;
-      padding: 148px 24px 88px;
-      text-align: center;
-      overflow: hidden;
-      z-index: 1;
-    }
-    .sv-hero-glow {
-      position: absolute; inset: 0; pointer-events: none; z-index: 0;
-      background:
-        radial-gradient(ellipse 900px 600px at 50% -10%, rgba(124,58,237,0.22), transparent 65%),
-        radial-gradient(ellipse 500px 300px at 80% 60%, rgba(0,217,255,0.08), transparent 60%);
-    }
-    .sv-hero-inner { position: relative; z-index: 1; max-width: 780px; margin: 0 auto; }
-    .sv-eyebrow {
-      display: inline-flex; align-items: center; gap: 8px;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase;
-      color: var(--cyan); margin-bottom: 18px;
-    }
-    .sv-eyebrow::before {
-      content: ''; display: block; width: 24px; height: 1px;
-      background: var(--cyan); opacity: 0.6;
-    }
-    .sv-hero h1 {
-      font-family: var(--font-h);
-      font-size: clamp(36px, 7vw, 68px);
-      font-weight: 800; line-height: 1.06;
-      color: var(--white); margin: 0 0 22px;
-    }
-    .sv-hero h1 .sv-grad {
-      background: linear-gradient(135deg, var(--cyan), var(--blue), var(--purple));
-      -webkit-background-clip: text; background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-    .sv-hero p {
-      font-size: 18px; color: var(--gray);
-      line-height: 1.72; max-width: 56ch; margin: 0 auto;
-    }
-
-    /* ── Layout ── */
-    .sv-wrap { max-width: 1200px; margin: 0 auto; padding: 0 28px; }
-    .sv-sec  { padding: 64px 0; position: relative; z-index: 1; }
-
-    /* ── Service card bullets + timeframe row
-       Applied INSIDE your existing .service-card.reveal-card ── */
-    .service-card .sv-bullets {
-      list-style: none; margin-top: 14px;
-      display: flex; flex-direction: column; gap: 6px;
-    }
-    .service-card .sv-bullets li {
-      font-size: 13px; color: var(--gray);
-      padding-left: 18px; position: relative; line-height: 1.5;
-    }
-    .service-card .sv-bullets li::before {
-      content: "→"; position: absolute; left: 0;
-      color: var(--cyan); font-family: 'JetBrains Mono', monospace;
-      font-size: 11px;
-    }
-    .service-card .sv-timerow {
-      margin-top: 20px; padding-top: 16px;
-      border-top: 1px solid rgba(255,255,255,0.07);
-      display: flex; justify-content: space-between; align-items: center;
-      font-family: 'JetBrains Mono', monospace; font-size: 11px;
-      color: rgba(148,163,184,0.6); letter-spacing: 0.04em;
-    }
-    .service-card .sv-timerow strong {
-      color: var(--cyan); font-weight: 500; font-size: 12px;
-    }
-
-    /* ── Bespoke / narrative section ── */
-    .sv-bespoke {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 5rem;
-      align-items: center;
-    }
-    .sv-bespoke-left h2 {
-      font-family: var(--font-h);
-      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
-      font-weight: 800; line-height: 1.15;
-      margin: 8px 0 20px;
-    }
-    .sv-bespoke-left h2 .sv-grad {
-      background: linear-gradient(135deg, var(--cyan), var(--blue), var(--purple));
-      -webkit-background-clip: text; background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-    .sv-bespoke-left p {
-      color: var(--gray); font-size: 16px; line-height: 1.72; margin-bottom: 16px;
-    }
-    .sv-bespoke-right {
-      display: flex; flex-direction: column; gap: 18px;
-    }
-    .sv-narr-item {
-      display: flex; gap: 16px; align-items: flex-start;
-      padding: 20px; background: rgba(10,22,40,0.6);
-      border: 1px solid rgba(0,217,255,0.1); border-radius: 14px;
-      backdrop-filter: blur(10px); transition: border-color 0.3s, transform 0.3s;
-    }
-    .sv-narr-item:hover { border-color: rgba(0,217,255,0.25); transform: translateX(5px); }
-    .sv-narr-ico {
-      width: 40px; height: 40px; min-width: 40px;
-      background: rgba(0,217,255,0.08);
-      border: 1px solid rgba(0,217,255,0.2);
-      border-radius: 11px;
-      display: flex; align-items: center; justify-content: center;
-      color: var(--cyan);
-    }
-    .sv-narr-item h4 {
-      font-family: var(--font-h); font-size: 15px; font-weight: 700;
-      color: var(--white); margin-bottom: 5px;
-    }
-    .sv-narr-item p { color: var(--gray); font-size: 13.5px; line-height: 1.6; margin: 0; }
-
-    /* ── Tools section ── */
-    .sv-tools-head {
-      text-align: center; margin-bottom: 36px;
-    }
-    .sv-tools-head h2 {
-      font-family: var(--font-h);
-      font-size: clamp(24px, 3vw, 36px); font-weight: 800;
-      color: var(--white); margin: 8px 0 12px;
-    }
-    .sv-tools-head p { color: var(--gray); font-size: 15px; max-width: 54ch; margin: 0 auto; }
-    .sv-tech-chips {
-      display: flex; flex-wrap: wrap; gap: 10px; justify-content: center;
-    }
-    .sv-tech-chip {
-      font-family: 'JetBrains Mono', monospace; font-size: 12px;
-      padding: 8px 16px; border-radius: 999px;
-      background: rgba(0,217,255,0.06);
-      border: 1px solid rgba(0,217,255,0.18);
-      color: var(--gray); letter-spacing: 0.04em;
-      transition: background 0.2s, border-color 0.2s, color 0.2s;
-    }
-    .sv-tech-chip:hover {
-      background: rgba(0,217,255,0.12);
-      border-color: rgba(0,217,255,0.4);
-      color: var(--cyan);
-    }
-
-    /* ── CTA banner ── */
-    .sv-cta {
-      border-radius: 24px;
-      background: linear-gradient(135deg, rgba(124,58,237,0.2) 0%, rgba(0,217,255,0.08) 100%);
-      border: 1px solid rgba(124,58,237,0.3);
-      padding: 68px 60px;
-      display: flex; justify-content: space-between; align-items: center;
-      gap: 40px; flex-wrap: wrap; backdrop-filter: blur(14px);
-    }
-    .sv-cta h2 {
-      font-family: var(--font-h); font-size: clamp(26px, 3.5vw, 38px);
-      font-weight: 800; color: var(--white); margin: 8px 0 14px;
-    }
-    .sv-cta p { font-size: 16px; color: var(--gray); max-width: 50ch; line-height: 1.65; margin: 0; }
-    .sv-cta-btns { display: flex; gap: 12px; flex-wrap: wrap; flex-shrink: 0; }
-    .sv-btn-primary {
-      display: inline-flex; align-items: center; gap: 8px;
-      padding: 13px 24px; border-radius: 999px;
-      background: linear-gradient(135deg, var(--cyan), var(--blue));
-      color: var(--navy); font-family: var(--font-h);
-      font-size: 14px; font-weight: 700;
-      text-decoration: none; transition: opacity 0.2s, transform 0.2s, box-shadow 0.2s;
-    }
-    .sv-btn-primary:hover { opacity: 0.88; transform: translateY(-2px); box-shadow: 0 10px 40px rgba(0,217,255,0.35); }
-    .sv-btn-ghost {
-      display: inline-flex; align-items: center; gap: 8px;
-      padding: 12px 22px; border-radius: 999px;
-      background: transparent; color: var(--gray);
-      border: 1px solid rgba(255,255,255,0.14);
-      font-family: var(--font-h); font-size: 14px; font-weight: 500;
-      text-decoration: none; transition: border-color 0.2s, color 0.2s, transform 0.2s;
-    }
-    .sv-btn-ghost:hover { border-color: rgba(0,217,255,0.4); color: var(--white); transform: translateY(-1px); }
-
-    /* ── Responsive ── */
-    @media (max-width: 960px) {
-      .sv-bespoke { grid-template-columns: 1fr; gap: 3rem; }
-      .sv-cta { padding: 44px 32px; flex-direction: column; align-items: flex-start; }
-    }
-    @media (max-width: 768px) {
-      .sv-hero { padding: 120px 20px 72px; }
-      .sv-hero h1 { font-size: clamp(30px, 8vw, 48px); }
-      .sv-wrap { padding: 0 20px; }
-      .sv-sec { padding: 48px 0; }
-      .sv-cta { padding: 36px 24px; }
-    }
-  </style>
 </head>
 
 <body>
@@ -256,7 +93,7 @@
       <div class="sv-hero-inner">
         <span class="sv-eyebrow">Services</span>
         <h1>  Nine services.<br/>  <span class="sv-grad">One trusted partner</span> behind each.</h1>
-<p>Pick one, pick a bundle, or book a free call and I'll tell you which of these you actually need right now — and which ones you genuinely don't.</p>
+<p>Pick one, pick a bundle, or book a free call and I'll tell you which of these you actually need right now, and which ones you genuinely don't.</p>
       </div>
     </section>
 
@@ -286,7 +123,7 @@
             <div class="card-glow"></div>
             <i class="fas fa-code"></i>
             <h3>Web Applications</h3>
-            <p>Dashboards, booking systems, portals — anything browser-based that replaces a spreadsheet.</p>
+            <p>Dashboards, booking systems, portals: anything browser-based that replaces a spreadsheet.</p>
             <ul class="sv-bullets">
               <li>User accounts &amp; roles</li>
               <li>Live data, real-time updates</li>
@@ -328,7 +165,7 @@
             <div class="card-glow"></div>
             <i class="fas fa-robot"></i>
             <h3>AI Integration</h3>
-            <p>Chatbots, smart forms, doc processing. AI where it saves real hours — not where it just looks good in a demo.</p>
+            <p>Chatbots, smart forms, doc processing. AI where it saves real hours, not where it just looks good in a demo.</p>
             <ul class="sv-bullets">
               <li>WhatsApp / web chatbots</li>
               <li>Document parsing &amp; summarisation</li>
@@ -371,7 +208,7 @@
             <div class="card-glow"></div>
             <i class="fas fa-share-alt"></i>
             <h3>Social Media Setup</h3>
-            <p>Instagram, Facebook, WhatsApp Business configured properly. Profiles done — you run the content.</p>
+            <p>Instagram, Facebook, WhatsApp Business configured properly. Profiles done. You run the content.</p>
             <ul class="sv-bullets">
               <li>Bios, highlights, covers</li>
               <li>Link-in-bio page</li>
@@ -433,7 +270,7 @@
           <div class="sv-bespoke-left">
             <span class="sv-eyebrow">No recycled templates</span>
             <h2>Your business isn't generic.<br/>Your <span class="sv-grad">site shouldn't be either.</span></h2>
-            <p>Every project starts on a blank page and a conversation. I don't sell pre-made themes with your logo pasted on top — I build the thing that fits your customer, your voice, and your budget.</p>
+            <p>Every project starts on a blank page and a conversation. I don't sell pre-made themes with your logo pasted on top. I build the thing that fits your customer, your voice, and your budget.</p>
             <p>That means slower than "click-install WordPress" but infinitely better at the only thing that matters: convincing the person on the other side to do business with you.</p>
           </div>
           <div class="sv-bespoke-right">
@@ -452,7 +289,7 @@
               </div>
               <div>
                 <h4>Fair, fixed pricing</h4>
-                <p>Real SA-market rates — a fraction of what Joburg agencies quote, priced so I'm still here to support you next year.</p>
+                <p>Real SA-market rates, a fraction of what Joburg agencies quote, priced so I'm still here to support you next year.</p>
               </div>
             </div>
             <div class="sv-narr-item">
@@ -496,7 +333,16 @@
       </div>
     </div>
 
-    <!-- ══════════════ READY TO TALK — CTA BANNER ══════════════ -->
+    <!-- ══════════════ "NOT SURE WHAT YOU NEED?" — YOUR ORIGINAL, KEPT AS IS ══════════════ -->
+    <section class="cta-section reveal">
+      <div class="cta-inner">
+        <h2>Not Sure What You Need?</h2>
+        <p>Let's chat. We'll figure out the best solution for your business together, no pressure and no jargon.</p>
+        <a href="contact.html" class="btn-primary btn-large">Book a Free Consultation <i class="fas fa-arrow-right"></i></a>
+      </div>
+    </section>
+
+    <!-- ══════════════ "NOT SURE WHICH SERVICE" — CLAUDE DESIGN CTA BANNER ══════════════ -->
     <div class="sv-sec" style="padding-top:0;">
       <div class="sv-wrap">
         <div class="sv-cta">
