@@ -3,46 +3,49 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portfolio — Olideen Technologies</title>
-  <meta name="description" content="Olideen Technologies delivers premium web & software solutions from Estcourt, KwaZulu-Natal. Custom websites, web apps, mobile apps, graphic design and more.">
-  <link rel="canonical" href="https://olideentech.com/pages/portfolio.html">
+  <title>Olideen Technologies – Premium Web & Software Solutions</title>
+  <meta name="description" content="Live projects delivered by Olideen Technologies. Custom websites, web apps, mobile apps and digital solutions for South African businesses.">
+  <link rel="canonical" href="https://olideentech.com/index.html">
 
-  <link rel="icon" type="image/png" href="../assets/images/transparent-favicon.png">
-  <link rel="apple-touch-icon" href="../assets/images/transparent-favicon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/transparent-favicon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/transparent-favicon.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../assets/images/olideen-logo.png">
 
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://olideentech.com/pages/portfolio.html">
-  <meta property="og:title" content="Portfolio — Olideen Technologies">
-  <meta property="og:description" content="Premium web & software solutions from Estcourt, KwaZulu-Natal.">
-  <meta property="og:image" content="https://olideentech.com/olideen-logo.png">
+  <meta property="og:url" content="https://olideentech.com/">
+  <meta property="og:title" content="Olideen Technologies – Premium Web & Software Solutions">
+  <meta property="og:description" content="Live projects by Olideen Technologies. Custom websites and web applications for South African businesses.">
+  <meta property="og:image" content="https://olideentech.com/assets/images/olideen-logo.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Olideen Technologies">
   <meta property="og:locale" content="en_ZA">
   <meta property="og:site_name" content="Olideen Technologies">
 
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Portfolio — Olideen Technologies">
-  <meta name="twitter:description" content="Premium web & software solutions from Estcourt, KwaZulu-Natal.">
-  <meta name="twitter:image" content="https://olideentech.com/olideen-logo.png">
+  <meta name="twitter:title" content="Olideen Technologies – Premium Web & Software Solutions">
+  <meta name="twitter:description" content="Live projects by Olideen Technologies. Custom websites and web applications for South African businesses.">
+  <meta name="twitter:image" content="https://olideentech.com/assets/images/olideen-logo.png">
 
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "name": "Olideen Technologies",
-    "url": "https://olideentech.com",
-    "logo": "https://olideentech.com/olideen-logo.png",
-    "description": "Premium web and software solutions from Estcourt, KwaZulu-Natal.",
-    "telephone": "+27733075218",
-    "email": "olideentech@gmail.com",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "Estcourt",
-      "addressLocality": "Estcourt",
-      "addressRegion": "KwaZulu-Natal",
-      "postalCode": "3310",
-      "addressCountry": "ZA"
-    },
-    "geo": { "@type": "GeoCoordinates", "latitude": -29.0086, "longitude": 29.8769 },
-    "contactPoint": { "@type": "ContactPoint", "telephone": "+27733075218", "contactType": "customer service" }
+    "@type": "CollectionPage",
+    "name": "Portfolio — Olideen Technologies",
+    "url": "https://olideentech.com/pages/portfolio.html",
+    "description": "Live projects delivered by Olideen Technologies. Custom websites and web applications for South African businesses.",
+    "publisher": {
+      "@type": "ProfessionalService",
+      "name": "Olideen Technologies",
+      "url": "https://olideentech.com",
+      "telephone": "+27733075218",
+      "email": "olideentech@gmail.com",
+      "address": {
+        "@type": "PostalAddress",
+        "addressRegion": "KwaZulu-Natal",
+        "addressCountry": "ZA"
+      }
+    }
   }
   </script>
 
@@ -57,246 +60,6 @@
        PORTFOLIO PAGE STYLES  — scoped with pf- prefix,
        safe alongside your existing style.css
   ════════════════════════════════════════════════ -->
-  <style>
-    /* design tokens */
-    :root {
-      --pf-acc1: #7b5ea7;
-      --pf-acc1-rgb: 123,94,167;
-      --pf-acc2: #5de3ff;
-      --pf-acc2-rgb: 93,227,255;
-      --pf-grad: linear-gradient(135deg,#7b5ea7 0%,#5de3ff 100%);
-      --pf-card: rgba(255,255,255,0.03);
-      --pf-border: rgba(255,255,255,0.08);
-      --pf-border-hi: rgba(255,255,255,0.14);
-      --pf-text: #e6efff;
-      --pf-text2: #8fa3bf;
-      --pf-text3: #4e6070;
-      --pf-pill: 999px;
-      --pf-r: 18px;
-    }
-
-    /* PAGE HERO */
-    .pf-hero {
-      position: relative;
-      padding: 148px 24px 88px;
-      text-align: center;
-      overflow: hidden;
-    }
-    .pf-hero-glow {
-      position: absolute; inset: 0; pointer-events: none; z-index: 0;
-      background:
-        radial-gradient(ellipse 900px 600px at 50% -10%, rgba(123,94,167,.22), transparent 65%),
-        radial-gradient(ellipse 500px 300px at 80% 60%, rgba(93,227,255,.07), transparent 60%);
-    }
-    .pf-hero-inner { position: relative; z-index: 1; max-width: 760px; margin: 0 auto; }
-
-    .pf-eyebrow {
-      display: inline-flex; align-items: center; gap: 8px;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 11px; letter-spacing: .16em; text-transform: uppercase;
-      color: var(--pf-acc2); margin-bottom: 18px;
-    }
-    .pf-eyebrow::before {
-      content: ''; display: block; width: 24px; height: 1px;
-      background: var(--pf-acc2); opacity: .6;
-    }
-    .pf-hero h1 {
-      font-family: 'Syne', sans-serif;
-      font-size: clamp(36px,7vw,70px);
-      font-weight: 800; line-height: 1.06;
-      color: var(--pf-text); margin: 0 0 22px;
-    }
-    .pf-grad-text {
-      background: var(--pf-grad);
-      -webkit-background-clip: text; background-clip: text; color: transparent;
-    }
-    .pf-hero-sub {
-      font-size: 18px; color: var(--pf-text2);
-      line-height: 1.72; max-width: 56ch; margin: 0 auto 36px;
-    }
-
-    /* status pills */
-    .pf-pills { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; }
-    .pf-pill {
-      font-family: 'JetBrains Mono', monospace; font-size: 11px;
-      letter-spacing: .08em; padding: 7px 14px; border-radius: var(--pf-pill);
-      background: var(--pf-card); border: 1px solid var(--pf-border);
-      color: var(--pf-text2); display: inline-flex; align-items: center; gap: 6px;
-    }
-    .pf-pill .pip { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
-    .pf-pill.live  { border-color: rgba(40,200,100,.28); color: #5ddb8a; }
-    .pf-pill.live .pip { background: #5ddb8a; animation: pf-pulse 2s infinite; }
-    .pf-pill.build { border-color: rgba(var(--pf-acc2-rgb),.28); color: var(--pf-acc2); }
-    .pf-pill.build .pip { background: var(--pf-acc2); }
-    .pf-pill.type  { border-color: rgba(var(--pf-acc1-rgb),.28); color: #c4a9ff; }
-    @keyframes pf-pulse {
-      0%,100% { box-shadow: 0 0 4px rgba(93,219,138,.5); }
-      50%      { box-shadow: 0 0 10px rgba(93,219,138,.9); }
-    }
-
-    /* layout */
-    .pf-wrap { max-width: 1200px; margin: 0 auto; padding: 0 28px; }
-    .pf-sec  { padding: 56px 0; }
-
-    /* section heading */
-    .pf-sec-head { margin-bottom: 40px; }
-    .pf-sec-head h2 {
-      font-family: 'Syne', sans-serif;
-      font-size: clamp(26px,3.5vw,38px); font-weight: 800;
-      color: var(--pf-text); margin: 8px 0 12px;
-    }
-    .pf-sec-head p { font-size: 16px; color: var(--pf-text2); max-width: 60ch; line-height: 1.65; }
-
-    /* p-tags */
-    .pf-tag {
-      font-family: 'JetBrains Mono', monospace; font-size: 10px;
-      letter-spacing: .08em; padding: 5px 12px; border-radius: var(--pf-pill);
-      background: var(--pf-card); border: 1px solid var(--pf-border); color: var(--pf-text2);
-    }
-    .pf-tag.live { background: rgba(40,200,100,.1); border-color: rgba(40,200,100,.28); color: #5ddb8a; }
-
-    /* buttons */
-    .pf-btn-primary {
-      display: inline-flex; align-items: center; gap: 8px;
-      padding: 13px 24px; border-radius: var(--pf-pill);
-      background: var(--pf-grad); color: #fff;
-      font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 600;
-      text-decoration: none; border: none; cursor: pointer;
-      transition: opacity .2s, transform .2s;
-    }
-    .pf-btn-primary:hover { opacity: .86; transform: translateY(-1px); }
-    .pf-btn-ghost {
-      display: inline-flex; align-items: center; gap: 8px;
-      padding: 12px 22px; border-radius: var(--pf-pill);
-      background: transparent; color: var(--pf-text2);
-      border: 1px solid var(--pf-border-hi);
-      font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 500;
-      text-decoration: none; cursor: pointer;
-      transition: border-color .2s, color .2s, transform .2s;
-    }
-    .pf-btn-ghost:hover { border-color: rgba(var(--pf-acc1-rgb),.4); color: var(--pf-text); transform: translateY(-1px); }
-
-    /* featured tilt cards */
-    .pf-feat {
-      display: grid; grid-template-columns: 1fr 1.25fr;
-      min-height: 520px; border-radius: 24px; overflow: hidden;
-      border: 1px solid var(--pf-border); background: var(--pf-card);
-      backdrop-filter: blur(16px); margin-bottom: 24px;
-    }
-    .pf-feat.rev { grid-template-columns: 1.25fr 1fr; }
-
-    .pf-feat-body {
-      padding: 54px 48px; display: flex; flex-direction: column;
-      justify-content: center; gap: 18px;
-      border-right: 1px solid var(--pf-border);
-    }
-    .pf-feat.rev .pf-feat-body { border-right: 0; border-left: 1px solid var(--pf-border); }
-    .pf-feat-meta { display: flex; gap: 8px; flex-wrap: wrap; }
-    .pf-feat h2 {
-      font-family: 'Syne', sans-serif;
-      font-size: clamp(26px,2.8vw,40px); font-weight: 800;
-      color: var(--pf-text); margin: 4px 0 0; line-height: 1.1;
-    }
-    .pf-feat-desc { font-size: 16px; color: var(--pf-text2); line-height: 1.68; max-width: 48ch; }
-    .pf-feat-stats { display: grid; grid-template-columns: repeat(3,1fr); gap: 18px; margin: 4px 0; }
-    .pf-feat-stat .n {
-      font-family: 'Syne', sans-serif; font-size: 26px; font-weight: 700;
-      background: var(--pf-grad); -webkit-background-clip: text; background-clip: text; color: transparent;
-    }
-    .pf-feat-stat .l { font-size: 11px; color: var(--pf-text3); margin-top: 2px; }
-    .pf-feat-actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 4px; }
-
-    /* read-the-story expand */
-    .pf-story-toggle .arr { display: inline-block; transition: transform .3s; }
-    .pf-story-toggle.open .arr { transform: rotate(90deg); }
-    .pf-story-panel {
-      display: none; margin-top: 10px; padding: 18px 20px;
-      background: rgba(255,255,255,.04); border-radius: 12px;
-      border: 1px solid var(--pf-border);
-      font-size: 14px; color: var(--pf-text2); line-height: 1.72;
-    }
-    .pf-story-panel.open { display: block; animation: pf-slide .28s ease; }
-    @keyframes pf-slide { from { opacity:0; transform:translateY(-6px); } to { opacity:1; transform:none; } }
-
-    /* visual panel */
-    .pf-feat-visual {
-      position: relative; overflow: hidden;
-      background:
-        radial-gradient(420px 300px at 70% 20%, rgba(var(--pf-acc2-rgb),.16), transparent 65%),
-        linear-gradient(160deg,#0f1a30 0%,#0a1124 100%);
-    }
-    .pf-feat.rev .pf-feat-visual {
-      background:
-        radial-gradient(420px 300px at 30% 80%, rgba(var(--pf-acc1-rgb),.18), transparent 65%),
-        linear-gradient(160deg,#0f1a30 0%,#0a1124 100%);
-    }
-
-    /* tilted mock browser */
-    .pf-mock {
-      position: absolute; inset: 44px 0 -44px 64px;
-      border-radius: 14px; overflow: hidden; background: #0a1628;
-      box-shadow: 0 48px 120px -32px rgba(0,0,0,.85), 0 0 0 1px var(--pf-border-hi);
-      transform: perspective(2000px) rotateX(4deg) rotateY(-14deg) rotateZ(1deg);
-      transform-origin: top left;
-      transition: transform .65s cubic-bezier(.18,.72,.18,1);
-    }
-    .pf-feat:hover .pf-mock { transform: perspective(2000px) rotateX(1deg) rotateY(-6deg) rotateZ(0); }
-    .pf-mock.rev {
-      inset: 44px 64px -44px 0;
-      transform: perspective(2000px) rotateX(4deg) rotateY(14deg) rotateZ(-1deg);
-      transform-origin: top right;
-    }
-    .pf-feat.rev:hover .pf-mock.rev { transform: perspective(2000px) rotateX(1deg) rotateY(6deg) rotateZ(0); }
-
-    .pf-mc { height: 100%; display: flex; flex-direction: column; }
-    .pf-chrome {
-      display: flex; align-items: center; gap: 10px; padding: 11px 16px;
-      background: rgba(12,20,36,.92); border-bottom: 1px solid var(--pf-border); flex-shrink: 0;
-    }
-    .pf-chrome .dots { display: flex; gap: 6px; }
-    .pf-chrome .dots span { width: 10px; height: 10px; border-radius: 50%; }
-    .pf-chrome .dots span:nth-child(1){ background:#ff5f57; }
-    .pf-chrome .dots span:nth-child(2){ background:#febc2e; }
-    .pf-chrome .dots span:nth-child(3){ background:#28c840; }
-    .pf-chrome .pf-url-bar {
-      font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--pf-text3);
-      background: rgba(255,255,255,.04); padding: 5px 12px; border-radius: 6px; flex: 1;
-    }
-    .pf-screen { flex: 1; padding: 26px; overflow: hidden; }
-
-    /* cta banner */
-    .pf-cta {
-      border-radius: 24px;
-      background: linear-gradient(135deg,rgba(123,94,167,.22) 0%,rgba(93,227,255,.08) 100%);
-      border: 1px solid rgba(var(--pf-acc1-rgb),.3);
-      padding: 68px 60px;
-      display: flex; justify-content: space-between; align-items: center;
-      gap: 40px; flex-wrap: wrap; backdrop-filter: blur(14px);
-    }
-    .pf-cta h2 {
-      font-family: 'Syne', sans-serif; font-size: clamp(26px,3.5vw,38px); font-weight: 800;
-      color: var(--pf-text); margin: 8px 0 14px;
-    }
-    .pf-cta p { font-size: 16px; color: var(--pf-text2); max-width: 52ch; line-height: 1.65; margin: 0; }
-    .pf-cta-btns { display: flex; gap: 12px; flex-wrap: wrap; flex-shrink: 0; }
-
-    /* responsive */
-    @media (max-width: 960px) {
-      .pf-feat, .pf-feat.rev { grid-template-columns: 1fr !important; min-height: auto; }
-      .pf-feat-body { padding: 36px 28px; border-right: 0 !important; border-left: 0 !important; border-bottom: 1px solid var(--pf-border); }
-      .pf-feat-visual { min-height: 300px; }
-      .pf-mock { inset: 28px 0 -28px 28px !important; transform-origin: top left !important;
-        transform: perspective(2000px) rotateX(3deg) rotateY(-10deg) rotateZ(1deg) !important; }
-      .pf-teasers { grid-template-columns: 1fr 1fr; }
-      .pf-cta { padding: 44px 32px; flex-direction: column; align-items: flex-start; }
-    }
-    @media (max-width: 560px) {
-      .pf-feat-stats { grid-template-columns: 1fr 1fr; }
-      .pf-teasers { grid-template-columns: 1fr; }
-      .pf-hero { padding: 120px 20px 72px; }
-      .pf-feat-body { padding: 28px 20px; }
-    }
-  </style>
 </head>
 <body>
 
@@ -308,16 +71,16 @@
   <!-- ════════════════ YOUR HEADER — NOT TOUCHED ════════════════ -->
   <header class="navbar" id="navbar">
     <div class="nav-logo">
-      <a href="../index.html">
+      <a href="portfolio.html">
         <img src="../assets/images/olideen-logo.png" alt="Olideen Technologies" class="logo-icon">
       </a>
     </div>
     <nav>
       <ul class="nav-links">
-        <li><a href="../index.html">Home</a></li>
+        <li><a href="index.html" class="active">Home</a></li>
         <li><a href="whyus.html">Why Us</a></li>
         <li><a href="services.html">Services</a></li>
-        <li><a href="portfolio.html" class="active">Portfolio</a></li>        
+        <li><a href="portfolio.html">Portfolio</a></li>        
         <li><a href="contact.html">Contact</a></li>
       </ul>
     </nav>
@@ -350,16 +113,17 @@
     <div class="pf-sec">
       <div class="pf-wrap">
 
+        <<!-- Card 1: Estcourt Waste Collectors -->
         <article class="pf-feat" style="border-color:rgba(93,184,58,0.2);">
           <div class="pf-feat-body">
             <div class="pf-feat-meta">
               <span class="pf-tag live">Live</span>
               <span class="pf-tag">Brochure Site</span>
               <span class="pf-tag">KZN</span>
-              <span class="pf-tag">2025</span>
+              <span class="pf-tag">2026</span>
             </div>
             <h2>Estcourt Waste Collectors</h2>
-            <p class="pf-feat-desc">A family-owned recycling and waste collection business serving Estcourt for 25+ years — finally with a web presence that matches their reputation. WhatsApp-first booking, built to load on bad signal.</p>
+            <p class="pf-feat-desc">A family-owned recycling and waste collection business with 25+ years of service in KwaZulu-Natal, finally with a web presence that matches their reputation. WhatsApp-first booking, built to load on a bad signal.</p>
             <div class="pf-feat-stats">
               <div class="pf-feat-stat"><div class="n" style="background:linear-gradient(135deg,#5DB83A,#8DC63F);-webkit-background-clip:text;background-clip:text;">4.9★</div><div class="l">653 local reviews</div></div>
               <div class="pf-feat-stat"><div class="n" style="background:linear-gradient(135deg,#5DB83A,#8DC63F);-webkit-background-clip:text;background-clip:text;">25+</div><div class="l">Years in Estcourt</div></div>
@@ -373,7 +137,7 @@
             </div>
             <div class="pf-story-panel">
               Estcourt Waste Collectors is a family-owned business that has been keeping KwaZulu-Natal cleaner for over 25 years. They handle household and commercial waste collection, responsible recycling across paper, plastics, metals and glass, and even sell affordable salvaged goods to the community. Despite a 4.9-star reputation built on 653 community reviews, they had no web presence at all.<br><br>
-              The brief was simple: build a fast, mobile-first site that works on a slow 3G signal, turns visitors into WhatsApp bookings, and gives the business the credibility it has long deserved. No missed collections, no forms to wrestle with — just a tap and a chat.
+              The brief was simple: build a fast, mobile-first site that works on a slow 3G signal, turns visitors into WhatsApp bookings, and gives the business the credibility it has long deserved. No missed collections, no forms to wrestle with. Just a tap and a chat.
             </div>
           </div>
           <div class="pf-feat-visual" style="background: radial-gradient(420px 300px at 70% 20%, rgba(93,184,58,0.18), transparent 65%), linear-gradient(160deg,#0d1f10 0%,#071209 100%);">
@@ -525,7 +289,7 @@
             </div>
 
       <h2>My Quraan Tracker</h2>
-            <p class="pf-feat-desc">No more confusing WhatsApp lists of who's reading which para. A simple app to organise your group Khatam and Zikr counts together — no sign-in, no download, just open the link.</p>
+            <p class="pf-feat-desc">No more confusing WhatsApp lists of who's reading which para. A simple app to organise your group Khatam and Zikr counts together, with no sign-in, no download, just open the link.</p>
             <div class="pf-feat-stats">
               <div class="pf-feat-stat"><div class="n" style="background:linear-gradient(135deg,#FFD700,#B8860B);-webkit-background-clip:text;background-clip:text;">30</div><div class="l">Paras tracked per Khatm</div></div>
               <div class="pf-feat-stat"><div class="n" style="background:linear-gradient(135deg,#FFD700,#B8860B);-webkit-background-clip:text;background-clip:text;">∞</div><div class="l">Group Zikr counts</div></div>
@@ -541,13 +305,13 @@
               <strong style="color:#FFD700;">Quraan Khatm</strong> — Create a group Khatam, share the link on WhatsApp, and your family can each claim and complete their own para. No double bookings, no confusion.<br><br>
               <strong style="color:#FFD700;">Zikr &amp; Durood</strong> — Set a group target for Durood, Tasbeeh or any Zikr. Everyone adds their count through the link and the total updates live.<br><br>
               <strong style="color:#FFD700;">Surah Yaaseen</strong> — Track group Yaaseen recitations the same way.<br><br>
-              Everything is in the link — like passing a piece of paper around on WhatsApp. No app to download, no account to create, no banking details. Built for the pleasure of Allah.
+              Everything is in the link, like passing a piece of paper around on WhatsApp. No app to download, no account to create, no banking details. Built for the pleasure of Allah.
             </div>
           </div>
         </article>
  
       </div>
-    </div>
+    
 
     <!-- CTA -->
     <div class="pf-sec">
