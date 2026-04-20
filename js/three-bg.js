@@ -72,7 +72,7 @@
     '=>',
     '//',
     '/* Olideen */',
-    'olideentech.com',
+    'olideentech.co.za',
   ];
 
   // ── Colour palette ───────────────────────────────────────

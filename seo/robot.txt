@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://olideentech.com/sitemap.xml
+Sitemap: https://olideentech.co.za/sitemap.xml
