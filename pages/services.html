@@ -1,33 +1,48 @@
 <!DOCTYPE html>
+<!--
+  Olideen Technologies — Homepage
+  © 2026 Olideen Technologies. All rights reserved.
+  Proprietary source. Unauthorised copying, reproduction, or distribution is prohibited.
+-->
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Services — Olideen Technologies</title>
-  <meta name="description" content="Explore Olideen Technologies' full range of services: custom websites, web apps, software solutions, mobile apps, graphic design, Google Business setup, and more.">
+  <meta name="description" content="Websites, web apps, mobile apps, AI, design and more &mdash; built for South African businesses by Olideen Technologies.">
   <link rel="canonical" href="https://olideentech.co.za/pages/services.html">
+
+  <!-- Favicons -->
   <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/transparent-favicon.png">
   <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/transparent-favicon.png">
   <link rel="apple-touch-icon" sizes="180x180" href="../assets/images/olideen-logo.png">
+
+  <!-- Open Graph -->
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://olideentech.co.za/services.html">
+  <meta property="og:url" content="https://olideentech.co.za/pages/services.html">
   <meta property="og:title" content="Services — Olideen Technologies">
-  <meta property="og:description" content="Custom websites, web apps, software solutions, mobile apps, graphic design and more from Olideen Technologies, KwaZulu-Natal.">
+  <meta property="og:description" content="Websites, apps, software and design for South African businesses.">
   <meta property="og:image" content="https://olideentech.co.za/assets/images/olideen-logo.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="Olideen Technologies">
   <meta property="og:locale" content="en_ZA">
   <meta property="og:site_name" content="Olideen Technologies">
+
+  <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Services — Olideen Technologies">
-  <meta name="twitter:description" content="Nine services, one accountable developer. Custom websites, web apps, software solutions, mobile apps and more from Olideen Technologies.">
+  <meta name="twitter:description" content="Websites, apps, software and design by Olideen Technologies.">
   <meta name="twitter:image" content="https://olideentech.co.za/assets/images/olideen-logo.png">
+
+  <!-- Typography and libraries -->
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+  <!-- Structured data: service catalogue -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -45,26 +60,27 @@
       "Custom Website Development",
       "Web Application Development",
       "Software Solutions",
-      "Mobile App Development",
+      "Mobile Application Development",
       "AI Integration",
       "Graphic Design",
       "Google Business Setup",
       "Social Media Setup",
-      "Hosting and Domain Management"
+      "Hosting and Domain Management",
+      "Maintenance and Support",
+      "CV and Document Design"
     ]
   }
   </script>
-    <link rel="stylesheet" href="../css/style.css">
 
+  <link rel="stylesheet" href="../css/style.css">
 </head>
 
 <body>
-  <!-- cursor — untouched -->
   <div class="cursor-dot"></div>
   <div class="cursor-ring"></div>
   <canvas id="bg-canvas"></canvas>
 
-  <!-- ════════════ YOUR HEADER — NOT TOUCHED ════════════ -->
+  <!-- Primary navigation -->
   <header class="navbar" id="navbar">
     <div class="nav-logo">
       <a href="../index.html">
@@ -80,6 +96,7 @@
         <li><a href="contact.html">Contact</a></li>
       </ul>
     </nav>
+    <a href="contact.html" class="btn-primary btn-nav-cta">Start a Project</a>
     <div class="hamburger" id="hamburger">
       <span></span><span></span><span></span>
     </div>
@@ -87,18 +104,18 @@
 
   <main>
 
-    <!-- ══════════════ HERO (Claude Design style) ══════════════ -->
+    <!-- Page hero -->
     <section class="sv-hero">
       <div class="sv-hero-glow"></div>
       <div class="sv-hero-inner">
         <span class="sv-eyebrow">Services</span>
-        <h1>  Nine services.<br/>  <span class="sv-grad">One trusted partner</span> behind each.</h1>
-<p>Pick one, pick a bundle, or schedule a consultation and I'll tell you which of these you actually need right now, and which ones you genuinely don't.</p>
+        <h1>Eleven services.<br/><span class="sv-grad">One team</span> behind every project.</h1>
+        <p>Pick a single service, a bundle, or book a call. We&rsquo;ll tell you honestly what you need now and what can wait.</p>
       </div>
     </section>
 
-    <!-- ══════════════ SERVICE CARDS (your format, Claude's content) ══════════════ -->
-    <div class="sv-sec" style="padding-top:0;">
+    <!-- Service catalogue -->
+    <div class="sv-sec" class="sec-no-top">
       <div class="sv-wrap">
 
         <div class="services-page-grid">
@@ -108,13 +125,13 @@
             <div class="card-glow"></div>
             <i class="fas fa-globe"></i>
             <h3>Custom Websites</h3>
-            <p>Hand-built brochure and marketing sites. Hosted, POPIA-ready, fast on mobile signal.</p>
+            <p>Brochure and marketing sites that load fast on mobile. Fully hosted and POPIA-compliant.</p>
             <ul class="sv-bullets">
               <li>Up to 5 pages, fully responsive</li>
-              <li>Contact form + WhatsApp integration</li>
-              <li>SEO &amp; Google Maps ready</li>
+              <li>Contact form with WhatsApp</li>
+              <li>Google Search &amp; Maps ready</li>
             </ul>
-            <div class="sv-timerow"><span>Typical build</span><strong>3–4 weeks</strong></div>
+            <div class="sv-timerow"><span>Typical build</span><strong>3&ndash;4 weeks</strong></div>
             <div class="card-tag">Most Popular</div>
           </div>
 
@@ -123,25 +140,25 @@
             <div class="card-glow"></div>
             <i class="fas fa-code"></i>
             <h3>Web Applications</h3>
-            <p>Dashboards, booking systems, portals: anything browser-based that replaces a spreadsheet.</p>
+            <p>Dashboards, booking systems, client portals. Browser-based tools that replace your spreadsheets.</p>
             <ul class="sv-bullets">
               <li>User accounts &amp; roles</li>
-              <li>Live data, real-time updates</li>
+              <li>Live, real-time data</li>
               <li>Secure by default</li>
             </ul>
-            <div class="sv-timerow"><span>Typical build</span><strong>6–8 weeks</strong></div>
+            <div class="sv-timerow"><span>Typical build</span><strong>6&ndash;8 weeks</strong></div>
           </div>
 
           <!-- 03 Software Solutions -->
           <div class="service-card reveal-card">
             <div class="card-glow"></div>
             <i class="fas fa-cogs"></i>
-            <h3>Software Solutions</h3>
-            <p>Custom tools for how your team actually works. No off-the-shelf compromises.</p>
+            <h3>Custom Software</h3>
+            <p>Software built around the way your team actually works, not around what a template allows.</p>
             <ul class="sv-bullets">
               <li>Discovery workshop included</li>
-              <li>Iterative delivery, weekly demos</li>
-              <li>Documentation &amp; handover</li>
+              <li>Weekly demos as we build</li>
+              <li>Full docs and handover</li>
             </ul>
             <div class="sv-timerow"><span>Scope</span><strong>Quoted per project</strong></div>
           </div>
@@ -151,13 +168,13 @@
             <div class="card-glow"></div>
             <i class="fas fa-mobile-alt"></i>
             <h3>Mobile Apps</h3>
-            <p>iOS and Android apps from wireframe to store listing. Native or cross-platform.</p>
+            <p>iOS and Android apps, from wireframes to the app store.</p>
             <ul class="sv-bullets">
               <li>UX design included</li>
-              <li>Play Store / App Store submission</li>
+              <li>App Store &amp; Play Store submission</li>
               <li>Push notifications &amp; analytics</li>
             </ul>
-            <div class="sv-timerow"><span>Typical build</span><strong>8–12 weeks</strong></div>
+            <div class="sv-timerow"><span>Typical build</span><strong>8&ndash;12 weeks</strong></div>
           </div>
 
           <!-- 05 AI Integration -->
@@ -165,13 +182,13 @@
             <div class="card-glow"></div>
             <i class="fas fa-robot"></i>
             <h3>AI Integration</h3>
-            <p>Chatbots, smart forms, doc processing. AI where it saves real hours, not where it just looks good in a demo.</p>
+            <p>Chatbots, smart forms and document automation. Practical AI that saves you real hours.</p>
             <ul class="sv-bullets">
-              <li>WhatsApp / web chatbots</li>
-              <li>Document parsing &amp; summarisation</li>
-              <li>Clear cost ceilings, no runaway bills</li>
+              <li>WhatsApp &amp; web chatbots</li>
+              <li>Document reading &amp; summaries</li>
+              <li>Capped, predictable monthly costs</li>
             </ul>
-            <div class="sv-timerow"><span>Starts at</span><strong>Add-on to any build</strong></div>
+            <div class="sv-timerow"><span>Availability</span><strong>Add-on to any build</strong></div>
             <div class="card-tag tag-new">New</div>
           </div>
 
@@ -180,13 +197,13 @@
             <div class="card-glow"></div>
             <i class="fas fa-paint-brush"></i>
             <h3>Graphic Design</h3>
-            <p>Logos, brand kits, social post templates. Your online look finally matching your work quality.</p>
+            <p>Logos, brand kits and social templates that make your brand look as good as your work.</p>
             <ul class="sv-bullets">
-              <li>Logo + 3 revisions</li>
-              <li>Brand colour &amp; type guide</li>
+              <li>Logo with up to 3 revisions</li>
+              <li>Colour &amp; typography guide</li>
               <li>Instagram post templates</li>
             </ul>
-            <div class="sv-timerow"><span>Typical turnaround</span><strong>1–2 weeks</strong></div>
+            <div class="sv-timerow"><span>Typical turnaround</span><strong>1&ndash;2 weeks</strong></div>
           </div>
 
           <!-- 07 Google Business Setup -->
@@ -194,13 +211,13 @@
             <div class="card-glow"></div>
             <i class="fas fa-store"></i>
             <h3>Google Business Setup</h3>
-            <p>Get your business easily found on Google Maps by customers near you. Done right the first time.</p>
+            <p>We get your business onto Google Search and Maps so local customers can find you.</p>
             <ul class="sv-bullets">
-              <li>Full profile + verification</li>
-              <li>Photo guidelines &amp; first posts</li>
+              <li>Full profile setup &amp; verification</li>
+              <li>Photo tips and first posts</li>
               <li>Review-reply playbook</li>
             </ul>
-            <div class="sv-timerow"><span>Turnaround</span><strong>3–5 days</strong></div>
+            <div class="sv-timerow"><span>Turnaround</span><strong>3&ndash;5 working days</strong></div>
           </div>
 
           <!-- 08 Social Media Setup -->
@@ -208,11 +225,11 @@
             <div class="card-glow"></div>
             <i class="fas fa-share-alt"></i>
             <h3>Social Media Setup</h3>
-            <p>Instagram, Facebook, WhatsApp Business configured properly. Profiles done. You run the content.</p>
+            <p>Instagram, Facebook and WhatsApp Business set up properly so you can focus on posting.</p>
             <ul class="sv-bullets">
-              <li>Bios, highlights, covers</li>
+              <li>Bios, highlights &amp; covers</li>
               <li>Link-in-bio page</li>
-              <li>Posting cheat-sheet</li>
+              <li>Simple posting guide</li>
             </ul>
             <div class="sv-timerow"><span>Turnaround</span><strong>1 week</strong></div>
           </div>
@@ -222,13 +239,13 @@
             <div class="card-glow"></div>
             <i class="fas fa-server"></i>
             <h3>Hosting &amp; Domains</h3>
-            <p>I buy, renew and manage your domain &amp; hosting. Tech admin off your inbox for good.</p>
+            <p>We handle your domain and hosting. Renewals, SSL and backups, so you never have to think about it.</p>
             <ul class="sv-bullets">
-              <li>Annual renewals handled</li>
-              <li>SSL, backups, uptime monitoring</li>
-              <li>One invoice, one human</li>
+              <li>Domain &amp; hosting renewals managed</li>
+              <li>SSL, backups &amp; uptime monitoring</li>
+              <li>One point of contact, one invoice</li>
             </ul>
-            <div class="sv-timerow"><span>Ongoing</span><strong>Monthly or annual</strong></div>
+            <div class="sv-timerow"><span>Term</span><strong>Monthly or annual</strong></div>
           </div>
 
           <!-- 10 Maintenance & Support -->
@@ -236,13 +253,13 @@
             <div class="card-glow"></div>
             <i class="fas fa-tools"></i>
             <h3>Maintenance &amp; Support</h3>
-            <p>Ongoing updates, security patches, performance optimisation, and technical support after launch.</p>
+            <p>Updates, security patches, speed tweaks and support after launch.</p>
             <ul class="sv-bullets">
-              <li>30 days free post-launch</li>
-              <li>Monthly retainer available</li>
-              <li>WhatsApp response within the hour</li>
+              <li>30 days free support after launch</li>
+              <li>Monthly retainer on request</li>
+              <li>WhatsApp replies within the hour</li>
             </ul>
-            <div class="sv-timerow"><span>Response</span><strong>Same-day guarantee</strong></div>
+            <div class="sv-timerow"><span>Response</span><strong>Same day</strong></div>
           </div>
 
           <!-- 11 CV & Document Design -->
@@ -250,28 +267,28 @@
             <div class="card-glow"></div>
             <i class="fas fa-file-alt"></i>
             <h3>CV &amp; Document Design</h3>
-            <p>Professionally designed CVs, letterheads, and business documents that make the right impression every time.</p>
+            <p>CVs, letterheads and business documents that look the part.</p>
             <ul class="sv-bullets">
               <li>ATS-friendly formatting</li>
-              <li>Editable source files included</li>
+              <li>Editable source files</li>
               <li>2 revisions included</li>
             </ul>
-            <div class="sv-timerow"><span>Turnaround</span><strong>2–3 days</strong></div>
+            <div class="sv-timerow"><span>Turnaround</span><strong>2&ndash;3 working days</strong></div>
           </div>
 
         </div>
       </div>
     </div>
 
-    <!-- ══════════════ BESPOKE / NO TEMPLATES ══════════════ -->
+    <!-- Bespoke approach -->
     <div class="sv-sec">
       <div class="sv-wrap">
         <div class="sv-bespoke reveal">
           <div class="sv-bespoke-left">
-            <span class="sv-eyebrow">No recycled templates</span>
-            <h2>Your business isn't generic.<br/>Your <span class="sv-grad">site shouldn't be either.</span></h2>
-            <p>Every project starts on a blank page and a conversation. I don't sell pre-made themes with your logo pasted on top. I build the tool for your business that fits your customer, your voice, and your budget.</p>
-            <p>That means slower than "click-install WordPress" but infinitely better at the only thing that matters: convincing the person on the other side to do business with you.</p>
+            <span class="sv-eyebrow">Bespoke by default</span>
+            <h2>Your business isn&rsquo;t generic.<br/>Your <span class="sv-grad">website shouldn&rsquo;t be either.</span></h2>
+            <p>Every project starts with a blank page and a conversation. We don&rsquo;t resell templates with your logo pasted on top. We build something around your customers, your brand and your budget.</p>
+            <p>It takes a bit longer than one-click setup, but it wins on the only thing that matters: turning visitors into customers.</p>
           </div>
           <div class="sv-bespoke-right">
             <div class="sv-narr-item">
@@ -279,8 +296,8 @@
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
               </div>
               <div>
-                <h4>Outcome-focused</h4>
-                <p>Leads, bookings, time saved. We define the metric before I write a line of code, and I check back on it after launch.</p>
+                <h4>Focused on outcomes</h4>
+                <p>Enquiries, bookings, time saved. We agree the goal up front and check the numbers after launch.</p>
               </div>
             </div>
             <div class="sv-narr-item">
@@ -288,8 +305,8 @@
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
               </div>
               <div>
-                <h4>Fair, fixed pricing</h4>
-                <p>Real SA-market rates, a fraction of what agencies quote.</p>
+                <h4>Fair, fixed prices</h4>
+                <p>Clear rates, well below agency quotes. No hidden costs.</p>
               </div>
             </div>
             <div class="sv-narr-item">
@@ -297,8 +314,8 @@
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
               </div>
               <div>
-                <h4>Direct line, always</h4>
-                <p>You have my number. Not a helpdesk, not a "team member will be with you shortly."</p>
+                <h4>Talk to the developer</h4>
+                <p>A direct line to the person building your project. No helpdesks, no middle layer.</p>
               </div>
             </div>
           </div>
@@ -306,13 +323,13 @@
       </div>
     </div>
 
-    <!-- ══════════════ TOOLS I BUILD WITH ══════════════ -->
-    <div class="sv-sec" style="padding-top:0;">
+    <!-- Technology stack -->
+    <div class="sv-sec" class="sec-no-top">
       <div class="sv-wrap">
         <div class="sv-tools-head reveal">
-          <span class="sv-eyebrow">Under the hood</span>
-          <h2>Tools I build with.</h2>
-          <p>Modern, battle-tested, and chosen so your site still works five years from now without a rebuild.</p>
+          <span class="sv-eyebrow">Technology</span>
+          <h2>What we build with.</h2>
+          <p>A modern, proven stack, so what we build keeps working for years without a rebuild.</p>
         </div>
         <div class="sv-tech-chips reveal">
           <span class="sv-tech-chip">HTML5</span>
@@ -333,19 +350,18 @@
       </div>
     </div>
 
-
-    <!-- ══════════════ "NOT SURE WHICH SERVICE" — CLAUDE DESIGN CTA BANNER ══════════════ -->
-    <div class="sv-sec" style="padding-top:0;">
+    <!-- Closing call to action -->
+    <div class="sv-sec" class="sec-no-top">
       <div class="sv-wrap">
         <div class="sv-cta">
           <div>
-            <span class="sv-eyebrow" style="color:rgba(255,255,255,.5);">Ready when you are</span>
-            <h2>Not sure which service<br/>you need? That's fine.</h2>
-            <p>Book a 30-minute call. Tell me the problem. I'll tell you honestly whether I'm the right fix, which service applies, and roughly what it'd cost.</p>
+            <span class="sv-eyebrow" class="eyebrow-muted">Ready to start</span>
+            <h2>Not sure which service<br/>you need?</h2>
+            <p>Book a 30-minute call. Tell us the problem and we&rsquo;ll tell you honestly if we&rsquo;re a fit, what would help and what it&rsquo;ll cost.</p>
           </div>
           <div class="sv-cta-btns">
-            <a href="https://wa.me/27733075218" target="_blank" rel="noopener" class="sv-btn-primary">WhatsApp me →</a>
-            <a href="portfolio.html" class="sv-btn-ghost">See live work</a>
+            <a href="https://wa.me/27733075218" target="_blank" rel="noopener" class="sv-btn-primary">Message on WhatsApp &rarr;</a>
+            <a href="portfolio.html" class="sv-btn-ghost">See Our Work</a>
           </div>
         </div>
       </div>
@@ -353,12 +369,12 @@
 
   </main>
 
-  <!-- ════════════ YOUR FOOTER — NOT TOUCHED ════════════ -->
+  <!-- Site footer -->
   <footer class="footer">
     <div class="footer-top">
       <div class="footer-brand">
         <img src="../assets/images/olideen-logo.png" alt="Olideen Technologies" class="footer-logo">
-        <p>Premium web &amp; software solutions from the heart of KwaZulu-Natal.</p>
+        <p>Premium Websites, Apps & Software in KwaZulu-Natal</p>
       </div>
       <div class="footer-cols">
         <div class="footer-column">
@@ -367,20 +383,21 @@
             <li><a href="../index.html">Home</a></li>
             <li><a href="services.html">Services</a></li>
             <li><a href="whyus.html">Why Us</a></li>
+            <li><a href="portfolio.html">Portfolio</a></li>
             <li><a href="contact.html">Contact</a></li>
           </ul>
         </div>
         <div class="footer-column">
           <h4>Contact</h4>
           <p><i class="fas fa-phone"></i> +27 73 307 5218</p>
-          <p><i class="fas fa-envelope"></i> olideentech@gmail.com</p>
-          <p><i class="fas fa-map-marker-alt"></i> KwaZulu-Natal, SA</p>
+          <p><i class="fas fa-envelope"></i> <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="b5dad9dcd1d0d0dbc1d0d6ddf5d2d8d4dcd99bd6dad8">[email&#160;protected]</a></p>
+          <p><i class="fas fa-map-marker-alt"></i> KwaZulu-Natal, South Africa</p>
         </div>
         <div class="footer-column">
           <h4>Connect</h4>
           <div class="social-links">
-            <a href="#"><i class="fab fa-instagram"></i> Instagram</a>
-            <a href="https://wa.me/27733075218"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i> Instagram</a>
+            <a href="https://wa.me/27733075218" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i> WhatsApp</a>
           </div>
         </div>
         <div class="footer-column">
@@ -394,16 +411,16 @@
     </div>
     <div class="footer-bottom">
       <p>&copy; 2026 Olideen Technologies. All rights reserved.
-      &nbsp;|&nbsp; <a href="privacy.html" style="color:var(--gray);">Privacy</a>
-      &nbsp;|&nbsp; <a href="terms.html" style="color:var(--gray);">Terms</a></p>
+        &nbsp;|&nbsp; <a href="privacy.html" class="footer-legal-link">Privacy</a>
+        &nbsp;|&nbsp; <a href="terms.html" class="footer-legal-link">Terms</a></p>
     </div>
   </footer>
 
-  <a href="https://wa.me/27733075218" class="whatsapp-float" target="_blank" rel="noopener noreferrer">
+  <a href="https://wa.me/27733075218" class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Chat with us on WhatsApp">
     <i class="fab fa-whatsapp"></i><span>Chat With Us</span>
   </a>
 
-  <script src="../js/three-bg.js"></script>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="../js/three-bg.js"></script>
   <script src="../js/script.js"></script>
 </body>
 </html>

@@ -1,20 +1,22 @@
 <!DOCTYPE html>
+<!--
+  Olideen Technologies — Contact
+  © 2026 Olideen Technologies. All rights reserved.
+-->
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contact — Olideen Technologies</title>
   <meta name="description" content="Get in touch with Olideen Technologies. Call, email, or WhatsApp us. Based in KwaZulu-Natal, South Africa. We reply within 24 hours.">
-  <link rel="canonical" href="https://olideentech.co.za/contact.html">
+  <link rel="canonical" href="https://olideentech.co.za/pages/contact.html">
 
-  <!-- Favicon -->
   <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/transparent-favicon.png">
   <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/transparent-favicon.png">
   <link rel="apple-touch-icon" sizes="180x180" href="../assets/images/olideen-logo.png">
 
-  <!-- Open Graph -->
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://olideentech.co.za/contact.html">
+  <meta property="og:url" content="https://olideentech.co.za/pages/contact.html">
   <meta property="og:title" content="Contact — Olideen Technologies">
   <meta property="og:description" content="Contact Olideen Technologies via email, phone, or WhatsApp. Based in KwaZulu-Natal, South Africa. We respond within 24 hours.">
   <meta property="og:image" content="https://olideentech.co.za/assets/images/olideen-logo.png">
@@ -24,13 +26,11 @@
   <meta property="og:locale" content="en_ZA">
   <meta property="og:site_name" content="Olideen Technologies">
 
-  <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Contact — Olideen Technologies">
   <meta name="twitter:description" content="Contact Olideen Technologies via email, phone, or WhatsApp. Based in KwaZulu-Natal, South Africa.">
   <meta name="twitter:image" content="https://olideentech.co.za/assets/images/olideen-logo.png">
 
-  <!-- Local Business JSON-LD Schema -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -63,8 +63,6 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-
-  <!-- EmailJS SDK -->
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
   <link rel="stylesheet" href="../css/style.css">
@@ -75,7 +73,6 @@
   <div class="cursor-ring"></div>
   <canvas id="bg-canvas"></canvas>
 
-  <!-- Navigation Bar -->
   <header class="navbar" id="navbar">
     <div class="nav-logo">
       <a href="../index.html">
@@ -87,26 +84,26 @@
         <li><a href="../index.html">Home</a></li>
         <li><a href="whyus.html">Why Us</a></li>
         <li><a href="services.html">Services</a></li>
-        <li><a href="portfolio.html">Portfolio</a></li>        
+        <li><a href="portfolio.html">Portfolio</a></li>
         <li><a href="contact.html" class="active">Contact</a></li>
       </ul>
     </nav>
+    <a href="contact.html" class="btn-primary btn-nav-cta">Start a Project</a>
     <div class="hamburger" id="hamburger">
       <span></span><span></span><span></span>
     </div>
   </header>
 
-  <!-- Atmospheric background glows -->
   <div class="contact-glow-orb orb-purple"></div>
   <div class="contact-glow-orb orb-cyan"></div>
   <div class="contact-glow-orb orb-gold"></div>
 
   <div class="contact-page">
-    <!-- Left: Info -->
+
     <div class="contact-info reveal">
       <p class="section-label">Get In Touch</p>
       <h1>Let's Build Something <span class="gradient-text">Amazing</span></h1>
-      <p>Have a project in mind, a question, or just want to explore what's possible? Reach out, I'd love to hear from you. Respond time: 24 hours.</p>
+      <p>Have a project in mind, a question, or just want to explore what is possible? Reach out, we would love to hear from you. We respond within 24 hours.</p>
 
       <div class="contact-channels">
         <a href="mailto:olideentech@gmail.com" class="contact-channel-card">
@@ -142,7 +139,6 @@
         </div>
       </div>
 
-      <!-- Response time badge -->
       <div class="contact-response-badge">
         <div class="crb-pulse"></div>
         <i class="fas fa-clock"></i>
@@ -153,7 +149,6 @@
       </div>
     </div>
 
-    <!-- Right: Form -->
     <div class="contact-form-wrap reveal">
       <div class="cfw-header">
         <h2>Send Us a Message</h2>
@@ -202,104 +197,16 @@
           <span class="error-msg" id="messageError"></span>
         </div>
 
-        <button type="submit" class="btn-primary" id="submitBtn" style="width:100%; justify-content:center;">
+        <button type="submit" class="btn-primary btn-block" id="submitBtn">
           Send Message <i class="fas fa-paper-plane"></i>
         </button>
 
         <div id="successBanner" class="success-banner"></div>
       </form>
-    </div><!-- end contact-form-wrap -->
-  </div><!-- end contact-page -->
+    </div>
+  </div>
 
-  
-
-  <a href="https://wa.me/27733075218" class="whatsapp-float" target="_blank" rel="noopener noreferrer">
-    <i class="fab fa-whatsapp"></i><span>Chat With Us</span>
-  </a>
-
-  <script src="../js/three-bg.js"></script>
-  <script src="../js/script.js"></script>
-
-  <script>
-    // ============================================================
-    // EMAILJS CONFIG — replace these 3 values with yours
-    // ============================================================
-    const EMAILJS_PUBLIC_KEY  = 'PaTEVVbF32oky6nYa';
-    const EMAILJS_SERVICE_ID  = 'service_qsokdum';
-    const EMAILJS_TEMPLATE_ID = 'template_h8760ve';
-    // ============================================================
-
-    emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
-
-    const form       = document.getElementById('contactForm');
-    const submitBtn  = document.getElementById('submitBtn');
-    const banner     = document.getElementById('successBanner');
-
-    // Simple client-side validation
-    function validate() {
-      let valid = true;
-
-      const name = document.getElementById('name');
-      const nameErr = document.getElementById('nameError');
-      if (!name.value.trim()) {
-        nameErr.textContent = 'Please enter your name.';
-        valid = false;
-      } else {
-        nameErr.textContent = '';
-      }
-
-      const email = document.getElementById('email');
-      const emailErr = document.getElementById('emailError');
-      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!emailPattern.test(email.value.trim())) {
-        emailErr.textContent = 'Please enter a valid email address.';
-        valid = false;
-      } else {
-        emailErr.textContent = '';
-      }
-
-      const message = document.getElementById('message');
-      const msgErr = document.getElementById('messageError');
-      if (!message.value.trim()) {
-        msgErr.textContent = 'Please tell us about your project.';
-        valid = false;
-      } else {
-        msgErr.textContent = '';
-      }
-
-      return valid;
-    }
-
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-      if (!validate()) return;
-
-      // Loading state
-      submitBtn.disabled = true;
-      submitBtn.innerHTML = 'Sending… <i class="fas fa-spinner fa-spin"></i>';
-      banner.textContent = '';
-      banner.className = 'success-banner';
-
-      emailjs.sendForm(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, form)
-        .then(function () {
-          banner.textContent = '✅ Message sent! We\'ll be in touch within 24 hours.';
-          banner.classList.add('visible');
-          form.reset();
-        })
-        .catch(function (error) {
-          console.error('EmailJS error:', error);
-          banner.textContent = '❌ Something went wrong. Please try WhatsApp or email us directly.';
-          banner.classList.add('visible', 'error');
-        })
-        .finally(function () {
-          submitBtn.disabled = false;
-          submitBtn.innerHTML = 'Send Message <i class="fas fa-paper-plane"></i>';
-        });
-    });
-  </script>
-
-  <!-- FOOTER -->
-    <footer class="footer">
+  <footer class="footer">
     <div class="footer-top">
       <div class="footer-brand">
         <img src="../assets/images/olideen-logo.png" alt="Olideen Technologies" class="footer-logo">
@@ -324,8 +231,8 @@
         <div class="footer-column">
           <h4>Connect</h4>
           <div class="social-links">
-            <a href="#"><i class="fab fa-instagram"></i> Instagram</a>
-            <a href="https://wa.me/27733075218"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i> Instagram</a>
+            <a href="https://wa.me/27733075218" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i> WhatsApp</a>
           </div>
         </div>
         <div class="footer-column">
@@ -339,19 +246,81 @@
     </div>
     <div class="footer-bottom">
       <p>&copy; 2026 Olideen Technologies. All rights reserved.
-      &nbsp;|&nbsp; <a href="privacy.html" style="color:var(--gray);">Privacy</a>
-      &nbsp;|&nbsp; <a href="terms.html" style="color:var(--gray);">Terms</a></p>
+      &nbsp;|&nbsp; <a href="privacy.html" class="footer-legal-link">Privacy</a>
+      &nbsp;|&nbsp; <a href="terms.html" class="footer-legal-link">Terms</a></p>
     </div>
   </footer>
 
-  <a href="https://wa.me/27733075218" class="whatsapp-float" target="_blank" rel="noopener noreferrer">
+  <a href="https://wa.me/27733075218" class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Chat with us on WhatsApp">
     <i class="fab fa-whatsapp"></i><span>Chat With Us</span>
   </a>
 
-  <script src="js/three-bg.js"></script>
-  <script src="js/script.js"></script>
-</body>
-</html>
+  <script src="../js/three-bg.js"></script>
+  <script src="../js/script.js"></script>
+
+  <script>
+    const EMAILJS_PUBLIC_KEY  = 'PaTEVVbF32oky6nYa';
+    const EMAILJS_SERVICE_ID  = 'service_qsokdum';
+    const EMAILJS_TEMPLATE_ID = 'template_h8760ve';
+
+    emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
+
+    const ejsForm      = document.getElementById('contactForm');
+    const ejsSubmitBtn = document.getElementById('submitBtn');
+    const ejsBanner    = document.getElementById('successBanner');
+
+    function validate() {
+      let valid = true;
+      const name = document.getElementById('name');
+      const nameErr = document.getElementById('nameError');
+      if (!name.value.trim()) {
+        nameErr.textContent = 'Please enter your name.';
+        valid = false;
+      } else { nameErr.textContent = ''; }
+
+      const email = document.getElementById('email');
+      const emailErr = document.getElementById('emailError');
+      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailPattern.test(email.value.trim())) {
+        emailErr.textContent = 'Please enter a valid email address.';
+        valid = false;
+      } else { emailErr.textContent = ''; }
+
+      const message = document.getElementById('message');
+      const msgErr = document.getElementById('messageError');
+      if (!message.value.trim()) {
+        msgErr.textContent = 'Please tell us about your project.';
+        valid = false;
+      } else { msgErr.textContent = ''; }
+
+      return valid;
+    }
+
+    ejsForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      if (!validate()) return;
+      ejsSubmitBtn.disabled = true;
+      ejsSubmitBtn.innerHTML = 'Sending… <i class="fas fa-spinner fa-spin"></i>';
+      ejsBanner.textContent = '';
+      ejsBanner.className = 'success-banner';
+
+      emailjs.sendForm(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, ejsForm)
+        .then(function () {
+          ejsBanner.textContent = '✅ Message sent! We\'ll be in touch within 24 hours.';
+          ejsBanner.classList.add('visible');
+          ejsForm.reset();
+        })
+        .catch(function (error) {
+          console.error('EmailJS error:', error);
+          ejsBanner.textContent = '❌ Something went wrong. Please try WhatsApp or email us directly.';
+          ejsBanner.classList.add('visible', 'error');
+        })
+        .finally(function () {
+          ejsSubmitBtn.disabled = false;
+          ejsSubmitBtn.innerHTML = 'Send Message <i class="fas fa-paper-plane"></i>';
+        });
+    });
+  </script>
 
 </body>
 </html>

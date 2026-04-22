@@ -1,20 +1,25 @@
 <!DOCTYPE html>
+<!--
+  Olideen Technologies — Homepage
+  © 2026 Olideen Technologies. All rights reserved.
+  Proprietary source. Unauthorised copying, reproduction, or distribution is prohibited.
+-->
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Olideen Technologies – Premium Web & Software Solutions</title>
-  <meta name="description" content="Live projects delivered by Olideen Technologies. Custom websites, web apps, mobile apps and digital solutions for South African businesses.">
-  <link rel="canonical" href="https://olideentech.co.za/index.html">
+  <title>Portfolio — Olideen Technologies</title>
+  <meta name="description" content="Live projects delivered by Olideen Technologies. Custom websites, web applications, and digital solutions for South African businesses and community organisations.">
+  <link rel="canonical" href="https://olideentech.co.za/pages/portfolio.html">
 
   <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/transparent-favicon.png">
   <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/transparent-favicon.png">
   <link rel="apple-touch-icon" sizes="180x180" href="../assets/images/olideen-logo.png">
 
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://olideentech.co.za/">
-  <meta property="og:title" content="Olideen Technologies – Premium Web & Software Solutions">
-  <meta property="og:description" content="Live projects by Olideen Technologies. Custom websites and web applications for South African businesses.">
+  <meta property="og:url" content="https://olideentech.co.za/pages/portfolio.html">
+  <meta property="og:title" content="Portfolio — Olideen Technologies">
+  <meta property="og:description" content="Live projects delivered by Olideen Technologies. Custom websites and web applications for South African businesses.">
   <meta property="og:image" content="https://olideentech.co.za/assets/images/olideen-logo.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
@@ -23,8 +28,8 @@
   <meta property="og:site_name" content="Olideen Technologies">
 
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Olideen Technologies – Premium Web & Software Solutions">
-  <meta name="twitter:description" content="Live projects by Olideen Technologies. Custom websites and web applications for South African businesses.">
+  <meta name="twitter:title" content="Portfolio — Olideen Technologies">
+  <meta name="twitter:description" content="Live projects delivered by Olideen Technologies.">
   <meta name="twitter:image" content="https://olideentech.co.za/assets/images/olideen-logo.png">
 
   <script type="application/ld+json">
@@ -33,7 +38,7 @@
     "@type": "CollectionPage",
     "name": "Portfolio — Olideen Technologies",
     "url": "https://olideentech.co.za/pages/portfolio.html",
-    "description": "Live projects delivered by Olideen Technologies. Custom websites and web applications for South African businesses.",
+    "description": "Live projects delivered by Olideen Technologies.",
     "publisher": {
       "@type": "ProfessionalService",
       "name": "Olideen Technologies",
@@ -55,89 +60,82 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <link rel="stylesheet" href="../css/style.css">
-
-  <!-- ═══════════════════════════════════════════════
-       PORTFOLIO PAGE STYLES  — scoped with pf- prefix,
-       safe alongside your existing style.css
-  ════════════════════════════════════════════════ -->
 </head>
 <body>
 
-  <!-- cursor — untouched -->
   <div class="cursor-dot"></div>
   <div class="cursor-ring"></div>
   <canvas id="bg-canvas"></canvas>
 
-  <!-- ════════════════ YOUR HEADER — NOT TOUCHED ════════════════ -->
   <header class="navbar" id="navbar">
     <div class="nav-logo">
-      <a href="portfolio.html">
+      <a href="../index.html">
         <img src="../assets/images/olideen-logo.png" alt="Olideen Technologies" class="logo-icon">
       </a>
     </div>
     <nav>
       <ul class="nav-links">
-        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="../index.html">Home</a></li>
         <li><a href="whyus.html">Why Us</a></li>
         <li><a href="services.html">Services</a></li>
-        <li><a href="portfolio.html">Portfolio</a></li>        
+        <li><a href="portfolio.html" class="active">Portfolio</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
     </nav>
+    <a href="contact.html" class="btn-primary btn-nav-cta">Start a Project</a>
     <div class="hamburger" id="hamburger">
       <span></span><span></span><span></span>
     </div>
   </header>
 
-  <!-- ════════════════ MAIN — all new content below ════════════════ -->
   <main>
 
-    <!-- HERO -->
+    <!-- Page hero -->
     <section class="pf-hero">
       <div class="pf-hero-glow"></div>
       <div class="pf-hero-inner">
-        <span class="pf-eyebrow">The work</span>
-        <h1>Two live projects.<br/><span class="pf-grad-text">Zero hypotheticals.</span></h1>
-        <p class="pf-hero-sub">I'd rather show you a small number of real, shipped, working sites than a mood-board of concepts. Every project below is live, running, and actually being used right now.</p>
+        <span class="pf-eyebrow">Our Work</span>
+        <h1>Two live projects.<br/><span class="pf-grad-text">Real results.</span></h1>
+        <p class="pf-hero-sub">We&rsquo;d rather show a small number of real, finished projects than a folder of concepts. Every site below is live and in use today.</p>
         <div class="pf-pills">
           <span class="pf-pill live"><span class="pip"></span>2 Live</span>
-          <span class="pf-pill build"><span class="pip"></span>1 In Build</span>
+          <span class="pf-pill build"><span class="pip"></span>1 In Development</span>
           <span class="pf-pill type">Websites</span>
-          <span class="pf-pill type">Web Apps</span>
+          <span class="pf-pill type">Web Applications</span>
           <span class="pf-pill type">Community</span>
         </div>
       </div>
     </section>
 
-    <!-- FEATURED PROJECTS -->
+    <!-- Featured projects -->
     <div class="pf-sec">
       <div class="pf-wrap">
 
-        <<!-- Card 1: Estcourt Waste Collectors -->
+        <!-- Project 1: Estcourt Waste Collectors -->
         <article class="pf-feat" style="border-color:rgba(93,184,58,0.2);">
           <div class="pf-feat-body">
             <div class="pf-feat-meta">
               <span class="pf-tag live">Live</span>
-              <span class="pf-tag">Brochure Site</span>
-              <span class="pf-tag">KZN</span>
+              <span class="pf-tag">Brochure Website</span>
+              <span class="pf-tag">KwaZulu-Natal</span>
               <span class="pf-tag">2026</span>
             </div>
             <h2>Estcourt Waste Collectors</h2>
-            <p class="pf-feat-desc">A family-owned recycling and waste collection business with 25+ years of service in KwaZulu-Natal, finally with a web presence that matches their reputation. WhatsApp-first booking, built to load on a bad signal.</p>
+            <p class="pf-feat-desc">A family-run recycling and waste-collection business with 25+ years of service in KwaZulu-Natal, now with a site that matches their reputation. WhatsApp-first enquiries, built to work on a weak signal.</p>
             <div class="pf-feat-stats">
-              <div class="pf-feat-stat"><div class="n" style="background:linear-gradient(135deg,#5DB83A,#8DC63F);-webkit-background-clip:text;background-clip:text;">4.9★</div><div class="l">653 local reviews</div></div>
-              <div class="pf-feat-stat"><div class="n" style="background:linear-gradient(135deg,#5DB83A,#8DC63F);-webkit-background-clip:text;background-clip:text;">25+</div><div class="l">Years in Estcourt</div></div>
-              <div class="pf-feat-stat"><div class="n" style="background:linear-gradient(135deg,#5DB83A,#8DC63F);-webkit-background-clip:text;background-clip:text;">2.1s</div><div class="l">Load on 3G</div></div>
+              <div class="pf-feat-stat"><div class="n" style="background:linear-gradient(135deg,#5DB83A,#8DC63F);-webkit-background-clip:text;background-clip:text;">4.9&#9733;</div><div class="l">Across 653 local reviews</div></div>
+              <div class="pf-feat-stat"><div class="n" style="background:linear-gradient(135deg,#5DB83A,#8DC63F);-webkit-background-clip:text;background-clip:text;">25+</div><div class="l">Years serving Estcourt</div></div>
+              <div class="pf-feat-stat"><div class="n" style="background:linear-gradient(135deg,#5DB83A,#8DC63F);-webkit-background-clip:text;background-clip:text;">2.1s</div><div class="l">Load time on 3G</div></div>
             </div>
             <div class="pf-feat-actions">
-              <a href="https://estcourtwastecollectors.co.za/" target="_blank" rel="noopener" class="pf-btn-primary" style="background:linear-gradient(135deg,#1B5E35,#5DB83A);color:#fff;">Visit live site →</a>
-              <button class="pf-btn-ghost pf-story-toggle" onclick="pfToggleStory(this)">
-                Read the story <span class="arr">›</span>
+              <a href="https://estcourtwastecollectors.co.za/" target="_blank" rel="noopener" class="pf-btn-primary" style="background:linear-gradient(135deg,#1B5E35,#5DB83A);color:#fff;">Visit Live Site &rarr;</a>
+              <button class="pf-btn-ghost pf-story-toggle" onclick="pfToggleStory(this)" type="button">
+                Read the Case Study <span class="arr">&rsaquo;</span>
               </button>
             </div>
             <div class="pf-story-panel">
-              Estcourt Waste Collectors is a family-owned business that has been keeping KwaZulu-Natal cleaner for over 25 years. They handle household and commercial waste collection, responsible recycling across paper, plastics, metals and glass, and even sell affordable salvaged goods to the community. Despite a 4.9-star reputation built on 653 community reviews, they had no web presence at all.<br><br>
-              The brief was simple: build a fast, mobile-first site that works on a slow 3G signal, turns visitors into WhatsApp bookings, and gives the business the credibility it has long deserved. No missed collections, no forms to wrestle with. Just a tap and a chat.
+              Estcourt Waste Collectors is a family-run business that&rsquo;s served KwaZulu-Natal for over 25 years. They do household and commercial waste collection, recycling across paper, plastic, metal and glass, and run a community salvage store. With a 4.9-star rating from 653 reviews, they had the reputation but no website.<br><br>
+              The brief was simple: a fast, mobile-first site that works on slow connections, turns visitors into WhatsApp enquiries, and looks the part. The result is a front door that turns a single tap into a booked collection.
             </div>
           </div>
           <div class="pf-feat-visual" style="background: radial-gradient(420px 300px at 70% 20%, rgba(93,184,58,0.18), transparent 65%), linear-gradient(160deg,#0d1f10 0%,#071209 100%);">
@@ -148,27 +146,22 @@
                   <div class="pf-url-bar">estcourtwastecollectors.co.za</div>
                 </div>
                 <div class="pf-screen" style="background:linear-gradient(180deg,#0d1f10 0%,#071209 100%);padding:20px;">
- 
-                  <!-- Site hero block -->
                   <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
                     <div style="width:28px;height:28px;flex-shrink:0;">
-                      <img src="https://www.estcourtwastecollectors.co.za/ewc_logo.png" alt="EWC" style="width:100%;height:100%;object-fit:contain;border-radius:4px;" onerror="this.style.display='none'">
+                      <img src="https://www.estcourtwastecollectors.co.za/ewc_logo.png" alt="Estcourt Waste Collectors logo" style="width:100%;height:100%;object-fit:contain;border-radius:4px;" onerror="this.style.display='none'">
                     </div>
                     <div style="font-size:11px;font-weight:700;color:#8DC63F;letter-spacing:0.04em;">Estcourt Waste Collectors</div>
-                    <div style="margin-left:auto;font-size:9px;padding:3px 8px;background:rgba(93,184,58,0.15);color:#8DC63F;border-radius:20px;border:1px solid rgba(93,184,58,0.3);">♻ EWC</div>
+                    <div style="margin-left:auto;font-size:9px;padding:3px 8px;background:rgba(93,184,58,0.15);color:#8DC63F;border-radius:20px;border:1px solid rgba(93,184,58,0.3);">EWC</div>
                   </div>
- 
                   <div style="font-family:Georgia,serif;font-size:20px;font-weight:700;color:#d4f4d8;line-height:1.1;margin-bottom:8px;">Recycling for a<br/><em style="color:#8DC63F;">Cleaner</em> Estcourt</div>
-                  <p style="font-size:11px;color:#7fa387;margin-bottom:14px;line-height:1.5;">Family-owned &amp; community-driven. Reliable waste collection, responsible recycling, and salvaged goods — right here in Estcourt.</p>
- 
-                  <!-- Trust bar -->
+                  <p style="font-size:11px;color:#7fa387;margin-bottom:14px;line-height:1.5;">Family-owned and community-driven. Reliable waste collection, responsible recycling, and salvaged goods in Estcourt.</p>
                   <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-bottom:14px;">
                     <div style="background:rgba(93,184,58,0.1);border:1px solid rgba(93,184,58,0.2);padding:8px 6px;border-radius:8px;text-align:center;">
                       <div style="font-size:14px;font-weight:700;color:#8DC63F;">25+</div>
                       <div style="font-size:8px;color:#5a7a5e;margin-top:1px;">Years</div>
                     </div>
                     <div style="background:rgba(93,184,58,0.1);border:1px solid rgba(93,184,58,0.2);padding:8px 6px;border-radius:8px;text-align:center;">
-                      <div style="font-size:14px;font-weight:700;color:#8DC63F;">★4.9</div>
+                      <div style="font-size:14px;font-weight:700;color:#8DC63F;">&#9733;4.9</div>
                       <div style="font-size:8px;color:#5a7a5e;margin-top:1px;">Rating</div>
                     </div>
                     <div style="background:rgba(93,184,58,0.1);border:1px solid rgba(93,184,58,0.2);padding:8px 6px;border-radius:8px;text-align:center;">
@@ -176,28 +169,22 @@
                       <div style="font-size:8px;color:#5a7a5e;margin-top:1px;">Families</div>
                     </div>
                   </div>
- 
-                  <!-- Services chips -->
                   <div style="display:flex;flex-wrap:wrap;gap:4px;margin-bottom:14px;">
-                    <span style="font-size:9px;padding:3px 8px;background:rgba(27,94,53,0.4);border:1px solid rgba(93,184,58,0.25);border-radius:20px;color:#a0c4a9;">♻ Recycling</span>
-                    <span style="font-size:9px;padding:3px 8px;background:rgba(27,94,53,0.4);border:1px solid rgba(93,184,58,0.25);border-radius:20px;color:#a0c4a9;">🗑 Collection</span>
-                    <span style="font-size:9px;padding:3px 8px;background:rgba(27,94,53,0.4);border:1px solid rgba(93,184,58,0.25);border-radius:20px;color:#a0c4a9;">🏭 Commercial</span>
-                    <span style="font-size:9px;padding:3px 8px;background:rgba(27,94,53,0.4);border:1px solid rgba(93,184,58,0.25);border-radius:20px;color:#a0c4a9;">🛒 Salvage</span>
+                    <span style="font-size:9px;padding:3px 8px;background:rgba(27,94,53,0.4);border:1px solid rgba(93,184,58,0.25);border-radius:20px;color:#a0c4a9;">Recycling</span>
+                    <span style="font-size:9px;padding:3px 8px;background:rgba(27,94,53,0.4);border:1px solid rgba(93,184,58,0.25);border-radius:20px;color:#a0c4a9;">Collection</span>
+                    <span style="font-size:9px;padding:3px 8px;background:rgba(27,94,53,0.4);border:1px solid rgba(93,184,58,0.25);border-radius:20px;color:#a0c4a9;">Commercial</span>
+                    <span style="font-size:9px;padding:3px 8px;background:rgba(27,94,53,0.4);border:1px solid rgba(93,184,58,0.25);border-radius:20px;color:#a0c4a9;">Salvage</span>
                   </div>
- 
-                  <!-- CTA button -->
                   <div style="display:inline-flex;gap:7px;align-items:center;background:#25d366;color:#052b13;padding:9px 16px;border-radius:50px;font-size:11px;font-weight:700;">
-                    <i class="fab fa-whatsapp" style="font-size:13px;"></i> Free Quote on WhatsApp
+                    <i class="fab fa-whatsapp" style="font-size:13px;"></i> Request a Quote on WhatsApp
                   </div>
- 
                 </div>
               </div>
             </div>
           </div>
         </article>
 
-
-<!-- Card 1: My Quraan Tracker -->
+        <!-- Project 2: My Quraan Tracker -->
         <article class="pf-feat rev" style="border-color:rgba(212,175,55,0.2);">
           <div class="pf-feat-visual" style="background: radial-gradient(420px 300px at 30% 80%, rgba(16,100,60,0.35), transparent 65%), linear-gradient(160deg,#0a1a0f 0%,#050e08 100%);">
             <div class="pf-mock rev">
@@ -207,58 +194,25 @@
                   <div class="pf-url-bar">myquraantracker.netlify.app</div>
                 </div>
                 <div class="pf-screen" style="background:linear-gradient(180deg,#071a0e 0%,#040d08 100%);padding:20px;">
- 
-                  <!-- App header bar -->
                   <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;">
                     <div style="font-family:'Georgia',serif;font-size:13px;font-weight:700;background:linear-gradient(135deg,#FFD700,#B8860B);-webkit-background-clip:text;background-clip:text;color:transparent;">My Quraan Tracker</div>
-                    <div style="font-size:9px;padding:3px 9px;background:rgba(212,175,55,0.15);color:#FFD700;border-radius:20px;border:1px solid rgba(212,175,55,0.3);">بِسْمِ اللَّه</div>
+                    <div style="font-size:9px;padding:3px 9px;background:rgba(212,175,55,0.15);color:#FFD700;border-radius:20px;border:1px solid rgba(212,175,55,0.3);">&#1576;&#1616;&#1587;&#1618;&#1605;&#1616; &#1575;&#1604;&#1604;&#1614;&#1617;&#1607;</div>
                   </div>
- 
-                  <!-- Khatam progress card -->
                   <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(212,175,55,0.2);padding:12px;border-radius:11px;margin-bottom:10px;">
                     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
-                      <div style="font-size:11px;font-weight:700;color:#c8f0d8;">Esale Sawaab — Family Khatam</div>
+                      <div style="font-size:11px;font-weight:700;color:#c8f0d8;">Esale Sawaab &mdash; Family Khatam</div>
                       <div style="font-size:10px;color:#FFD700;">18/30</div>
                     </div>
-                    <!-- Para grid: 30 cells -->
                     <div style="display:grid;grid-template-columns:repeat(10,1fr);gap:2px;margin-bottom:8px;">
-                      <div style="background:#1a7a3a;height:14px;border-radius:2px;"></div>
-                      <div style="background:#1a7a3a;height:14px;border-radius:2px;"></div>
-                      <div style="background:#1a7a3a;height:14px;border-radius:2px;"></div>
-                      <div style="background:#1a7a3a;height:14px;border-radius:2px;"></div>
-                      <div style="background:#1a7a3a;height:14px;border-radius:2px;"></div>
-                      <div style="background:#1a7a3a;height:14px;border-radius:2px;"></div>
-                      <div style="background:#1a7a3a;height:14px;border-radius:2px;"></div>
-                      <div style="background:#1a7a3a;height:14px;border-radius:2px;"></div>
-                      <div style="background:#1a7a3a;height:14px;border-radius:2px;"></div>
-                      <div style="background:#1a7a3a;height:14px;border-radius:2px;"></div>
-                      <div style="background:#1a7a3a;height:14px;border-radius:2px;"></div>
-                      <div style="background:#1a7a3a;height:14px;border-radius:2px;"></div>
-                      <div style="background:#1a7a3a;height:14px;border-radius:2px;"></div>
-                      <div style="background:#1a7a3a;height:14px;border-radius:2px;"></div>
-                      <div style="background:#1a7a3a;height:14px;border-radius:2px;"></div>
-                      <div style="background:#1a7a3a;height:14px;border-radius:2px;"></div>
-                      <div style="background:#1a7a3a;height:14px;border-radius:2px;"></div>
-                      <div style="background:#1a7a3a;height:14px;border-radius:2px;"></div>
+                      <div style="background:#1a7a3a;height:14px;border-radius:2px;"></div><div style="background:#1a7a3a;height:14px;border-radius:2px;"></div><div style="background:#1a7a3a;height:14px;border-radius:2px;"></div><div style="background:#1a7a3a;height:14px;border-radius:2px;"></div><div style="background:#1a7a3a;height:14px;border-radius:2px;"></div><div style="background:#1a7a3a;height:14px;border-radius:2px;"></div><div style="background:#1a7a3a;height:14px;border-radius:2px;"></div><div style="background:#1a7a3a;height:14px;border-radius:2px;"></div><div style="background:#1a7a3a;height:14px;border-radius:2px;"></div><div style="background:#1a7a3a;height:14px;border-radius:2px;"></div>
+                      <div style="background:#1a7a3a;height:14px;border-radius:2px;"></div><div style="background:#1a7a3a;height:14px;border-radius:2px;"></div><div style="background:#1a7a3a;height:14px;border-radius:2px;"></div><div style="background:#1a7a3a;height:14px;border-radius:2px;"></div><div style="background:#1a7a3a;height:14px;border-radius:2px;"></div><div style="background:#1a7a3a;height:14px;border-radius:2px;"></div><div style="background:#1a7a3a;height:14px;border-radius:2px;"></div><div style="background:#1a7a3a;height:14px;border-radius:2px;"></div>
                       <div style="background:rgba(212,175,55,0.25);height:14px;border-radius:2px;border:1px solid rgba(212,175,55,0.5);"></div>
-                      <div style="background:rgba(255,255,255,0.06);height:14px;border-radius:2px;"></div>
-                      <div style="background:rgba(255,255,255,0.06);height:14px;border-radius:2px;"></div>
-                      <div style="background:rgba(255,255,255,0.06);height:14px;border-radius:2px;"></div>
-                      <div style="background:rgba(255,255,255,0.06);height:14px;border-radius:2px;"></div>
-                      <div style="background:rgba(255,255,255,0.06);height:14px;border-radius:2px;"></div>
-                      <div style="background:rgba(255,255,255,0.06);height:14px;border-radius:2px;"></div>
-                      <div style="background:rgba(255,255,255,0.06);height:14px;border-radius:2px;"></div>
-                      <div style="background:rgba(255,255,255,0.06);height:14px;border-radius:2px;"></div>
-                      <div style="background:rgba(255,255,255,0.06);height:14px;border-radius:2px;"></div>
-                      <div style="background:rgba(255,255,255,0.06);height:14px;border-radius:2px;"></div>
-                      <div style="background:rgba(255,255,255,0.06);height:14px;border-radius:2px;"></div>
+                      <div style="background:rgba(255,255,255,0.06);height:14px;border-radius:2px;"></div><div style="background:rgba(255,255,255,0.06);height:14px;border-radius:2px;"></div><div style="background:rgba(255,255,255,0.06);height:14px;border-radius:2px;"></div><div style="background:rgba(255,255,255,0.06);height:14px;border-radius:2px;"></div><div style="background:rgba(255,255,255,0.06);height:14px;border-radius:2px;"></div><div style="background:rgba(255,255,255,0.06);height:14px;border-radius:2px;"></div><div style="background:rgba(255,255,255,0.06);height:14px;border-radius:2px;"></div><div style="background:rgba(255,255,255,0.06);height:14px;border-radius:2px;"></div><div style="background:rgba(255,255,255,0.06);height:14px;border-radius:2px;"></div><div style="background:rgba(255,255,255,0.06);height:14px;border-radius:2px;"></div><div style="background:rgba(255,255,255,0.06);height:14px;border-radius:2px;"></div>
                     </div>
                     <div style="height:5px;background:rgba(255,255,255,0.06);border-radius:3px;overflow:hidden;">
                       <div style="width:60%;height:100%;background:linear-gradient(90deg,#1a7a3a,#FFD700);border-radius:3px;"></div>
                     </div>
                   </div>
- 
-                  <!-- Zikr counter row -->
                   <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
                     <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(212,175,55,0.15);border-radius:9px;padding:10px;text-align:center;">
                       <div style="font-size:18px;font-weight:700;color:#FFD700;font-family:'Georgia',serif;">1 247</div>
@@ -266,65 +220,61 @@
                     </div>
                     <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(26,122,58,0.3);border-radius:9px;padding:10px;text-align:center;">
                       <div style="font-size:18px;font-weight:700;color:#5ddb8a;font-family:'Georgia',serif;">12</div>
-                      <div style="font-size:9px;color:#6b9e7a;margin-top:2px;">Yaaseen recited</div>
+                      <div style="font-size:9px;color:#6b9e7a;margin-top:2px;">Yaaseen Recitations</div>
                     </div>
                   </div>
- 
-                  <!-- Share button -->
                   <div style="margin-top:10px;display:flex;align-items:center;justify-content:center;gap:7px;background:#25d366;color:#052b13;padding:9px 14px;border-radius:50px;font-size:11px;font-weight:700;">
-                    <i class="fab fa-whatsapp" style="font-size:12px;"></i> Share Update on WhatsApp
+                    <i class="fab fa-whatsapp" style="font-size:12px;"></i> Share Update via WhatsApp
                   </div>
- 
                 </div>
               </div>
             </div>
           </div>
- 
+
           <div class="pf-feat-body">
             <div class="pf-feat-meta">
               <span class="pf-tag live">Live</span>
-              <span class="pf-tag">Web App</span>
+              <span class="pf-tag">Web Application</span>
               <span class="pf-tag">Community</span>
               <span class="pf-tag">Islamic</span>
             </div>
-
-      <h2>My Quraan Tracker</h2>
-            <p class="pf-feat-desc">No more confusing WhatsApp lists of who's reading which para. A simple app to organise your group Khatam and Zikr counts together, with no sign-in, no download, just open the link.</p>
+            <h2>My Quraan Tracker</h2>
+            <p class="pf-feat-desc">A web app that lets families and communities run group Khatams and Zikr counts together, in one shared place. No sign-in, no install. Just open the link.</p>
             <div class="pf-feat-stats">
               <div class="pf-feat-stat"><div class="n" style="background:linear-gradient(135deg,#FFD700,#B8860B);-webkit-background-clip:text;background-clip:text;">30</div><div class="l">Paras tracked per Khatam</div></div>
-              <div class="pf-feat-stat"><div class="n" style="background:linear-gradient(135deg,#FFD700,#B8860B);-webkit-background-clip:text;background-clip:text;">∞</div><div class="l">Group Zikr counts</div></div>
+              <div class="pf-feat-stat"><div class="n" style="background:linear-gradient(135deg,#FFD700,#B8860B);-webkit-background-clip:text;background-clip:text;">&#8734;</div><div class="l">Unlimited group Zikr counts</div></div>
               <div class="pf-feat-stat"><div class="n" style="background:linear-gradient(135deg,#FFD700,#B8860B);-webkit-background-clip:text;background-clip:text;">0</div><div class="l">Sign-ins required</div></div>
             </div>
             <div class="pf-feat-actions">
-              <a href="https://myquraantracker.netlify.app" target="_blank" rel="noopener" class="pf-btn-primary" style="background:linear-gradient(135deg,#1a7a3a,#FFD700);color:#040d08;">Visit live site →</a>
-              <button class="pf-btn-ghost pf-story-toggle" onclick="pfToggleStory(this)">
-                What it does <span class="arr">›</span>
+              <a href="https://myquraantracker.netlify.app" target="_blank" rel="noopener" class="pf-btn-primary" style="background:linear-gradient(135deg,#1a7a3a,#FFD700);color:#040d08;">Visit Live Site &rarr;</a>
+              <button class="pf-btn-ghost pf-story-toggle" onclick="pfToggleStory(this)" type="button">
+                Overview of Features <span class="arr">&rsaquo;</span>
               </button>
             </div>
             <div class="pf-story-panel">
-              <strong style="color:#FFD700;">Quraan Khatam</strong> — Create a group Khatam, share the link on WhatsApp, and your family can each claim and complete their own para. No double bookings, no confusion.<br><br>
-              <strong style="color:#FFD700;">Zikr &amp; Durood</strong> — Set a group target for Durood, Tasbeeh or any Zikr. Everyone adds their count through the link and the total updates live.<br><br>
-              <strong style="color:#FFD700;">Surah Yaaseen</strong> — Track group Yaaseen recitations the same way.<br><br>
-              Everything is in the link, like passing a piece of paper around on WhatsApp. No app to download, no account to create, no banking details. Built for the pleasure of Allah.
+              <strong style="color:#FFD700;">Quraan Khatam</strong> &mdash; Start a group Khatam, share the link, and let each family member claim and finish a para. No double-ups, no confusion.<br><br>
+              <strong style="color:#FFD700;">Zikr and Durood</strong> &mdash; Set a group target for Durood, Tasbeeh or any Zikr. Everyone adds their count through the shared link and the total updates live.<br><br>
+              <strong style="color:#FFD700;">Surah Yaaseen</strong> &mdash; Track group Yaaseen recitations in the same shared view.<br><br>
+              It is all one link. Nothing to install, no account, no payment. Built as a community service.
             </div>
           </div>
         </article>
- 
-      </div>
-    
 
-    <!-- CTA -->
+      </div>
+    </div>
+
+    <!-- Closing call to action -->
     <div class="pf-sec">
       <div class="pf-wrap">
         <div class="pf-cta">
           <div>
-            <span class="pf-eyebrow" style="color:rgba(255,255,255,.5);">Your name here next?</span>
-            <h2>There's a slot open<br/>for May 2026.</h2>
-            <p>I take on a small number of projects at a time so that I can actually deliver. If you'd like the next featured card on this page to be yours, let's chat.</p>
+            <span class="pf-eyebrow" class="eyebrow-muted">Your project next?</span>
+            <h2>We have slots open<br/>for May 2026.</h2>
+            <p>We only take on a handful of projects at a time so every one gets proper attention. Want to be next on this page? Let&rsquo;s talk.</p>
           </div>
           <div class="pf-cta-btns">
-            <a href="https://wa.me/27733075218" target="_blank" rel="noopener" class="pf-btn-primary">Claim the slot →</a>
-            <a href="services.html" class="pf-btn-ghost">See services</a>
+            <a href="https://wa.me/27733075218" target="_blank" rel="noopener" class="pf-btn-primary">Reserve Your Slot &rarr;</a>
+            <a href="services.html" class="pf-btn-ghost">See Services</a>
           </div>
         </div>
       </div>
@@ -332,12 +282,11 @@
 
   </main>
 
-  <!-- ════════════════ YOUR FOOTER — NOT TOUCHED ════════════════ -->
   <footer class="footer">
     <div class="footer-top">
       <div class="footer-brand">
         <img src="../assets/images/olideen-logo.png" alt="Olideen Technologies" class="footer-logo">
-        <p>Premium web &amp; software solutions from the heart of KwaZulu-Natal.</p>
+        <p>Premium Websites, Apps & Software in KwaZulu-Natal</p>
       </div>
       <div class="footer-cols">
         <div class="footer-column">
@@ -346,20 +295,21 @@
             <li><a href="../index.html">Home</a></li>
             <li><a href="services.html">Services</a></li>
             <li><a href="whyus.html">Why Us</a></li>
+            <li><a href="portfolio.html">Portfolio</a></li>
             <li><a href="contact.html">Contact</a></li>
           </ul>
         </div>
         <div class="footer-column">
           <h4>Contact</h4>
           <p><i class="fas fa-phone"></i> +27 73 307 5218</p>
-          <p><i class="fas fa-envelope"></i> olideentech@gmail.com</p>
-          <p><i class="fas fa-map-marker-alt"></i> KwaZulu-Natal, SA</p>
+          <p><i class="fas fa-envelope"></i> <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="b3dcdfdad7d6d6ddc7d6d0dbf3d4ded2dadf9dd0dcde">[email&#160;protected]</a></p>
+          <p><i class="fas fa-map-marker-alt"></i> KwaZulu-Natal, South Africa</p>
         </div>
         <div class="footer-column">
           <h4>Connect</h4>
           <div class="social-links">
-            <a href="#"><i class="fab fa-instagram"></i> Instagram</a>
-            <a href="https://wa.me/27733075218"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i> Instagram</a>
+            <a href="https://wa.me/27733075218" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i> WhatsApp</a>
           </div>
         </div>
         <div class="footer-column">
@@ -373,20 +323,19 @@
     </div>
     <div class="footer-bottom">
       <p>&copy; 2026 Olideen Technologies. All rights reserved.
-      &nbsp;|&nbsp; <a href="privacy.html" style="color:var(--gray);">Privacy</a>
-      &nbsp;|&nbsp; <a href="terms.html" style="color:var(--gray);">Terms</a></p>
+        &nbsp;|&nbsp; <a href="privacy.html" class="footer-legal-link">Privacy</a>
+        &nbsp;|&nbsp; <a href="terms.html" class="footer-legal-link">Terms</a></p>
     </div>
   </footer>
 
-  <a href="https://wa.me/27733075218" class="whatsapp-float" target="_blank" rel="noopener noreferrer">
+  <a href="https://wa.me/27733075218" class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Chat with us on WhatsApp">
     <i class="fab fa-whatsapp"></i><span>Chat With Us</span>
   </a>
 
-  <!-- your scripts — untouched -->
-  <script src="../js/three-bg.js"></script>
-<script src="../js/script.js"></script>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="../js/three-bg.js"></script>
+  <script src="../js/script.js"></script>
 
-  <!-- "Read the story" toggle -->
+  <!-- Case-study panel toggle -->
   <script>
     function pfToggleStory(btn) {
       btn.classList.toggle('open');
