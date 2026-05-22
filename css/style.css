@@ -808,3 +808,125 @@ body {
 .section-sub--spaced { margin-top: 1rem; }
 .hero-content      { text-align: center; align-items: center; display: flex; flex-direction: column; }
 .whyus-right       { display: flex; flex-direction: column; gap: 1.5rem; }
+/* ════════════════════════════════════════════════════════════
+   FIXES — May 2026
+   1. WhatsApp float button — correct z-index & stacking context
+   2. Footer links — correct paths for index.html context
+   3. Favicon — use SVG fallback hint in HTML (handled in HTML)
+   4. Mobile footer columns — wrap to 2-col grid cleanly
+   5. Footer logo path on index (../ vs relative)
+   6. Services section markup — missing closing tags corrected in HTML
+   7. Consistent section padding across all breakpoints
+   8. Navbar z-index raised above canvas
+   ════════════════════════════════════════════════════════════ */
+
+/* ── WhatsApp float — raised above everything, always visible ── */
+.whatsapp-float {
+  z-index: 99999 !important;
+  bottom: 24px;
+  right: 24px;
+}
+
+/* ── Navbar — ensure it sits above the Three.js canvas ── */
+.navbar {
+  z-index: 99990;
+}
+
+/* ── Consistent section widths — services grid was orphaned ── */
+.service-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 3rem 3rem;
+}
+
+/* ── Footer links: index.html uses different relative paths ──
+   The footer on index.html incorrectly uses ../index.html
+   and whyus.html instead of pages/whyus.html.
+   These are fixed in the HTML. The CSS below ensures the
+   footer renders consistently regardless. ── */
+
+/* ── Footer mobile: 2-column grid instead of wrapping chaos ── */
+@media (max-width: 768px) {
+  .footer-cols {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+  .footer-top {
+    gap: 1.25rem;
+  }
+  .service-grid {
+    padding: 0 1.5rem 2rem;
+  }
+}
+
+/* ── Mobile: hero button stack fix ── */
+@media (max-width: 480px) {
+  .hero-actions {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+  .hero-actions a {
+    width: 100%;
+    justify-content: center;
+  }
+  .footer-cols {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ── Stats strip — prevent overflow on very small screens ── */
+@media (max-width: 480px) {
+  .stats-strip-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    justify-items: center;
+  }
+  .sstat-divider { display: none; }
+  .sstat:last-child {
+    grid-column: 1 / -1;
+  }
+}
+
+/* ── Ticker: stop overflow clipping on iOS Safari ── */
+.ticker-wrap {
+  -webkit-overflow-scrolling: touch;
+}
+
+/* ── Contact page: fix orb positioning so they don't cause scroll ── */
+.contact-glow-orb {
+  position: fixed;
+}
+
+/* ── Whyus section: fix orphaned closing tags from index.html ── */
+/* (structural fix in HTML; this ensures the section stays within flow) */
+.whyus-section {
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Portfolio section: prevent card overflow on mobile ── */
+@media (max-width: 480px) {
+  .pf-feat-stats {
+    grid-template-columns: 1fr 1fr;
+  }
+  .pf-feat-body {
+    padding: 24px 16px;
+  }
+}
+
+/* ── Page hero: breathing room above the fixed navbar ── */
+.page-hero {
+  padding-top: 8rem;
+}
+
+@media (max-width: 768px) {
+  .page-hero {
+    padding-top: 6rem;
+  }
+}
+
+/* ── Google Business / Search Console meta ──
+   No CSS needed — handled by JSON-LD and meta tags in HTML ── */
