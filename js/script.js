@@ -192,6 +192,23 @@ if (form) {
 
 // ── GSAP Navbar entrance ─────────────────────────────────
 gsap.from('.navbar', { y: -80, opacity: 0, duration: 1, ease: 'power3.out' });
+// ── Hero intro video — swap thumbnail for iframe on click ──
+const heroVideoFrame = document.getElementById('heroVideoFrame');
+if (heroVideoFrame) {
+  heroVideoFrame.addEventListener('click', () => {
+    const videoId = heroVideoFrame.dataset.videoId;
+    if (!videoId) return;
+
+    const iframe = document.createElement('iframe');
+    iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`;
+    iframe.title = 'Olideen Technologies intro video';
+    iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+    iframe.allowFullscreen = true;
+
+    heroVideoFrame.innerHTML = '';
+    heroVideoFrame.appendChild(iframe);
+  }, { once: true });
+}
 // ── Portfolio Live Preview — lazy-load iframes on first hover ──
 document.querySelectorAll('.portfolio-card.pf-live').forEach(card => {
   let loaded = false;
