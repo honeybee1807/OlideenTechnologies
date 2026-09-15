@@ -612,7 +612,7 @@ body {
   .hero-title { font-size: clamp(2rem, 9vw, 3.2rem); }
   .hero-inner { grid-template-columns: 1fr; gap: 2.5rem; text-align: center; }
   .hero-video-frame { max-width: 260px; }
-  .hero-content { align-items: center; text-align: center; }
+  .hero-content { align-items: center; text-align: center; order: -1; }
   .hero-sub { margin: 0 auto 2.5rem; }
   .hero-actions, .hero-signals { justify-content: center; }
   .whatsapp-float { bottom: 16px; right: 16px; padding: 0.65rem; border-radius: 50%; width: 52px; height: 52px; justify-content: center; }
